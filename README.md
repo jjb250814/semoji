@@ -50,20 +50,20 @@ AdSense 권장 분량은 글 10~15편 수준인데 열람실 10편 + 소개·연
 
 ```
 세모지/
-├─ index.html          랜딩페이지 (허브)
-├─ cancelled.html      제1호 열람실 「모범이었던 것들」 — 모범음식점
-├─ pcbang.html         제2호 열람실 「대박이라는 이름」 — PC방
-├─ videoroom.html      제3호 열람실 「자동 또는 수동」 — 비디오감상실
-├─ restroom.html       제4호 열람실 「아홉 시부터 여섯 시까지」 — 공중화장실
-├─ bump.html           제5호 열람실 「그냥 도로」 — 과속방지턱
-├─ karaoke.html        제6호 열람실 「노래를 연습하는 곳」 — 노래방
-├─ vending.html        제7호 열람실 「본사 직원 0명」 — 식품자동판매기
-├─ bike.html           제8호 열람실 「전국에 서른다섯 개」 — 자전거보관소
-├─ bell.html           제9호 열람실 「약자보호」 — 안전비상벨
-├─ game.html           제10호 열람실 「곰탱이」 — 청소년게임제공업
-├─ about.html          소개 — 캐는 방법 · 편집 원칙 · 열람실 목록 (AdSense 필수)
-├─ contact.html        연락처 — 정정·삭제 요청 창구 (AdSense 필수)
-├─ privacy.html        개인정보처리방침 (AdSense 필수)
+├─ index.html          랜딩페이지 (허브)          semoji.net/
+├─ restaurant/         제1호 「모범이었던 것들」 — 모범음식점
+├─ pcbang/             제2호 「대박이라는 이름」 — PC방
+├─ videoroom/          제3호 「자동 또는 수동」 — 비디오감상실
+├─ restroom/           제4호 「아홉 시부터 여섯 시까지」 — 공중화장실
+├─ speed-bump/         제5호 「그냥 도로」 — 과속방지턱
+├─ karaoke/            제6호 「노래를 연습하는 곳」 — 노래방
+├─ vending/            제7호 「본사 직원 0명」 — 식품자동판매기
+├─ bike-rack/          제8호 「전국에 서른다섯 개」 — 자전거보관소
+├─ emergency-bell/     제9호 「약자보호」 — 안전비상벨
+├─ arcade/             제10호 「곰탱이」 — 청소년게임제공업
+├─ about/              소개 — 캐는 방법 · 편집 원칙 · 열람실 목록
+├─ contact/            연락처 — 정정·삭제 요청 창구
+├─ privacy/            개인정보처리방침 (법적으로 필요)
 ├─ robots.txt          검색엔진용 · sitemap.py 가 생성
 ├─ sitemap.xml         검색엔진용 · sitemap.py 가 생성
 ├─ .nojekyll           GitHub Pages가 Jekyll을 돌리지 않게
@@ -103,11 +103,17 @@ AdSense 권장 분량은 글 10~15편 수준인데 열람실 10편 + 소개·연
    └─ build_game.py      제10호 페이지 조립
 ```
 
-HTML은 **의존성이 없다.** 더블클릭하면 그냥 열린다. 빌드도 서버도 필요 없다.
-글꼴만 Google Fonts에서 가져오므로 오프라인에서는 대체 글꼴로 표시된다.
+**주소에 `.html` 이 없다.** 각 페이지를 `<슬러그>/index.html` 로 두어
+`semoji.net/pcbang/` 처럼 나간다. 2026-09-03에 옮겼는데, 색인이 하나도 안 된
+시점이라 잃을 것이 없었다. **색인이 쌓인 뒤 주소를 바꾸면 그때까지 모은 순위를 버리게 된다.**
 
-열람실 페이지는 CSS를 한 벌로 쓴다. 새 열람실은 `videoroom.html`의 `<style>` 블록을
-그대로 물려받아 만들었다 (`restroom.html`이 그렇게 만들어졌다).
+HTML은 **의존성이 없다.** 빌드도 서버도 필요 없다.
+글꼴만 Google Fonts에서 가져오므로 오프라인에서는 대체 글꼴로 표시된다.
+다만 폴더 구조라 파일을 더블클릭하는 것보다 `python .claude/serve.py` 로
+띄워 보는 편이 실제 주소와 같다.
+
+열람실 페이지는 CSS를 한 벌로 쓴다. 새 열람실은 `videoroom/index.html`의 `<style>` 블록을
+그대로 물려받아 만든다.
 
 ## 실행
 
@@ -259,7 +265,9 @@ python .claude/serve.py
    `data/분석결과_<이름>.txt`로 뽑는다. **페이지의 모든 수치는 이 파일에서 나와야 한다.**
    나중에 원본이 갱신돼도 이걸 다시 돌려 검증할 수 있다.
 
-**5. 페이지 만들기** — CSS는 `videoroom.html`의 `<style>` 블록을 통째로 물려받는다.
+**5. 페이지 만들기** — 새 페이지는 `<슬러그>/index.html` 로 만든다. 슬러그는 주소가 되므로
+   내용을 짐작할 수 있는 영문 소문자로 짓는다(`arcade`, `speed-bump`).
+   CSS는 `videoroom/index.html`의 `<style>` 블록을 통째로 물려받는다.
    생성 스크립트를 하나 짜서 숫자 배열 + 본문 템플릿으로 HTML을 뽑는 게 편하다
    (`%` 포맷 대신 `{{키}}` 치환을 써야 본문의 퍼센트 기호와 안 부딪힌다).
 
