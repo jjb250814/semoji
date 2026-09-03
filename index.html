@@ -84,7 +84,9 @@ header.mast{border-bottom:1px solid var(--rule)}
 
 /* 히어로 */
 .hero{padding:52px 0 40px}
-.hero .form{overflow:hidden}
+/* 도장이 scale(2.4)로 부풀 때 가로로만 잘라낸다. hidden 을 쓰면 세로까지 잘려
+   카드 위에 걸쳐 둔 「오늘의 세모지」 라벨이 먹힌다. */
+.hero .form{overflow-x:clip}
 .hero-lead{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--muted);margin:0 0 14px}
 .hero-title{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,4.6vw,46px);
   line-height:1.24;margin:0 0 18px;text-wrap:balance;letter-spacing:-.015em;max-width:20ch}
@@ -136,6 +138,9 @@ header.mast{border-bottom:1px solid var(--rule)}
 .btn:hover{transform:translateY(-1px)}
 .btn.ghost{background:transparent;color:var(--ink)}
 .btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.btn.back{padding:11px 14px;font-size:13px;color:var(--ink-2)}
+.btn:disabled{opacity:.32;cursor:default;border-color:var(--rule);color:var(--muted)}
+.btn:disabled:hover{transform:none;background:transparent;color:var(--muted)}
 .counter{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);margin-left:auto}
 
 /* 지표 */
@@ -257,7 +262,7 @@ footer a:hover{border-bottom-color:var(--seal)}
 <div class="top">
   <div class="wrap">
     <span>지식은 전부 원본 데이터에서 계산한 값입니다 · 지어낸 내용 없음</span>
-    <span>분석 완료 <b>16개 데이터셋 1,049,519행</b> · LOCALDATA</span>
+    <span>분석 완료 <b>17개 데이터셋 1,067,308행</b> · LOCALDATA</span>
   </div>
 </div>
 
@@ -270,7 +275,7 @@ footer a:hover{border-bottom-color:var(--seal)}
     <div class="docmeta">
       <span>문서번호 <em>세모지-2026-0001</em></span>
       <span>근거 <em>공공데이터포털 · LOCALDATA</em></span>
-      <span>열람실 <em>16곳 개관</em></span>
+      <span>열람실 <em>17곳 개관</em></span>
     </div>
   </div>
 </header>
@@ -301,6 +306,7 @@ footer a:hover{border-bottom-color:var(--seal)}
       </dl>
 
       <div class="actions">
+        <button class="btn ghost back" id="prev" type="button" disabled>← 이전</button>
         <button class="btn" id="draw" type="button">다른 지식 뽑기</button>
         <button class="btn ghost" id="copy" type="button">이 지식 복사</button>
         <span class="counter" id="counter"></span>
@@ -311,8 +317,8 @@ footer a:hover{border-bottom-color:var(--seal)}
   <div class="wrap">
     <div class="stats">
       <div class="stat"><span class="n" id="s1">14</span><span class="l">수록 지식</span></div>
-      <div class="stat"><span class="n">16</span><span class="l">분석 완료 데이터셋</span></div>
-      <div class="stat"><span class="n">1,049,519</span><span class="l">읽은 데이터 행</span></div>
+      <div class="stat"><span class="n">17</span><span class="l">분석 완료 데이터셋</span></div>
+      <div class="stat"><span class="n">1,067,308</span><span class="l">읽은 데이터 행</span></div>
       <div class="stat mark"><span class="n">0</span><span class="l">실생활 도움</span></div>
     </div>
   </div>
@@ -321,29 +327,35 @@ footer a:hover{border-bottom-color:var(--seal)}
     <section class="blk" id="rooms">
       <div class="blk-head"><h2>열람실</h2><span>지식 하나를 끝까지 판 곳</span></div>
 
-      <a class="room form" href="./waste/">
-        <span class="form-label">제16호</span>
+      <a class="room form" href="./bathhouse/">
+        <span class="form-label">제17호</span>
         <div class="room-in">
           <div>
-            <p class="room-no">전국 생활폐기물 배출 기록</p>
-            <p class="room-t">내집내점포앞</p>
+            <p class="room-no">전국 목욕장업 기록</p>
+            <p class="room-t">발한실</p>
             <p class="room-d">
-              쓰레기를 어디에 내놓는지는 동네마다 따로 정합니다. 전국 10,187개
-              관리구역이 그 자리를 각자 적었는데 표기가 5,848가지입니다.
-              「종량제 봉투」라는 같은 말도 162가지로 갈라 적었습니다.
+              목욕탕 영업신고서에는 「발한실여부」라는 칸이 있습니다. 땀 내는 방이
+              있느냐는 뜻입니다. 1960~70년대에 허가받은 곳은 18.6%가 있다고 적었는데,
+              2010년대에는 52.0%가 됩니다.
             </p>
             <p class="room-go">열람실 들어가기 →</p>
           </div>
           <div class="room-figs">
-            <div class="room-fig hot"><span class="n">5,848</span><span class="l">배출장소 표기</span></div>
-            <div class="room-fig"><span class="n">162</span><span class="l">「종량제 봉투」의 표기</span></div>
-            <div class="room-fig hot"><span class="n">229</span><span class="l">미수거일 표기</span></div>
-            <div class="room-fig"><span class="n">20:00</span><span class="l">가장 흔한 배출 시작</span></div>
+            <div class="room-fig hot"><span class="n">52.0%</span><span class="l">2010년대 발한실 비율</span></div>
+            <div class="room-fig"><span class="n">18.6%</span><span class="l">1960~70년대</span></div>
+            <div class="room-fig hot"><span class="n">68.2%</span><span class="l">이미 사라짐</span></div>
+            <div class="room-fig"><span class="n">80.5%</span><span class="l">옛 상호의 「탕」</span></div>
           </div>
         </div>
       </a>
 
       <div class="lite-head"><b>지난 열람실</b></div>
+      <a class="room-lite" href="./waste/">
+        <span class="no">제16호</span>
+        <span class="t">내집내점포앞</span>
+        <span class="d">생활폐기물 10,187개 구역. 쓰레기 내놓을 자리를 5,848가지로 적었다</span>
+        <span class="go">→</span>
+      </a>
       <a class="room-lite" href="./dental-lab/">
         <span class="no">제15호</span>
         <span class="t">열다섯 가지</span>
@@ -449,7 +461,6 @@ footer a:hover{border-bottom-color:var(--seal)}
             <tr><td>동물병원 인허가</td><td class="org">LOCALDATA</td><td class="org">병원 작명 · 폐업률</td><td><span class="chip">다음</span></td></tr>
             <tr><td>식용얼음판매업</td><td class="org">LOCALDATA</td><td class="org">얼음 가게에 남은 「공장판매직직원수」</td><td><span class="chip">대기</span></td></tr>
             <tr><td>전국무료와이파이</td><td class="org">행정안전부</td><td class="org">와이파이 SSID 작명 · 설치장소명</td><td><span class="chip">대기</span></td></tr>
-            <tr><td>목욕장업</td><td class="org">LOCALDATA</td><td class="org">사라진 칸 「발한실여부」</td><td><span class="chip">대기</span></td></tr>
             <tr><td>체육도장업</td><td class="org">LOCALDATA</td><td class="org">「지도자수」 · 도장 작명</td><td><span class="chip">대기</span></td></tr>
             <tr><td>담배소매업</td><td class="org">LOCALDATA</td><td class="org">담배 가게 작명 · 「민원종류명」</td><td><span class="chip">대기</span></td></tr>
             <tr><td>옹기류제조업</td><td class="org">LOCALDATA</td><td class="org">옹기 공장의 직원 칸 · 소멸</td><td><span class="chip">대기</span></td></tr>
@@ -534,8 +545,30 @@ const ROWS = {
   "전국보호수표준데이터": 12795,
   "치과기공소": 8768,
   "전국생활폐기물배출정보표준데이터": 10187,
+  "목욕장업": 17789,
 };
 const FACTS = [
+ { cat:"목욕탕 · 서식",
+   body:"목욕탕 영업신고서에는 「발한실여부」라는 칸이 있다. 땀을 내는 방이 있느냐는 뜻이다.",
+   note:"17,789곳 중 6,032곳이 「있음」이라 적었다. 한증막이나 찜질방을 서류에서는 발한실이라 부른다.",
+   src:"목욕장업", score:"93 / 100" },
+ { cat:"목욕탕 · 변화",
+   body:"1960~70년대에 허가받은 목욕탕은 18.6%만 발한실이 있었다. 2010년대에는 52.0%다.",
+   note:"목욕탕이 씻는 곳에서 땀 빼는 곳으로 옮겨 간 흐름이 칸 하나에 남아 있다.",
+   src:"목욕장업", score:"88 / 100" },
+ { cat:"목욕탕 · 이름",
+   body:"1960~70년대 목욕탕은 80.5%가 상호에 ‘탕’을 넣었고 ‘사우나’는 2.7%였다. 2010년대에는 각각 14.5%와 34.1%다.",
+   note:"두 낱말이 2000년대에 자리를 바꾼다. 옛 이름은 앞에 물 이름이 붙었다 — 청수탕, 수정탕, 약수탕, 옥천탕.",
+   src:"목욕장업", score:"86 / 100" },
+ { cat:"목욕탕 · 소멸",
+   body:"탕만 있는 공동탕업은 71.5%가 문을 닫았고, 땀 내는 곳만 있는 한증막업은 79.0%가 닫았다.",
+   note:"가장 덜 사라진 것은 둘 다 가진 「공동탕업+찜질시설」로 46.1%다. 업태 칸에 「관광호텔」이라 적힌 14곳은 모두 폐업했다.",
+   src:"목욕장업", score:"81 / 100" },
+ { cat:"목욕탕 · 흠",
+   body:"욕실이 0개라고 적힌 목욕탕이 5,764곳 있다.",
+   note:"욕실수를 적은 13,170곳의 43.8%다. 가운뎃값은 2개이고 가장 많은 곳은 119개다.",
+   src:"목욕장업", score:"79 / 100" },
+
  { cat:"쓰레기 · 표기",
    body:"쓰레기를 어디에 내놓으라고 적었는지 세면 전국에 5,848가지가 있다. 그중 4,704가지는 딱 한 번만 쓰였다.",
    note:"「내집내점포앞」처럼 띄어쓰기 없이 적은 것도, 「자기집 대문앞, 자기업소 1층 출입구」처럼 길게 적은 것도 다 같은 자리를 가리킨다.",
@@ -898,11 +931,51 @@ function render(i){
   });
   seal.classList.remove("go"); void seal.offsetWidth; seal.classList.add("go");
 }
+/* 뽑기가 랜덤이라 「이전」은 인덱스를 하나 빼는 게 아니라 본 순서를 되감는 것이다.
+   9초마다 저절로 넘어가니 놓친 장을 다시 보려는 사람이 반드시 생긴다.
+   되감은 상태에서 새로 뽑으면 브라우저 뒤로가기처럼 앞쪽 기록은 버린다. */
+const HIST_MAX = 60;
+let hist = [], pos = -1;
+
+function goto(p){
+  pos = p; idx = hist[pos]; render(idx);
+  el("prev").disabled = pos <= 0;
+}
 function draw(){
   let n; do { n = Math.floor(Math.random()*FACTS.length); } while (n === idx && FACTS.length > 1);
-  idx = n; render(idx);
+  if (pos < hist.length - 1) hist.length = pos + 1;
+  hist.push(n);
+  if (hist.length > HIST_MAX) hist.shift();
+  goto(hist.length - 1);
 }
-el("draw").addEventListener("click", draw);
+el("prev").addEventListener("click", () => {
+  if (pos > 0) { goto(pos - 1); schedule(); }
+});
+/* 가만히 두면 9초마다 다음 장으로 넘어간다. 한 장만 보고 닫는 걸 늦추려는 것이다.
+   손이 닿아 있는 동안(마우스를 얹거나 카드 안에 포커스가 있을 때), 다른 탭에 가 있는 동안,
+   그리고 움직임을 줄이기로 설정한 사람에게는 넘기지 않는다. */
+const ROTATE_MS = 9000;
+const card = document.querySelector(".hero .form");
+const still = matchMedia("(prefers-reduced-motion:reduce)").matches;
+let timer = null, held = false;
+
+function schedule(){
+  clearTimeout(timer);
+  if (still || held || document.hidden) return;
+  timer = setTimeout(() => { draw(); schedule(); }, ROTATE_MS);
+}
+function hold(v){ return () => { held = v; v ? clearTimeout(timer) : schedule(); }; }
+
+/* 터치 기기에서는 pointerleave 가 안 올 수 있다. 그러면 영영 멈춘다. */
+if (matchMedia("(hover:hover)").matches){
+  card.addEventListener("pointerenter", hold(true));
+  card.addEventListener("pointerleave", hold(false));
+}
+card.addEventListener("focusin", hold(true));
+card.addEventListener("focusout", hold(false));
+document.addEventListener("visibilitychange", schedule);
+
+el("draw").addEventListener("click", () => { draw(); schedule(); });
 
 el("copy").addEventListener("click", async () => {
   const f = FACTS[idx], btn = el("copy");
@@ -914,4 +987,5 @@ el("copy").addEventListener("click", async () => {
 
 el("s1").textContent = FACTS.length;
 draw();
+schedule();
 </script>

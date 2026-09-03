@@ -16,10 +16,10 @@
 | | 값 |
 |---|---|
 | 사이트 | **https://semoji.net** · HTTPS · 주소에 `.html` 없음 |
-| 열람실 | **16곳** (제1~16호) |
-| 전체 페이지 | 20쪽 (랜딩 + 열람실 16 + 소개 · 연락처 · 개인정보처리방침) |
-| 분석한 데이터셋 | 16개 · **1,049,519행** |
-| 랜딩 지식 카드 | 83장 |
+| 열람실 | **17곳** (제1~17호) |
+| 전체 페이지 | 21쪽 (랜딩 + 열람실 17 + 소개 · 연락처 · 개인정보처리방침) |
+| 분석한 데이터셋 | 17개 · **1,067,308행** |
+| 랜딩 지식 카드 | 88장 |
 | 파비콘 · 공유 썸네일 | 붉은 직인 파비콘 · 페이지마다 OG 이미지 1200x630 |
 | 도메인 | `semoji.net` (가비아, 2027-09-03 만료, 자동갱신 확인할 것) |
 | 저장소 | `github.com/jjb250814/semoji` (Public) |
@@ -33,7 +33,7 @@
 **지금은 기다리는 구간이다.** AdSense 심사 며칠~2주, 구글 색인 며칠~2주,
 네이버 색인 1~4주. 조급해할 것 없다. 그 사이 할 일은 열람실을 더 쌓는 것뿐이다.
 
-**바로 다음 할 일 — 제17호 만들기.** 후보는 이 문서 맨 아래
+**바로 다음 할 일 — 제18호 만들기.** 후보는 이 문서 맨 아래
 「다음 열람실 후보」에 있고, 만드는 절차는 「열람실 하나 만드는 법」에 있다.
 
 ### 계정과 자격증명 — 헷갈리기 쉬운 부분
@@ -64,7 +64,7 @@
 
 새 PC에서는 이 폴더를 열고 `claude`를 실행한 뒤 이렇게 말하면 된다:
 
-> README.md 읽고 이어서 제17호 만들자
+> README.md 읽고 이어서 제18호 만들자
 
 같은 PC에서 어제 대화를 이어가려면 그 폴더에서 `claude --continue`,
 여러 대화 중에 고르려면 `claude --resume`.
@@ -98,6 +98,7 @@
 ├─ tree/               제14호 「나무의 품격」 — 보호수
 ├─ dental-lab/         제15호 「열다섯 가지」 — 치과기공소
 ├─ waste/              제16호 「내집내점포앞」 — 생활폐기물 배출
+├─ bathhouse/          제17호 「발한실」 — 목욕장업
 ├─ about/              소개 — 캐는 방법 · 편집 원칙 · 열람실 목록
 ├─ contact/            연락처 — 정정·삭제 요청 창구
 ├─ privacy/            개인정보처리방침 (법적으로 필요)
@@ -126,6 +127,7 @@
 │  ├─ 보호수.csv          원본 12,795행
 │  ├─ 치과기공소.csv       원본 8,768행
 │  ├─ 생활폐기물.csv       원본 10,187행
+│  ├─ 목욕장업.csv         원본 17,789행
 │  ├─ 동물병원.csv        원본 10,612행 (미사용 — 자유입력 칸이 없다)
 │  ├─ 분석결과*.txt       analyze 스크립트 실행 결과
 │  ├─ 광맥순위.txt        208개 데이터셋 점수 순위 (scan_all.py)
@@ -162,6 +164,8 @@
    ├─ build_dental.py    제15호 페이지 조립
    ├─ analyze_waste.py   생활폐기물 숫자 재계산 · 검증
    ├─ build_waste.py     제16호 페이지 조립
+   ├─ analyze_bath.py    목욕장업 숫자 재계산 · 검증
+   ├─ build_bath.py      제17호 페이지 조립
    └─ build_favicon.py   파비콘 생성 (붉은 직인 + 「세」)
 ```
 
@@ -200,6 +204,7 @@ python scripts/fetch.py door_to_door_sales 방문판매업
 python scripts/fetch.py protected_tree_info 보호수
 python scripts/fetch.py dental_labs 치과기공소
 python scripts/fetch.py household_waste_info 생활폐기물
+python scripts/fetch.py public_baths 목욕장업
 
 # 페이지에 박아둔 숫자가 원본과 맞는지 검증
 python scripts/analyze.py
@@ -218,6 +223,7 @@ python scripts/analyze_door.py
 python scripts/analyze_tree.py
 python scripts/analyze_dental.py
 python scripts/analyze_waste.py
+python scripts/analyze_bath.py
 
 # 다음 열람실을 어디서 팔지 찾기
 python scripts/scan.py             # data/ 에 있는 CSV만
@@ -261,6 +267,7 @@ python .claude/serve.py
 | 전국보호수표준데이터 | `protected_tree_info` | 12,795 | 제14호 열람실 |
 | 치과기공소 | `dental_labs` | 8,768 | 제15호 열람실 |
 | 전국생활폐기물배출정보표준데이터 | `household_waste_info` | 10,187 | 제16호 열람실 |
+| 목욕장업 | `public_baths` | 17,789 | 제17호 열람실 |
 | 동물병원 | `animal_hospitals` | 10,612 | 미사용 |
 
 `python scripts/fetch.py --list` 로 확인한 열려 있는 데이터셋은 **208개**다.
