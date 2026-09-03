@@ -1,0 +1,432 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>그냥 도로</title>
+<meta name="description" content="전국 과속방지턱 141,140개의 기록. 설치장소 칸에 67,524곳이 적은 답은 「도로」였다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;600;800&family=IBM+Plex+Sans+KR:wght@300;400;500;600&family=Nanum+Gothic+Coding:wght@400;700&display=swap">
+
+<style>
+:root{
+  --paper:#EBEDE6; --card:#F5F6F1;
+  --ink:#1B1D19; --ink-2:#454A3F; --muted:#787E6F;
+  --rule:#C4C9B9; --rule-2:#DADED0; --chip:#DFE3D6;
+  --seal:#BE3B2E; --seal-ink:#BE3B2E; --seal-soft:rgba(190,59,46,.10);
+  --seal-blend:multiply;
+  --bar-neutral:#5A6052; --bar-track:#DDE1D4;
+  --f-display:'Hahmlet','Nanum Myeongjo','Apple SD Gothic Neo','Malgun Gothic',serif;
+  --f-body:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+  --f-mono:'Nanum Gothic Coding',ui-monospace,'Consolas',monospace;
+  --pad:clamp(18px,4vw,34px); --maxw:1080px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#15170F; --card:#1D2018;
+    --ink:#E8EBDE; --ink-2:#B5BBA7; --muted:#8C927E;
+    --rule:#343A28; --rule-2:#282D1E; --chip:#2A2F21;
+    --seal:#E2604F; --seal-ink:#F07C6A; --seal-soft:rgba(226,96,79,.15);
+    --seal-blend:normal;
+    --bar-neutral:#9AA189; --bar-track:#262B1D;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15170F; --card:#1D2018;
+  --ink:#E8EBDE; --ink-2:#B5BBA7; --muted:#8C927E;
+  --rule:#343A28; --rule-2:#282D1E; --chip:#2A2F21;
+  --seal:#E2604F; --seal-ink:#F07C6A; --seal-soft:rgba(226,96,79,.15);
+  --seal-blend:normal;
+  --bar-neutral:#9AA189; --bar-track:#262B1D;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{word-break:keep-all;overflow-wrap:break-word;margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);
+  font-size:16px;line-height:1.72;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+
+.top{border-bottom:1px solid var(--rule);font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.top .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:9px 0}
+.top b{color:var(--ink-2);font-weight:400}
+.top a{color:var(--seal-ink);text-decoration:none;border-bottom:1px solid var(--seal-soft)}
+.top a:hover{border-bottom-color:var(--seal)}
+
+/* 표제 */
+.head{padding:56px 0 40px}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.15em;color:var(--muted);margin:0 0 16px}
+h1{font-family:var(--f-display);font-weight:800;letter-spacing:-.025em;
+  font-size:clamp(38px,8vw,76px);line-height:1.04;margin:0 0 20px;text-wrap:balance}
+h1 .or{color:var(--muted);font-weight:400}
+h1 .off{position:relative;opacity:.42}
+h1 .off::after{content:"";position:absolute;left:-.04em;right:-.04em;top:52%;height:.05em;
+  background:currentColor;transform:scaleX(0);transform-origin:left;
+  animation:strike .7s .6s cubic-bezier(.65,0,.35,1) forwards}
+@keyframes strike{to{transform:scaleX(1)}}
+.lede{max-width:56ch;font-size:17px;font-weight:300;color:var(--ink-2);margin:0}
+.lede b{font-weight:500;color:var(--ink)}
+
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  border-block:1.5px solid var(--ink);margin-top:40px}
+.fig{padding:24px 20px 22px 0;border-right:1px solid var(--rule-2)}
+.fig:last-child{border-right:0}
+.fig .n{font-family:var(--f-display);font-weight:800;font-size:clamp(30px,5vw,42px);
+  line-height:1;font-variant-numeric:tabular-nums;display:block;letter-spacing:-.02em}
+.fig.hot .n{color:var(--seal-ink)}
+.fig .l{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;color:var(--muted);
+  display:block;margin-top:10px}
+.fig .s{font-size:12.5px;color:var(--ink-2);display:block;margin-top:4px;font-weight:300}
+
+/* 서식 박스 */
+.form{border:1.5px solid var(--ink);background:var(--card);position:relative}
+.form-label{position:absolute;top:-8px;left:16px;background:var(--card);padding:0 8px;
+  font-family:var(--f-mono);font-size:10.5px;font-weight:700;letter-spacing:.16em;color:var(--ink-2)}
+
+/* 재생기 칸 — 이 페이지의 상징 */
+.player{margin:66px 0 0;padding:36px var(--pad) 32px}
+.player-q{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--muted);margin:0 0 22px}
+.player-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule)}
+.player-cell{padding:24px 20px 22px 0;border-right:1px solid var(--rule-2)}
+.player-cell:last-child{border-right:0}
+.player-cell .box{display:inline-flex;align-items:center;gap:10px;margin-bottom:14px}
+.player-cell .tick{width:15px;height:15px;border:1.5px solid var(--ink);display:grid;place-content:center;
+  font-family:var(--f-mono);font-size:11px;line-height:1;color:var(--seal-ink)}
+.player-cell .lab{font-family:var(--f-display);font-weight:800;font-size:22px}
+.player-cell .n{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,4.6vw,38px);
+  line-height:1;display:block;font-variant-numeric:tabular-nums}
+.player-cell.on .n{color:var(--seal-ink)}
+.player-cell .s{font-size:13.5px;color:var(--ink-2);font-weight:300;display:block;margin-top:10px}
+
+/* 열람기 */
+.reader{margin:66px 0 0;padding:40px var(--pad) 0;min-height:290px}
+.seal{position:absolute;top:24px;right:22px;width:96px;height:96px;border-radius:50%;
+  border:3px solid var(--seal);display:grid;place-content:center;text-align:center;
+  color:var(--seal);mix-blend-mode:var(--seal-blend);transform:rotate(-11deg);pointer-events:none}
+.seal::after{content:"";position:absolute;inset:5px;border:1px solid var(--seal);border-radius:50%}
+.seal b{display:block;font-family:var(--f-display);font-weight:800;font-size:24px;line-height:1;letter-spacing:.05em}
+.seal i{display:block;font-style:normal;font-family:var(--f-mono);font-size:8.5px;letter-spacing:.16em;margin-top:6px}
+@keyframes stamp{0%{opacity:0;transform:rotate(-32deg) scale(2.5)}
+  62%{opacity:1;transform:rotate(-9deg) scale(.93)}100%{opacity:1;transform:rotate(-11deg) scale(1)}}
+.seal.go{animation:stamp .5s cubic-bezier(.2,.9,.3,1) both}
+@media (max-width:620px){.seal{width:70px;height:70px;top:16px;right:14px}.seal b{font-size:17px}.seal i{font-size:7px}}
+
+.q-cat{font-family:var(--f-mono);font-size:11px;font-weight:700;letter-spacing:.13em;
+  color:var(--seal-ink);margin:0 0 16px}
+.q-text{font-family:var(--f-display);font-weight:600;font-size:clamp(21px,3.6vw,34px);
+  line-height:1.45;margin:0 0 18px;max-width:22ch;text-wrap:balance;word-break:keep-all}
+.q-text::before{content:"「";opacity:.4}
+.q-text::after{content:"」";opacity:.4}
+.q-meta{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin:0 0 30px;line-height:1.9}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.fade{animation:fadein .3s ease both}
+.reader-act{display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  border-top:1.5px solid var(--ink);padding:16px var(--pad);margin:0 calc(var(--pad)*-1)}
+.btn{font-family:var(--f-body);font-size:14px;font-weight:500;padding:11px 20px;
+  border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;
+  transition:transform .12s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.tally{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);margin-left:auto}
+
+/* 섹션 */
+section.blk{padding:74px 0 0}
+.blk-head{display:flex;align-items:baseline;gap:14px;border-bottom:1.5px solid var(--ink);
+  padding-bottom:10px;margin-bottom:14px}
+.blk-head h2{font-family:var(--f-display);font-weight:800;font-size:22px;margin:0;letter-spacing:-.01em}
+.blk-head span{margin-left:auto;font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.08em}
+.blk-note{margin:0 0 30px;max-width:60ch;color:var(--ink-2);font-weight:300;font-size:15px}
+.blk-note b{font-weight:500;color:var(--ink)}
+
+.tip{position:fixed;z-index:50;pointer-events:none;opacity:0;transition:opacity .12s;
+  background:var(--ink);color:var(--paper);font-family:var(--f-mono);font-size:11.5px;
+  padding:6px 10px;white-space:nowrap;transform:translate(-50%,-140%)}
+.tip.on{opacity:1}
+
+/* 소멸 곡선 */
+.cols{display:flex;align-items:flex-end;gap:2px;height:230px;
+  border-bottom:1px solid var(--rule);padding-top:34px;position:relative}
+.col{flex:1 1 0;min-width:0;background:var(--bar-neutral);border-radius:4px 4px 0 0;
+  position:relative;transition:background .15s}
+.col:hover{background:var(--seal)}
+.col.peak{background:var(--seal)}
+.col .tag{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);
+  font-family:var(--f-mono);font-size:10px;color:var(--ink-2);white-space:nowrap;margin-bottom:6px}
+.col .tag.r{left:auto;right:-2px;transform:none}
+.axis{position:relative;height:16px;margin-top:7px;
+  font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.axis span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap}
+.axis span.first{transform:none}
+.axis span.last{transform:translateX(-100%)}
+details.tbl{margin-top:16px;font-family:var(--f-mono);font-size:12px}
+details.tbl summary{cursor:pointer;color:var(--muted);letter-spacing:.06em}
+details.tbl .scroll{overflow-x:auto;margin-top:10px;border:1px solid var(--rule)}
+details.tbl table{border-collapse:collapse;width:100%;min-width:380px}
+details.tbl td,details.tbl th{padding:5px 10px;border-bottom:1px solid var(--rule-2);
+  text-align:right;font-variant-numeric:tabular-nums}
+details.tbl th:first-child,details.tbl td:first-child{text-align:left}
+details.tbl th{color:var(--muted);font-weight:400;background:var(--card)}
+
+/* 가로 막대 */
+.hbars{display:flex;flex-direction:column;gap:2px}
+.hrow{display:grid;grid-template-columns:minmax(80px,110px) 1fr minmax(76px,auto);
+  gap:14px;align-items:center;padding:5px 0}
+.hrow .cat{font-size:14px;font-weight:500}
+.hrow .track{display:block;background:var(--bar-track);height:22px}
+.hrow .bar{display:block;height:100%;background:var(--seal);border-radius:0 4px 4px 0;
+  width:0;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.hrow:hover .bar{filter:brightness(1.12)}
+.hrow .val{font-family:var(--f-mono);font-size:12.5px;color:var(--ink-2);text-align:right;
+  font-variant-numeric:tabular-nums}
+@media (max-width:560px){.hrow{grid-template-columns:1fr auto;gap:4px 10px}
+  .hrow .track{grid-column:1/-1;order:3}}
+
+/* 목록 */
+.list{border-top:1px solid var(--rule)}
+.li{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.5fr) minmax(84px,auto);
+  gap:16px;padding:14px 0;border-bottom:1px solid var(--rule-2);align-items:baseline}
+.li .nm{font-family:var(--f-display);font-weight:600;font-size:17px;word-break:keep-all}
+.li .ad{font-size:13.5px;color:var(--ink-2);font-weight:300}
+.li .dt{font-family:var(--f-mono);font-size:12px;color:var(--muted);text-align:right;
+  font-variant-numeric:tabular-nums}
+.li .dt.on{color:var(--seal-ink)}
+@media (max-width:640px){.li{grid-template-columns:1fr auto;gap:2px 12px}.li .ad{grid-column:1/-1}}
+
+/* 흠 */
+.flaws{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.flaw{border:1px solid var(--rule);background:var(--card);padding:20px 18px;
+  display:flex;flex-direction:column;gap:9px}
+.flaw .h{font-family:var(--f-mono);font-size:11px;letter-spacing:.11em;color:var(--seal-ink)}
+.flaw .b{font-family:var(--f-display);font-weight:600;font-size:17px;line-height:1.5;margin:0;word-break:keep-all}
+.flaw .c{font-size:13.5px;color:var(--ink-2);font-weight:300;margin:0}
+
+.foot{margin-top:80px;border-top:1.5px solid var(--ink);padding:24px 0 60px;
+  font-family:var(--f-mono);font-size:11.5px;color:var(--muted);line-height:2}
+.foot .r{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot b{color:var(--ink-2);font-weight:400}
+.foot a{color:var(--seal-ink);text-decoration:none;border-bottom:1px solid var(--seal-soft)}
+.foot a:hover{border-bottom-color:var(--seal)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<style>
+/* 제5호 전용 */
+.place-box{padding:36px var(--pad) 32px;margin:66px 0 0}
+.place-q{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--muted);margin:0 0 20px}
+.place-a{font-family:var(--f-display);font-weight:800;color:var(--seal-ink);
+  font-size:clamp(38px,8vw,68px);line-height:1;letter-spacing:-.02em}
+.place-say{font-size:14px;color:var(--ink-2);font-weight:300;margin:18px 0 0;max-width:56ch}
+.place-say b{font-weight:500;color:var(--ink)}
+.two{display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:8px}
+.mono-li{border-top:1px solid var(--rule);font-family:var(--f-mono);font-size:13px}
+.mono-li div{display:flex;justify-content:space-between;gap:14px;padding:8px 0;
+  border-bottom:1px solid var(--rule-2);font-variant-numeric:tabular-nums}
+.mono-li b{font-weight:400;color:var(--ink)}
+.mono-li span{color:var(--muted)}
+/* 한 번뿐인 설치장소들 */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chips span{font-family:var(--f-mono);font-size:12.5px;color:var(--ink-2);
+  border:1px solid var(--rule);background:var(--card);padding:6px 11px}
+.chips span.on{color:var(--seal-ink);border-color:var(--seal-soft);background:var(--seal-soft)}
+.hbars.wide .hrow{grid-template-columns:minmax(140px,190px) 1fr minmax(70px,auto)}
+.hbars.wide .cat{font-family:var(--f-mono);font-size:12.5px}
+@media (max-width:560px){.hbars.wide .hrow{grid-template-columns:1fr auto}}
+</style>
+<div class="top">
+  <div class="wrap">
+    <span><a href="./index.html">← 세모지</a> · 제5호 열람실</span>
+    <span>원자료 <b>전국과속방지턱표준데이터</b> · LOCALDATA · 2026-09-02 내려받음</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="head">
+    <p class="eyebrow">제5호 열람실 · 전국 과속방지턱 기록</p>
+    <h1>그냥 <span class="or">도로</span></h1>
+    <p class="lede">
+      과속방지턱 141,140개의 기록에는 「설치장소」 칸이 있습니다. 규격이 없어서
+      담당자가 손으로 적습니다. <b>67,524곳이 「도로」라고만 적었습니다.</b>
+      과속방지턱이 도로에 있다는 뜻입니다. 그리고 399곳은 서식의 예시인
+      <b>「ooo」</b>를 지우지 않고 그대로 냈습니다.
+    </p>
+
+    <div class="figs">
+      <div class="fig"><span class="n">141,140</span><span class="l">등록된 과속방지턱</span><span class="s">전국 표준데이터 전체</span></div>
+      <div class="fig hot"><span class="n">47.8%</span><span class="l">「도로」라고만 적음</span><span class="s">67,524개</span></div>
+      <div class="fig"><span class="n">30,151</span><span class="l">한 번뿐인 표기</span><span class="s">표기 41,744가지 가운데</span></div>
+      <div class="fig hot"><span class="n">399</span><span class="l">「ooo」로 낸 곳</span><span class="s">예시를 지우지 않았다</span></div>
+    </div>
+  </div>
+
+  <article class="form place-box">
+    <span class="form-label">설치장소</span>
+    <p class="place-q">과속방지턱이 어디에 있는지 적는 칸이다.</p>
+    <div><span class="place-a">도로</span></div>
+    <p class="place-say">141,140개 중 <b>67,524개</b>가 이렇게 적혀 있습니다.
+      틀린 말은 아닙니다. 과속방지턱은 도로에 있습니다.</p>
+  </article>
+
+  <section class="blk">
+    <div class="blk-head"><h2>아무것도 알려주지 않는 답</h2><span>상위 10가지</span></div>
+    <p class="blk-note">「도로」 「도로상」 「노면」 「주변」 — 다 같은 말이고, 다 아무 정보가 없습니다.
+      「해당지번 인근 도로」는 지번을 봐야 알 수 있다는 뜻입니다.
+      그리고 <b>「ooo」가 399개</b> 있습니다. 서식에 적힌 예시를 지우지 않고 그대로 제출한 것입니다.</p>
+    <div class="hbars wide">
+    <div class="hrow"><span class="cat">도로</span><span class="track"><span class="bar" data-w="100.00"></span></span><span class="val">67,524개</span></div>
+    <div class="hrow"><span class="cat">해당지번 인근 도로</span><span class="track"><span class="bar" data-w="6.07"></span></span><span class="val">4,096개</span></div>
+    <div class="hrow"><span class="cat">도로상</span><span class="track"><span class="bar" data-w="1.65"></span></span><span class="val">1,113개</span></div>
+    <div class="hrow"><span class="cat">해당지번 근처</span><span class="track"><span class="bar" data-w="1.47"></span></span><span class="val">995개</span></div>
+    <div class="hrow"><span class="cat">주변</span><span class="track"><span class="bar" data-w="1.04"></span></span><span class="val">701개</span></div>
+    <div class="hrow"><span class="cat">노면</span><span class="track"><span class="bar" data-w="0.81"></span></span><span class="val">549개</span></div>
+    <div class="hrow"><span class="cat">ooo</span><span class="track"><span class="bar" data-w="0.59"></span></span><span class="val">399개</span></div>
+    <div class="hrow"><span class="cat">이면도로</span><span class="track"><span class="bar" data-w="0.27"></span></span><span class="val">180개</span></div>
+    <div class="hrow"><span class="cat">해당지번 인근도로</span><span class="track"><span class="bar" data-w="0.20"></span></span><span class="val">132개</span></div>
+    <div class="hrow"><span class="cat">도로변</span><span class="track"><span class="bar" data-w="0.17"></span></span><span class="val">117개</span></div>
+    </div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>그래도 누군가는 적었다</h2><span>30,151가지</span></div>
+    <p class="blk-note">전국에서 딱 한 번만 쓰인 표기가 30,151가지입니다.
+      이 사람들은 <b>지도 없이도 찾아갈 수 있게</b> 적었습니다.
+      가장 긴 것은 53자짜리 주소이고, 가장 짧은 것은 한 글자 <b>「산」</b>입니다.</p>
+    <div class="chips"><span class="on">주한케냐대사관 앞</span><span>한강진역 옆 골목</span><span>효창공원 입구</span><span>숙명여자대학교 숙명아트센터 앞</span><span>미술홈스쿨 앞</span><span>툴마트 앞</span><span>로망앤틱 앞</span><span>이촌우성아파트 앞</span><span>삼성하이츠 앞</span><span>동광팰리스 앞</span><span>밭 근처</span><span>주택 앞</span><span class="on">산</span><span>도로(서북측 모퉁이)</span><span>도로(북측)</span></div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>「재료」 칸에 모양이 적혀 있다</h2><span>141,140개</span></div>
+    <p class="blk-note">「과속방지턱재료」라는 칸이 있습니다. 무엇으로 만들었는지를 묻는 칸입니다.
+      그런데 <b>적힌 답은 넷뿐이고 넷 다 모양입니다.</b>
+      원호형(둥근 것), 사다리꼴, 가상형, 기타. 콘크리트도 아스팔트도 고무도 한 건 없습니다.</p>
+    <div class="two">
+      <div>
+        <p class="place-q">「과속방지턱재료」에 적힌 답</p>
+        <div class="mono-li">
+        <div><b>원호형</b><span>100,066개</span></div>
+        <div><b>사다리꼴</b><span>37,263개</span></div>
+        <div><b>기타</b><span>3,205개</span></div>
+        <div><b>(빈 칸)</b><span>453개</span></div>
+        <div><b>가상형</b><span>153개</span></div>
+        </div>
+      </div>
+      <div>
+        <p class="place-q">「과속방지턱형태구분」에 적힌 답</p>
+        <div class="mono-li">
+        <div><b>원호형</b><span>117,823개</span></div>
+        <div><b>가상형</b><span>19,532개</span></div>
+        <div><b>기타</b><span>2,299개</span></div>
+        <div><b>사다리꼴</b><span>1,486개</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="blk-note" style="margin-top:30px">모양을 묻는 칸은 따로 있고, 답의 종류가 같습니다.
+      그런데 <b>두 칸에 같은 값을 적은 것은 63.9%뿐입니다.</b> 나머지 50,902개는
+      같은 것을 묻는 두 칸에 서로 다른 답을 적었습니다.
+      재료를 「원호형」이라 적고 형태를 「가상형」이라 적은 것이 10,701개 있습니다.
+      <b>왜 이렇게 됐는지는 데이터에 없습니다.</b></p>
+    <details class="tbl"><summary>두 칸이 엇갈린 조합 보기</summary><div class="scroll"><table><thead><tr><th>적힌 조합</th><th>건</th></tr></thead><tbody><tr><td>재료 원호형 → 형태 원호형</td><td>88,367</td></tr><tr><td>재료 사다리꼴 → 형태 원호형</td><td>28,467</td></tr><tr><td>재료 원호형 → 형태 가상형</td><td>10,701</td></tr><tr><td>재료 사다리꼴 → 형태 가상형</td><td>6,703</td></tr><tr><td>재료 기타 → 형태 가상형</td><td>2,005</td></tr><tr><td>재료 사다리꼴 → 형태 사다리꼴</td><td>1,249</td></tr><tr><td>재료 사다리꼴 → 형태 기타</td><td>844</td></tr><tr><td>재료 원호형 → 형태 기타</td><td>805</td></tr><tr><td>재료 기타 → 형태 원호형</td><td>686</td></tr><tr><td>재료 기타 → 형태 기타</td><td>499</td></tr></tbody></table></div></details>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>센티미터와 미터가 한 칸에</h2><span>과속방지턱폭</span></div>
+    <p class="blk-note">폭을 적는 칸에 단위가 없습니다. 그래서 <b>어떤 사람은 360이라 적고
+      어떤 사람은 4라고 적었습니다.</b> 둘 다 3.6미터와 4미터를 뜻합니다.
+      센티미터로 보이는 값이 100,329개, 미터로 보이는 값이 37,426개입니다.
+      가장 큰 값은 9,500이고, 연장 칸의 가장 큰 값은 36,000입니다.</p>
+    <div class="hbars wide">
+    <div class="hrow"><span class="cat">360  (=3.6m)</span><span class="track"><span class="bar" data-w="100.00"></span></span><span class="val">69,305개</span></div>
+    <div class="hrow"><span class="cat">4  (=4m)</span><span class="track"><span class="bar" data-w="28.11"></span></span><span class="val">19,482개</span></div>
+    <div class="hrow"><span class="cat">300</span><span class="track"><span class="bar" data-w="8.48"></span></span><span class="val">5,877개</span></div>
+    <div class="hrow"><span class="cat">6  (=6m)</span><span class="track"><span class="bar" data-w="7.59"></span></span><span class="val">5,258개</span></div>
+    <div class="hrow"><span class="cat">200</span><span class="track"><span class="bar" data-w="6.57"></span></span><span class="val">4,553개</span></div>
+    <div class="hrow"><span class="cat">600</span><span class="track"><span class="bar" data-w="6.06"></span></span><span class="val">4,203개</span></div>
+    <div class="hrow"><span class="cat">7  (=7m)</span><span class="track"><span class="bar" data-w="5.24"></span></span><span class="val">3,632개</span></div>
+    <div class="hrow"><span class="cat">5  (=5m)</span><span class="track"><span class="bar" data-w="3.51"></span></span><span class="val">2,433개</span></div>
+    <div class="hrow"><span class="cat">400</span><span class="track"><span class="bar" data-w="2.98"></span></span><span class="val">2,063개</span></div>
+    <div class="hrow"><span class="cat">0</span><span class="track"><span class="bar" data-w="2.82"></span></span><span class="val">1,956개</span></div>
+    </div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>10센티미터</h2><span>과속방지턱높이</span></div>
+    <p class="blk-note">표준 규격은 <b>높이 10센티미터, 폭 3.6미터</b>입니다.
+      높이 칸에 10이라 적은 것이 84,913개로 60.2%입니다. 규격을 지킨 셈입니다.
+      그런데 <b>0이라 적은 것이 30,898개(21.9%)</b> 있습니다.
+      그중 16,954개는 형태가 「가상형」입니다 — 바닥에 그림만 그린, 실제로는 튀어나오지 않은 방지턱입니다.
+      나머지 13,944개가 왜 0인지는 데이터에 없습니다.</p>
+    <div class="cols"><div class="col" style="height:36.4%" data-t="0cm — 30,898개"></div><div class="col" style="height:0.8%" data-t="1cm — 653개"></div><div class="col" style="height:0.2%" data-t="2cm — 198개"></div><div class="col" style="height:1.1%" data-t="3cm — 912개"></div><div class="col" style="height:1.7%" data-t="4cm — 1,436개"></div><div class="col" style="height:4.2%" data-t="5cm — 3,607개"></div><div class="col" style="height:1.9%" data-t="6cm — 1,595개"></div><div class="col" style="height:2.8%" data-t="7cm — 2,360개"></div><div class="col" style="height:13.0%" data-t="8cm — 11,015개"></div><div class="col" style="height:1.2%" data-t="9cm — 1,018개"></div><div class="col peak" style="height:100.0%" data-t="10cm — 84,913개"></div><div class="col" style="height:0.3%" data-t="11cm — 214개"></div><div class="col" style="height:0.2%" data-t="12cm — 181개"></div><div class="col" style="height:0.2%" data-t="13cm — 134개"></div><div class="col" style="height:0.1%" data-t="14cm — 44개"></div><div class="col" style="height:0.6%" data-t="15cm — 489개"></div><div class="col" style="height:0.0%" data-t="16cm — 37개"></div><div class="col" style="height:0.0%" data-t="17cm — 12개"></div><div class="col" style="height:0.0%" data-t="18cm — 17개"></div><div class="col" style="height:0.0%" data-t="19cm — 17개"></div><div class="col" style="height:0.1%" data-t="20cm — 88개"></div></div>
+    <div class="axis"><span class="first">0cm</span><span style="left:50%">10cm</span><span class="last" style="left:100%">20cm</span></div>
+    <p class="blk-note" style="margin-top:30px">높이 칸의 가장 큰 값은 <b>1,000</b>입니다.
+      센티미터라면 10미터짜리 과속방지턱입니다.</p>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>「도로명」 칸에 도로가 아닌 것</h2><span>28,200가지</span></div>
+    <p class="blk-note">도로 이름을 적는 칸인데 <b>시·읍·면 이름과 도로의 종류가 섞여 있습니다.</b>
+      「군도」는 군에서 관리하는 도로라는 뜻이고, 「도시계획도로」도 이름이 아니라 분류입니다.</p>
+    <div class="hbars wide">
+    <div class="hrow"><span class="cat">오목로</span><span class="track"><span class="bar" data-w="100.00"></span></span><span class="val">1,595개</span></div>
+    <div class="hrow"><span class="cat">군도</span><span class="track"><span class="bar" data-w="84.39"></span></span><span class="val">1,346개</span></div>
+    <div class="hrow"><span class="cat">경기도 김포시</span><span class="track"><span class="bar" data-w="79.25"></span></span><span class="val">1,264개</span></div>
+    <div class="hrow"><span class="cat">도시계획도로</span><span class="track"><span class="bar" data-w="78.75"></span></span><span class="val">1,256개</span></div>
+    <div class="hrow"><span class="cat">부산광역시 사상구</span><span class="track"><span class="bar" data-w="30.97"></span></span><span class="val">494개</span></div>
+    <div class="hrow"><span class="cat">경충대로</span><span class="track"><span class="bar" data-w="30.16"></span></span><span class="val">481개</span></div>
+    <div class="hrow"><span class="cat">모현읍</span><span class="track"><span class="bar" data-w="28.84"></span></span><span class="val">460개</span></div>
+    <div class="hrow"><span class="cat">중앙로</span><span class="track"><span class="bar" data-w="27.65"></span></span><span class="val">441개</span></div>
+    <div class="hrow"><span class="cat">포곡읍</span><span class="track"><span class="bar" data-w="24.58"></span></span><span class="val">392개</span></div>
+    <div class="hrow"><span class="cat">양지면</span><span class="track"><span class="bar" data-w="23.45"></span></span><span class="val">374개</span></div>
+    <div class="hrow"><span class="cat">신당동</span><span class="track"><span class="bar" data-w="22.82"></span></span><span class="val">364개</span></div>
+    <div class="hrow"><span class="cat">기타도로</span><span class="track"><span class="bar" data-w="19.81"></span></span><span class="val">316개</span></div>
+    </div>
+    <div class="flaws" style="margin-top:44px">
+      <div class="flaw"><span class="h">15.7%</span>
+        <p class="b">설치연도를 적은 것은 22,100개뿐이다.</p>
+        <p class="c">141,140개 중 여덟에 하나꼴입니다. 언제 생겼는지 모르는 방지턱이 대부분입니다.</p></div>
+      <div class="flaw"><span class="h">2,578</span>
+        <p class="b">가상형인데 높이가 있는 것.</p>
+        <p class="c">가상형 19,532개 중 16,954개는 높이가 0입니다. 나머지는 그림인데 높이가 적혀 있습니다.</p></div>
+      <div class="flaw"><span class="h">14,402</span>
+        <p class="b">「규격여부」에 N이라 적힌 것.</p>
+        <p class="c">전체의 10.2%입니다. 규격에 맞지 않는다고 스스로 적어 둔 방지턱입니다.</p></div>
+      <div class="flaw"><span class="h">258 vs 47,581</span>
+        <p class="b">울산은 258개, 경기도는 47,581개.</p>
+        <p class="c">울산에 방지턱이 없어서가 아니라, 등록해 올린 수가 그렇다는 뜻입니다.
+          이 데이터는 지자체가 각자 올립니다.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap r">
+    <span><a href="./index.html">세모지로 돌아가기 →</a> · 제5호 열람실 · <a href="./about.html">소개</a> · <a href="./contact.html">연락처</a> · <a href="./privacy.html">개인정보처리방침</a></span>
+    <span>출처 <b>전국과속방지턱표준데이터</b> — 지방행정인허가데이터개방(LOCALDATA) · 2026-09-02 내려받은 141,140행 기준<br>페이지의 모든 수치는 scripts/analyze_bump.py 로 재현됩니다.</span>
+  </div>
+</footer>
+
+<div class="tip" id="tip"></div>
+<script>
+/* 모든 값은 원본 CSV 141,140행에서 계산했습니다. scripts/analyze_bump.py 로 재현됩니다. */
+
+/* 막대는 화면에 들어올 때 자란다. */
+const io = new IntersectionObserver(function (es) {
+  es.forEach(function (e) {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('.bar').forEach(function (b, n) {
+      setTimeout(function () { b.style.width = b.dataset.w + '%'; }, n * 45);
+    });
+    io.unobserve(e.target);
+  });
+}, { threshold: .25 });
+document.querySelectorAll('.hbars').forEach(function (el) { io.observe(el); });
+
+/* 높이 막대 툴팁 */
+const tip = document.getElementById('tip');
+document.querySelectorAll('.col').forEach(function (c) {
+  c.addEventListener('mouseenter', function () {
+    tip.textContent = c.dataset.t;
+    tip.classList.add('on');
+    const r = c.getBoundingClientRect();
+    tip.style.left = (r.left + r.width / 2) + 'px';
+    tip.style.top = r.top + 'px';
+  });
+  c.addEventListener('mouseleave', function () { tip.classList.remove('on'); });
+});
+</script>

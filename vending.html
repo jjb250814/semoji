@@ -1,0 +1,424 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>본사 직원 0명</title>
+<meta name="description" content="전국 식품자동판매기 270,591대의 기록. 서식은 자판기에게 본사 직원 수와 월세를 묻고, 자판기는 0이라고 답한다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;600;800&family=IBM+Plex+Sans+KR:wght@300;400;500;600&family=Nanum+Gothic+Coding:wght@400;700&display=swap">
+
+<style>
+:root{
+  --paper:#EBEDE6; --card:#F5F6F1;
+  --ink:#1B1D19; --ink-2:#454A3F; --muted:#787E6F;
+  --rule:#C4C9B9; --rule-2:#DADED0; --chip:#DFE3D6;
+  --seal:#BE3B2E; --seal-ink:#BE3B2E; --seal-soft:rgba(190,59,46,.10);
+  --seal-blend:multiply;
+  --bar-neutral:#5A6052; --bar-track:#DDE1D4;
+  --f-display:'Hahmlet','Nanum Myeongjo','Apple SD Gothic Neo','Malgun Gothic',serif;
+  --f-body:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+  --f-mono:'Nanum Gothic Coding',ui-monospace,'Consolas',monospace;
+  --pad:clamp(18px,4vw,34px); --maxw:1080px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#15170F; --card:#1D2018;
+    --ink:#E8EBDE; --ink-2:#B5BBA7; --muted:#8C927E;
+    --rule:#343A28; --rule-2:#282D1E; --chip:#2A2F21;
+    --seal:#E2604F; --seal-ink:#F07C6A; --seal-soft:rgba(226,96,79,.15);
+    --seal-blend:normal;
+    --bar-neutral:#9AA189; --bar-track:#262B1D;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15170F; --card:#1D2018;
+  --ink:#E8EBDE; --ink-2:#B5BBA7; --muted:#8C927E;
+  --rule:#343A28; --rule-2:#282D1E; --chip:#2A2F21;
+  --seal:#E2604F; --seal-ink:#F07C6A; --seal-soft:rgba(226,96,79,.15);
+  --seal-blend:normal;
+  --bar-neutral:#9AA189; --bar-track:#262B1D;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{word-break:keep-all;overflow-wrap:break-word;margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);
+  font-size:16px;line-height:1.72;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+
+.top{border-bottom:1px solid var(--rule);font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.top .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:9px 0}
+.top b{color:var(--ink-2);font-weight:400}
+.top a{color:var(--seal-ink);text-decoration:none;border-bottom:1px solid var(--seal-soft)}
+.top a:hover{border-bottom-color:var(--seal)}
+
+/* 표제 */
+.head{padding:56px 0 40px}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.15em;color:var(--muted);margin:0 0 16px}
+h1{font-family:var(--f-display);font-weight:800;letter-spacing:-.025em;
+  font-size:clamp(38px,8vw,76px);line-height:1.04;margin:0 0 20px;text-wrap:balance}
+h1 .or{color:var(--muted);font-weight:400}
+h1 .off{position:relative;opacity:.42}
+h1 .off::after{content:"";position:absolute;left:-.04em;right:-.04em;top:52%;height:.05em;
+  background:currentColor;transform:scaleX(0);transform-origin:left;
+  animation:strike .7s .6s cubic-bezier(.65,0,.35,1) forwards}
+@keyframes strike{to{transform:scaleX(1)}}
+.lede{max-width:56ch;font-size:17px;font-weight:300;color:var(--ink-2);margin:0}
+.lede b{font-weight:500;color:var(--ink)}
+
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  border-block:1.5px solid var(--ink);margin-top:40px}
+.fig{padding:24px 20px 22px 0;border-right:1px solid var(--rule-2)}
+.fig:last-child{border-right:0}
+.fig .n{font-family:var(--f-display);font-weight:800;font-size:clamp(30px,5vw,42px);
+  line-height:1;font-variant-numeric:tabular-nums;display:block;letter-spacing:-.02em}
+.fig.hot .n{color:var(--seal-ink)}
+.fig .l{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;color:var(--muted);
+  display:block;margin-top:10px}
+.fig .s{font-size:12.5px;color:var(--ink-2);display:block;margin-top:4px;font-weight:300}
+
+/* 서식 박스 */
+.form{border:1.5px solid var(--ink);background:var(--card);position:relative}
+.form-label{position:absolute;top:-8px;left:16px;background:var(--card);padding:0 8px;
+  font-family:var(--f-mono);font-size:10.5px;font-weight:700;letter-spacing:.16em;color:var(--ink-2)}
+
+/* 재생기 칸 — 이 페이지의 상징 */
+.player{margin:66px 0 0;padding:36px var(--pad) 32px}
+.player-q{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--muted);margin:0 0 22px}
+.player-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule)}
+.player-cell{padding:24px 20px 22px 0;border-right:1px solid var(--rule-2)}
+.player-cell:last-child{border-right:0}
+.player-cell .box{display:inline-flex;align-items:center;gap:10px;margin-bottom:14px}
+.player-cell .tick{width:15px;height:15px;border:1.5px solid var(--ink);display:grid;place-content:center;
+  font-family:var(--f-mono);font-size:11px;line-height:1;color:var(--seal-ink)}
+.player-cell .lab{font-family:var(--f-display);font-weight:800;font-size:22px}
+.player-cell .n{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,4.6vw,38px);
+  line-height:1;display:block;font-variant-numeric:tabular-nums}
+.player-cell.on .n{color:var(--seal-ink)}
+.player-cell .s{font-size:13.5px;color:var(--ink-2);font-weight:300;display:block;margin-top:10px}
+
+/* 열람기 */
+.reader{margin:66px 0 0;padding:40px var(--pad) 0;min-height:290px}
+.seal{position:absolute;top:24px;right:22px;width:96px;height:96px;border-radius:50%;
+  border:3px solid var(--seal);display:grid;place-content:center;text-align:center;
+  color:var(--seal);mix-blend-mode:var(--seal-blend);transform:rotate(-11deg);pointer-events:none}
+.seal::after{content:"";position:absolute;inset:5px;border:1px solid var(--seal);border-radius:50%}
+.seal b{display:block;font-family:var(--f-display);font-weight:800;font-size:24px;line-height:1;letter-spacing:.05em}
+.seal i{display:block;font-style:normal;font-family:var(--f-mono);font-size:8.5px;letter-spacing:.16em;margin-top:6px}
+@keyframes stamp{0%{opacity:0;transform:rotate(-32deg) scale(2.5)}
+  62%{opacity:1;transform:rotate(-9deg) scale(.93)}100%{opacity:1;transform:rotate(-11deg) scale(1)}}
+.seal.go{animation:stamp .5s cubic-bezier(.2,.9,.3,1) both}
+@media (max-width:620px){.seal{width:70px;height:70px;top:16px;right:14px}.seal b{font-size:17px}.seal i{font-size:7px}}
+
+.q-cat{font-family:var(--f-mono);font-size:11px;font-weight:700;letter-spacing:.13em;
+  color:var(--seal-ink);margin:0 0 16px}
+.q-text{font-family:var(--f-display);font-weight:600;font-size:clamp(21px,3.6vw,34px);
+  line-height:1.45;margin:0 0 18px;max-width:22ch;text-wrap:balance;word-break:keep-all}
+.q-text::before{content:"「";opacity:.4}
+.q-text::after{content:"」";opacity:.4}
+.q-meta{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin:0 0 30px;line-height:1.9}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.fade{animation:fadein .3s ease both}
+.reader-act{display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  border-top:1.5px solid var(--ink);padding:16px var(--pad);margin:0 calc(var(--pad)*-1)}
+.btn{font-family:var(--f-body);font-size:14px;font-weight:500;padding:11px 20px;
+  border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;
+  transition:transform .12s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.tally{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);margin-left:auto}
+
+/* 섹션 */
+section.blk{padding:74px 0 0}
+.blk-head{display:flex;align-items:baseline;gap:14px;border-bottom:1.5px solid var(--ink);
+  padding-bottom:10px;margin-bottom:14px}
+.blk-head h2{font-family:var(--f-display);font-weight:800;font-size:22px;margin:0;letter-spacing:-.01em}
+.blk-head span{margin-left:auto;font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.08em}
+.blk-note{margin:0 0 30px;max-width:60ch;color:var(--ink-2);font-weight:300;font-size:15px}
+.blk-note b{font-weight:500;color:var(--ink)}
+
+.tip{position:fixed;z-index:50;pointer-events:none;opacity:0;transition:opacity .12s;
+  background:var(--ink);color:var(--paper);font-family:var(--f-mono);font-size:11.5px;
+  padding:6px 10px;white-space:nowrap;transform:translate(-50%,-140%)}
+.tip.on{opacity:1}
+
+/* 소멸 곡선 */
+.cols{display:flex;align-items:flex-end;gap:2px;height:230px;
+  border-bottom:1px solid var(--rule);padding-top:34px;position:relative}
+.col{flex:1 1 0;min-width:0;background:var(--bar-neutral);border-radius:4px 4px 0 0;
+  position:relative;transition:background .15s}
+.col:hover{background:var(--seal)}
+.col.peak{background:var(--seal)}
+.col .tag{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);
+  font-family:var(--f-mono);font-size:10px;color:var(--ink-2);white-space:nowrap;margin-bottom:6px}
+.col .tag.r{left:auto;right:-2px;transform:none}
+.axis{position:relative;height:16px;margin-top:7px;
+  font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.axis span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap}
+.axis span.first{transform:none}
+.axis span.last{transform:translateX(-100%)}
+details.tbl{margin-top:16px;font-family:var(--f-mono);font-size:12px}
+details.tbl summary{cursor:pointer;color:var(--muted);letter-spacing:.06em}
+details.tbl .scroll{overflow-x:auto;margin-top:10px;border:1px solid var(--rule)}
+details.tbl table{border-collapse:collapse;width:100%;min-width:380px}
+details.tbl td,details.tbl th{padding:5px 10px;border-bottom:1px solid var(--rule-2);
+  text-align:right;font-variant-numeric:tabular-nums}
+details.tbl th:first-child,details.tbl td:first-child{text-align:left}
+details.tbl th{color:var(--muted);font-weight:400;background:var(--card)}
+
+/* 가로 막대 */
+.hbars{display:flex;flex-direction:column;gap:2px}
+.hrow{display:grid;grid-template-columns:minmax(80px,110px) 1fr minmax(76px,auto);
+  gap:14px;align-items:center;padding:5px 0}
+.hrow .cat{font-size:14px;font-weight:500}
+.hrow .track{display:block;background:var(--bar-track);height:22px}
+.hrow .bar{display:block;height:100%;background:var(--seal);border-radius:0 4px 4px 0;
+  width:0;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.hrow:hover .bar{filter:brightness(1.12)}
+.hrow .val{font-family:var(--f-mono);font-size:12.5px;color:var(--ink-2);text-align:right;
+  font-variant-numeric:tabular-nums}
+@media (max-width:560px){.hrow{grid-template-columns:1fr auto;gap:4px 10px}
+  .hrow .track{grid-column:1/-1;order:3}}
+
+/* 목록 */
+.list{border-top:1px solid var(--rule)}
+.li{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.5fr) minmax(84px,auto);
+  gap:16px;padding:14px 0;border-bottom:1px solid var(--rule-2);align-items:baseline}
+.li .nm{font-family:var(--f-display);font-weight:600;font-size:17px;word-break:keep-all}
+.li .ad{font-size:13.5px;color:var(--ink-2);font-weight:300}
+.li .dt{font-family:var(--f-mono);font-size:12px;color:var(--muted);text-align:right;
+  font-variant-numeric:tabular-nums}
+.li .dt.on{color:var(--seal-ink)}
+@media (max-width:640px){.li{grid-template-columns:1fr auto;gap:2px 12px}.li .ad{grid-column:1/-1}}
+
+/* 흠 */
+.flaws{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.flaw{border:1px solid var(--rule);background:var(--card);padding:20px 18px;
+  display:flex;flex-direction:column;gap:9px}
+.flaw .h{font-family:var(--f-mono);font-size:11px;letter-spacing:.11em;color:var(--seal-ink)}
+.flaw .b{font-family:var(--f-display);font-weight:600;font-size:17px;line-height:1.5;margin:0;word-break:keep-all}
+.flaw .c{font-size:13.5px;color:var(--ink-2);font-weight:300;margin:0}
+
+.foot{margin-top:80px;border-top:1.5px solid var(--ink);padding:24px 0 60px;
+  font-family:var(--f-mono);font-size:11.5px;color:var(--muted);line-height:2}
+.foot .r{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot b{color:var(--ink-2);font-weight:400}
+.foot a{color:var(--seal-ink);text-decoration:none;border-bottom:1px solid var(--seal-soft)}
+.foot a:hover{border-bottom-color:var(--seal)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<style>
+/* 제7호 전용 */
+.q-box{padding:36px var(--pad) 32px;margin:66px 0 0}
+.q-lab{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--muted);margin:0 0 22px}
+.qa{display:grid;grid-template-columns:1fr auto;gap:16px 24px;align-items:baseline;
+  border-top:1px solid var(--rule)}
+.qa .q{font-family:var(--f-display);font-weight:600;font-size:clamp(15px,2.4vw,19px);
+  padding:13px 0;border-bottom:1px solid var(--rule-2)}
+.qa .a{font-family:var(--f-display);font-weight:800;font-size:clamp(22px,3.6vw,30px);
+  color:var(--seal-ink);padding:13px 0;border-bottom:1px solid var(--rule-2);
+  font-variant-numeric:tabular-nums;text-align:right}
+.q-say{font-size:14px;color:var(--ink-2);font-weight:300;margin:20px 0 0;max-width:58ch}
+.q-say b{font-weight:500;color:var(--ink)}
+.two{display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:8px}
+.mono-li{border-top:1px solid var(--rule);font-family:var(--f-mono);font-size:13px}
+.mono-li div{display:flex;justify-content:space-between;gap:14px;padding:8px 0;
+  border-bottom:1px solid var(--rule-2);font-variant-numeric:tabular-nums}
+.mono-li b{font-weight:400;color:var(--ink)}
+.mono-li span{color:var(--muted)}
+.hbars.wide .hrow{grid-template-columns:minmax(118px,158px) 1fr minmax(64px,auto)}
+@media (max-width:560px){.hbars.wide .hrow{grid-template-columns:1fr auto}}
+/* 한 글자 이름 */
+.glyphs{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.glyph{border:1px solid var(--rule);background:var(--card);padding:14px 0 10px;
+  width:84px;text-align:center}
+.glyph b{display:block;font-family:var(--f-display);font-weight:800;font-size:26px;line-height:1}
+.glyph span{display:block;font-family:var(--f-mono);font-size:11px;color:var(--muted);margin-top:8px}
+.glyph.on b{color:var(--seal-ink)}
+.longname{font-family:var(--f-mono);font-size:13px;background:var(--card);
+  border:1px solid var(--rule);padding:14px 16px;margin:14px 0 0;color:var(--ink-2);overflow-x:auto}
+</style>
+<div class="top">
+  <div class="wrap">
+    <span><a href="./index.html">← 세모지</a> · 제7호 열람실</span>
+    <span>원자료 <b>식품자동판매기영업</b> · LOCALDATA · 2026-09-02 내려받음</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="head">
+    <p class="eyebrow">제7호 열람실 · 전국 식품자동판매기 기록</p>
+    <h1>본사 직원 <span class="or">0명</span></h1>
+    <p class="lede">
+      자판기 한 대가 서류상 <b>하나의 영업소</b>입니다. 그래서 신고 서식은 자판기에게
+      본사 직원이 몇 명인지, 공장 생산직이 몇 명인지, 보증금과 월세가 얼마인지 묻습니다.
+      <b>122,599대가 본사 직원 0명이라고 답했습니다.</b>
+      묻는 쪽도 답하는 쪽도 그래야 한다는 걸 알고 있습니다.
+    </p>
+
+    <div class="figs">
+      <div class="fig"><span class="n">270,591</span><span class="l">등록된 자판기</span><span class="s">1980년 이후 전체 기록</span></div>
+      <div class="fig hot"><span class="n">85.6%</span><span class="l">이미 사라짐</span><span class="s">231,564대</span></div>
+      <div class="fig"><span class="n">99.7%</span><span class="l">본사 직원 0명</span><span class="s">답한 122,936대 가운데</span></div>
+      <div class="fig hot"><span class="n">393</span><span class="l">이름을 「무」라 적음</span><span class="s">없을 무(無)</span></div>
+    </div>
+  </div>
+
+  <article class="form q-box">
+    <span class="form-label">영업신고 서식</span>
+    <p class="q-lab">자판기 한 대에게 묻는 질문들.</p>
+    <div class="qa">
+      <div class="q">본사 직원은 몇 명입니까</div><div class="a">0</div>
+      <div class="q">공장 생산직 직원은 몇 명입니까</div><div class="a">0</div>
+      <div class="q">보증금은 얼마입니까</div><div class="a">0</div>
+      <div class="q">월세는 얼마입니까</div><div class="a">0</div>
+    </div>
+    <p class="q-say">각 칸에서 <b>가장 많이 적힌 답</b>입니다.
+      자판기에는 본사도 공장도 없고, 서 있는 자리에 월세를 따로 내지도 않습니다.</p>
+  </article>
+
+  <section class="blk">
+    <div class="blk-head"><h2>0이라고 답한 비율</h2><span>답을 적은 곳 기준</span></div>
+    <p class="blk-note">여덟 개 칸 전부 <b>90%가 넘게 0</b>입니다.
+      이 칸들은 원래 음식점이나 공장을 위해 만들어진 서식의 일부인데,
+      자판기도 같은 서식으로 신고합니다. 채운 곳은 전체의 15~45%뿐이고 나머지는 비워 두었습니다.</p>
+    <div class="hbars wide">
+    <div class="hrow"><span class="cat">공장사무직 직원수</span><span class="track"><span class="bar" data-w="100.00"></span></span><span class="val">99.9%</span></div>
+    <div class="hrow"><span class="cat">본사 직원수</span><span class="track"><span class="bar" data-w="99.80"></span></span><span class="val">99.7%</span></div>
+    <div class="hrow"><span class="cat">보증액</span><span class="track"><span class="bar" data-w="99.80"></span></span><span class="val">99.7%</span></div>
+    <div class="hrow"><span class="cat">월세액</span><span class="track"><span class="bar" data-w="99.80"></span></span><span class="val">99.7%</span></div>
+    <div class="hrow"><span class="cat">공장생산직 직원수</span><span class="track"><span class="bar" data-w="99.60"></span></span><span class="val">99.5%</span></div>
+    <div class="hrow"><span class="cat">공장판매직 직원수</span><span class="track"><span class="bar" data-w="99.00"></span></span><span class="val">98.9%</span></div>
+    <div class="hrow"><span class="cat">여성 종사자수</span><span class="track"><span class="bar" data-w="95.10"></span></span><span class="val">95.0%</span></div>
+    <div class="hrow"><span class="cat">남성 종사자수</span><span class="track"><span class="bar" data-w="91.99"></span></span><span class="val">91.9%</span></div>
+    </div>
+    <p class="blk-note" style="margin-top:26px">0이 아닌 답도 있습니다.
+      본사 직원을 <b>1명</b>이라 적은 곳이 315대, <b>11명</b>이라 적은 곳이 2대 있습니다.</p>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>3.3제곱미터</h2><span>시설총규모</span></div>
+    <p class="blk-note">넓이를 적는 칸은 270,591대가 모두 채웠습니다.
+      그런데 <b>262,344대(97.0%)가 0이라고 적었습니다.</b>
+      0이 아닌 답 중 가장 많은 것은 <b>3.3</b>으로, 딱 한 평입니다.
+      그다음이 1, 그다음이 2입니다. 자판기 한 대가 서 있는 자리의 넓이입니다.</p>
+    <div class="hbars wide">
+    <div class="hrow"><span class="cat">0</span><span class="track"><span class="bar" data-w="100.00"></span></span><span class="val">262,344대</span></div>
+    <div class="hrow"><span class="cat">3.3</span><span class="track"><span class="bar" data-w="1.35"></span></span><span class="val">3,542대</span></div>
+    <div class="hrow"><span class="cat">1</span><span class="track"><span class="bar" data-w="0.46"></span></span><span class="val">1,210대</span></div>
+    <div class="hrow"><span class="cat">2</span><span class="track"><span class="bar" data-w="0.14"></span></span><span class="val">366대</span></div>
+    <div class="hrow"><span class="cat">3</span><span class="track"><span class="bar" data-w="0.13"></span></span><span class="val">329대</span></div>
+    <div class="hrow"><span class="cat">6.6</span><span class="track"><span class="bar" data-w="0.09"></span></span><span class="val">237대</span></div>
+    <div class="hrow"><span class="cat">5</span><span class="track"><span class="bar" data-w="0.04"></span></span><span class="val">96대</span></div>
+    <div class="hrow"><span class="cat">1.5</span><span class="track"><span class="bar" data-w="0.03"></span></span><span class="val">85대</span></div>
+    </div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>이름 칸에 「무」</h2><span>946대</span></div>
+    <p class="blk-note">자판기에도 상호를 적어야 합니다. 200,856가지가 나왔고
+      그중 <b>177,541개는 딱 한 번만</b> 쓰였습니다.
+      가장 흔한 이름은 그냥 <b>「자동판매기」</b> 496대입니다.
+      그리고 <b>946대는 한 글자로 답했습니다.</b></p>
+    <div class="glyphs"><div class="glyph on"><b>무</b><span>393대</span></div><div class="glyph"><b>-</b><span>236대</span></div><div class="glyph"><b>.</b><span>145대</span></div><div class="glyph"><b>/</b><span>45대</span></div><div class="glyph"><b>0</b><span>29대</span></div><div class="glyph"><b>1</b><span>18대</span></div><div class="glyph"><b>*</b><span>13대</span></div></div>
+    <p class="blk-note" style="margin-top:30px">「무(無)」라고 적은 것이 393대로 가장 많습니다.
+      이름이 없다는 뜻입니다. 붙임표, 마침표, 빗금, 별표로 답한 것도 있습니다.
+      <b>이름을 붙일 수 없는 것에 이름을 붙이라고 하면 생기는 일입니다.</b></p>
+    <div class="two" style="margin-top:36px">
+      <div>
+        <p class="q-lab">가장 흔한 이름</p>
+        <div class="mono-li">
+        <div><b>자동판매기</b><span>496대</span></div>
+        <div><b>(주)휘닉스벤딩서비스</b><span>460대</span></div>
+        <div><b>무</b><span>393대</span></div>
+        <div><b>자판기</b><span>336대</span></div>
+        <div><b>(주)보광</b><span>303대</span></div>
+        <div><b>현대슈퍼</b><span>295대</span></div>
+        <div><b>오광열</b><span>251대</span></div>
+        <div><b>-</b><span>236대</span></div>
+        <div><b>김선제</b><span>209대</span></div>
+        <div><b>(주)보광훼미리마트</b><span>201대</span></div>
+        </div>
+      </div>
+      <div>
+        <p class="q-lab">같은 편의점, 다른 표기</p>
+        <div class="mono-li">
+          <div><b>「씨유」</b><span>8,620대</span></div>
+          <div><b>「CU」</b><span>3,187대</span></div>
+          <div><b>「지에스25」</b><span>3,226대</span></div>
+          <div><b>「GS25」</b><span>5,183대</span></div>
+          <div><b>「이마트24」</b><span>5,128대</span></div>
+          <div><b>「emart24」</b><span>20대</span></div>
+        </div>
+        <p class="blk-note" style="margin-top:16px">같은 브랜드를 한글로도 적고 영문으로도 적습니다.
+          기계로 세면 서로 다른 회사가 됩니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>2001년, 한 해에 38,051대</h2><span>연도별 신규 등록</span></div>
+    <p class="blk-note">2001년 한 해에 <b>38,051대</b>가 새로 등록했습니다.
+      그리고 2013년에는 <b>1,648대</b>까지 떨어졌습니다.
+      그런데 2016년부터 다시 오릅니다 — 무인카페와 커피 기계가 자판기로 신고되면서입니다.
+      <b>지금까지 등록된 270,591대 중 231,564대가 이미 사라졌습니다.</b>
+      버틴 기간의 가운뎃값은 5.31년이고, <b>18,785대는 1년을 못 넘겼습니다.</b>
+      하루 만에 사라진 것도 895대 있습니다.</p>
+    <div class="cols"><div class="col" style="height:0.9%" data-t="1980년 349대"></div><div class="col" style="height:0.5%" data-t="1981년 192대"></div><div class="col" style="height:0.2%" data-t="1982년 59대"></div><div class="col" style="height:2.1%" data-t="1983년 782대"></div><div class="col" style="height:1.8%" data-t="1984년 683대"></div><div class="col" style="height:2.8%" data-t="1985년 1,067대"></div><div class="col" style="height:1.5%" data-t="1986년 579대"></div><div class="col" style="height:1.1%" data-t="1987년 411대"></div><div class="col" style="height:1.5%" data-t="1988년 588대"></div><div class="col" style="height:7.2%" data-t="1989년 2,752대"></div><div class="col" style="height:3.7%" data-t="1990년 1,391대"></div><div class="col" style="height:30.5%" data-t="1991년 11,587대"></div><div class="col" style="height:26.6%" data-t="1992년 10,134대"></div><div class="col" style="height:15.1%" data-t="1993년 5,746대"></div><div class="col" style="height:12.0%" data-t="1994년 4,571대"></div><div class="col" style="height:13.7%" data-t="1995년 5,202대"></div><div class="col" style="height:16.3%" data-t="1996년 6,206대"></div><div class="col" style="height:20.9%" data-t="1997년 7,951대"></div><div class="col" style="height:27.7%" data-t="1998년 10,536대"></div><div class="col" style="height:63.7%" data-t="1999년 24,248대"></div><div class="col" style="height:25.9%" data-t="2000년 9,838대"></div><div class="col peak" style="height:100.0%" data-t="2001년 38,051대"></div><div class="col" style="height:46.1%" data-t="2002년 17,535대"></div><div class="col" style="height:44.9%" data-t="2003년 17,094대"></div><div class="col" style="height:33.7%" data-t="2004년 12,823대"></div><div class="col" style="height:19.2%" data-t="2005년 7,321대"></div><div class="col" style="height:12.0%" data-t="2006년 4,581대"></div><div class="col" style="height:9.0%" data-t="2007년 3,437대"></div><div class="col" style="height:7.9%" data-t="2008년 3,010대"></div><div class="col" style="height:7.6%" data-t="2009년 2,897대"></div><div class="col" style="height:6.3%" data-t="2010년 2,406대"></div><div class="col" style="height:5.1%" data-t="2011년 1,922대"></div><div class="col" style="height:5.5%" data-t="2012년 2,074대"></div><div class="col" style="height:4.3%" data-t="2013년 1,648대"></div><div class="col" style="height:4.9%" data-t="2014년 1,869대"></div><div class="col" style="height:5.1%" data-t="2015년 1,952대"></div><div class="col" style="height:12.8%" data-t="2016년 4,857대"></div><div class="col" style="height:16.3%" data-t="2017년 6,205대"></div><div class="col" style="height:13.9%" data-t="2018년 5,303대"></div><div class="col" style="height:8.6%" data-t="2019년 3,291대"></div><div class="col" style="height:9.7%" data-t="2020년 3,677대"></div><div class="col" style="height:11.2%" data-t="2021년 4,260대"></div><div class="col" style="height:11.0%" data-t="2022년 4,189대"></div><div class="col" style="height:12.4%" data-t="2023년 4,719대"></div><div class="col" style="height:11.9%" data-t="2024년 4,542대"></div><div class="col" style="height:9.8%" data-t="2025년 3,739대"></div><div class="col" style="height:6.0%" data-t="2026년 2,285대"></div></div>
+    <div class="axis"><span class="first">1980</span><span style="left:50%">2003</span><span class="last" style="left:100%">2026</span></div>
+
+    <div class="flaws" style="margin-top:48px">
+      <div class="flaw"><span class="h">상수도전용 40,443</span>
+        <p class="b">자판기에게 수돗물을 쓰는지 지하수를 쓰는지 묻는다.</p>
+        <p class="c">1,487대는 지하수를 쓴다고 답했습니다. 커피 자판기는 물을 쓰니 이상한 질문은 아닙니다.</p></div>
+      <div class="flaw"><span class="h">갑 57 · 을 51</span>
+        <p class="b">「등급구분명」 칸에 갑과 을이 있다.</p>
+        <p class="c">우수(356), 자율(4,841), 지도(1,462)도 함께 있습니다.
+          무엇을 가르는 등급이었는지는 데이터에 없습니다.</p></div>
+      <div class="flaw"><span class="h">1,386</span>
+        <p class="b">주변 환경이 「결혼예식장주변」인 자판기.</p>
+        <p class="c">고를 수 있는 답에 결혼예식장이 따로 있습니다.
+          유흥업소밀집지역은 188대입니다.</p></div>
+      <div class="flaw"><span class="h">44자</span>
+        <p class="b">가장 긴 이름은 괄호가 닫히지 않은 채 끊겨 있다.</p>
+        <p class="c">칸 길이에서 잘린 것으로 보입니다.</p></div>
+    </div>
+
+    <div class="longname">커뮤니티카페엘레나위드코즈볼(CommunityCafeElenaWithCOSBALL</div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap r">
+    <span><a href="./index.html">세모지로 돌아가기 →</a> · 제7호 열람실 · <a href="./about.html">소개</a> · <a href="./contact.html">연락처</a> · <a href="./privacy.html">개인정보처리방침</a></span>
+    <span>출처 <b>식품자동판매기영업</b> — 지방행정인허가데이터개방(LOCALDATA) · 2026-09-02 내려받은 270,591행 기준<br>영업 중인 곳의 상호는 폐업 기록과 엮지 않았습니다. 모든 수치는 scripts/analyze_vending.py 로 재현됩니다.</span>
+  </div>
+</footer>
+
+<div class="tip" id="tip"></div>
+<script>
+/* 모든 값은 원본 CSV 270,591행에서 계산했습니다. scripts/analyze_vending.py 로 재현됩니다. */
+
+const io = new IntersectionObserver(function (es) {
+  es.forEach(function (e) {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('.bar').forEach(function (b, n) {
+      setTimeout(function () { b.style.width = b.dataset.w + '%'; }, n * 45);
+    });
+    io.unobserve(e.target);
+  });
+}, { threshold: .25 });
+document.querySelectorAll('.hbars').forEach(function (el) { io.observe(el); });
+
+const tip = document.getElementById('tip');
+document.querySelectorAll('.col').forEach(function (c) {
+  c.addEventListener('mouseenter', function () {
+    tip.textContent = c.dataset.t;
+    tip.classList.add('on');
+    const r = c.getBoundingClientRect();
+    tip.style.left = (r.left + r.width / 2) + 'px';
+    tip.style.top = r.top + 'px';
+  });
+  c.addEventListener('mouseleave', function () { tip.classList.remove('on'); });
+});
+</script>

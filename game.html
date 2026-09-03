@@ -1,0 +1,505 @@
+<title>곰탱이</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="오락실 30,771곳이 「제작취급품목내용」 칸에 적은 기계 이름 13,267가지. 그중 52곳이 적은 이름이 곰탱이다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;600;800&family=IBM+Plex+Sans+KR:wght@300;400;500;600&family=Nanum+Gothic+Coding:wght@400;700&display=swap">
+<style>
+:root{
+  --paper:#EBEDE6; --card:#F5F6F1;
+  --ink:#1B1D19; --ink-2:#454A3F; --muted:#787E6F;
+  --rule:#C4C9B9; --rule-2:#DADED0; --chip:#DFE3D6;
+  --seal:#BE3B2E; --seal-ink:#BE3B2E; --seal-soft:rgba(190,59,46,.10);
+  --seal-blend:multiply;
+  --bar-neutral:#5A6052; --bar-track:#DDE1D4;
+  --f-display:'Hahmlet','Nanum Myeongjo','Apple SD Gothic Neo','Malgun Gothic',serif;
+  --f-body:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+  --f-mono:'Nanum Gothic Coding',ui-monospace,'Consolas',monospace;
+  --pad:clamp(18px,4vw,34px); --maxw:1080px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#15170F; --card:#1D2018;
+    --ink:#E8EBDE; --ink-2:#B5BBA7; --muted:#8C927E;
+    --rule:#343A28; --rule-2:#282D1E; --chip:#2A2F21;
+    --seal:#E2604F; --seal-ink:#F07C6A; --seal-soft:rgba(226,96,79,.15);
+    --seal-blend:normal;
+    --bar-neutral:#9AA189; --bar-track:#262B1D;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15170F; --card:#1D2018;
+  --ink:#E8EBDE; --ink-2:#B5BBA7; --muted:#8C927E;
+  --rule:#343A28; --rule-2:#282D1E; --chip:#2A2F21;
+  --seal:#E2604F; --seal-ink:#F07C6A; --seal-soft:rgba(226,96,79,.15);
+  --seal-blend:normal;
+  --bar-neutral:#9AA189; --bar-track:#262B1D;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{word-break:keep-all;overflow-wrap:break-word;margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);
+  font-size:16px;line-height:1.72;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+
+.top{border-bottom:1px solid var(--rule);font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.top .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:9px 0}
+.top b{color:var(--ink-2);font-weight:400}
+.top a{color:var(--seal-ink);text-decoration:none;border-bottom:1px solid var(--seal-soft)}
+.top a:hover{border-bottom-color:var(--seal)}
+
+/* 표제 */
+.head{padding:56px 0 40px}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.15em;color:var(--muted);margin:0 0 16px}
+h1{font-family:var(--f-display);font-weight:800;letter-spacing:-.025em;
+  font-size:clamp(38px,8vw,76px);line-height:1.04;margin:0 0 20px;text-wrap:balance}
+h1 .or{color:var(--muted);font-weight:400}
+h1 .off{position:relative;opacity:.42}
+h1 .off::after{content:"";position:absolute;left:-.04em;right:-.04em;top:52%;height:.05em;
+  background:currentColor;transform:scaleX(0);transform-origin:left;
+  animation:strike .7s .6s cubic-bezier(.65,0,.35,1) forwards}
+@keyframes strike{to{transform:scaleX(1)}}
+.lede{max-width:56ch;font-size:17px;font-weight:300;color:var(--ink-2);margin:0}
+.lede b{font-weight:500;color:var(--ink)}
+
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  border-block:1.5px solid var(--ink);margin-top:40px}
+.fig{padding:24px 20px 22px 0;border-right:1px solid var(--rule-2)}
+.fig:last-child{border-right:0}
+.fig .n{font-family:var(--f-display);font-weight:800;font-size:clamp(30px,5vw,42px);
+  line-height:1;font-variant-numeric:tabular-nums;display:block;letter-spacing:-.02em}
+.fig.hot .n{color:var(--seal-ink)}
+.fig .l{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;color:var(--muted);
+  display:block;margin-top:10px}
+.fig .s{font-size:12.5px;color:var(--ink-2);display:block;margin-top:4px;font-weight:300}
+
+/* 서식 박스 */
+.form{border:1.5px solid var(--ink);background:var(--card);position:relative}
+.form-label{position:absolute;top:-8px;left:16px;background:var(--card);padding:0 8px;
+  font-family:var(--f-mono);font-size:10.5px;font-weight:700;letter-spacing:.16em;color:var(--ink-2)}
+
+/* 재생기 칸 — 이 페이지의 상징 */
+.player{margin:66px 0 0;padding:36px var(--pad) 32px}
+.player-q{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--muted);margin:0 0 22px}
+.player-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule)}
+.player-cell{padding:24px 20px 22px 0;border-right:1px solid var(--rule-2)}
+.player-cell:last-child{border-right:0}
+.player-cell .box{display:inline-flex;align-items:center;gap:10px;margin-bottom:14px}
+.player-cell .tick{width:15px;height:15px;border:1.5px solid var(--ink);display:grid;place-content:center;
+  font-family:var(--f-mono);font-size:11px;line-height:1;color:var(--seal-ink)}
+.player-cell .lab{font-family:var(--f-display);font-weight:800;font-size:22px}
+.player-cell .n{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,4.6vw,38px);
+  line-height:1;display:block;font-variant-numeric:tabular-nums}
+.player-cell.on .n{color:var(--seal-ink)}
+.player-cell .s{font-size:13.5px;color:var(--ink-2);font-weight:300;display:block;margin-top:10px}
+
+/* 열람기 */
+.reader{margin:66px 0 0;padding:40px var(--pad) 0;min-height:290px}
+.seal{position:absolute;top:24px;right:22px;width:96px;height:96px;border-radius:50%;
+  border:3px solid var(--seal);display:grid;place-content:center;text-align:center;
+  color:var(--seal);mix-blend-mode:var(--seal-blend);transform:rotate(-11deg);pointer-events:none}
+.seal::after{content:"";position:absolute;inset:5px;border:1px solid var(--seal);border-radius:50%}
+.seal b{display:block;font-family:var(--f-display);font-weight:800;font-size:24px;line-height:1;letter-spacing:.05em}
+.seal i{display:block;font-style:normal;font-family:var(--f-mono);font-size:8.5px;letter-spacing:.16em;margin-top:6px}
+@keyframes stamp{0%{opacity:0;transform:rotate(-32deg) scale(2.5)}
+  62%{opacity:1;transform:rotate(-9deg) scale(.93)}100%{opacity:1;transform:rotate(-11deg) scale(1)}}
+.seal.go{animation:stamp .5s cubic-bezier(.2,.9,.3,1) both}
+@media (max-width:620px){.seal{width:70px;height:70px;top:16px;right:14px}.seal b{font-size:17px}.seal i{font-size:7px}}
+
+.q-cat{font-family:var(--f-mono);font-size:11px;font-weight:700;letter-spacing:.13em;
+  color:var(--seal-ink);margin:0 0 16px}
+.q-text{font-family:var(--f-display);font-weight:600;font-size:clamp(21px,3.6vw,34px);
+  line-height:1.45;margin:0 0 18px;max-width:22ch;text-wrap:balance;word-break:keep-all}
+.q-text::before{content:"「";opacity:.4}
+.q-text::after{content:"」";opacity:.4}
+.q-meta{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin:0 0 30px;line-height:1.9}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.fade{animation:fadein .3s ease both}
+.reader-act{display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  border-top:1.5px solid var(--ink);padding:16px var(--pad);margin:0 calc(var(--pad)*-1)}
+.btn{font-family:var(--f-body);font-size:14px;font-weight:500;padding:11px 20px;
+  border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;
+  transition:transform .12s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.tally{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);margin-left:auto}
+
+/* 섹션 */
+section.blk{padding:74px 0 0}
+.blk-head{display:flex;align-items:baseline;gap:14px;border-bottom:1.5px solid var(--ink);
+  padding-bottom:10px;margin-bottom:14px}
+.blk-head h2{font-family:var(--f-display);font-weight:800;font-size:22px;margin:0;letter-spacing:-.01em}
+.blk-head span{margin-left:auto;font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.08em}
+.blk-note{margin:0 0 30px;max-width:60ch;color:var(--ink-2);font-weight:300;font-size:15px}
+.blk-note b{font-weight:500;color:var(--ink)}
+
+.tip{position:fixed;z-index:50;pointer-events:none;opacity:0;transition:opacity .12s;
+  background:var(--ink);color:var(--paper);font-family:var(--f-mono);font-size:11.5px;
+  padding:6px 10px;white-space:nowrap;transform:translate(-50%,-140%)}
+.tip.on{opacity:1}
+
+/* 소멸 곡선 */
+.cols{display:flex;align-items:flex-end;gap:2px;height:230px;
+  border-bottom:1px solid var(--rule);padding-top:34px;position:relative}
+.col{flex:1 1 0;min-width:0;background:var(--bar-neutral);border-radius:4px 4px 0 0;
+  position:relative;transition:background .15s}
+.col:hover{background:var(--seal)}
+.col.peak{background:var(--seal)}
+.col .tag{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);
+  font-family:var(--f-mono);font-size:10px;color:var(--ink-2);white-space:nowrap;margin-bottom:6px}
+.col .tag.r{left:auto;right:-2px;transform:none}
+.axis{position:relative;height:16px;margin-top:7px;
+  font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.axis span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap}
+.axis span.first{transform:none}
+.axis span.last{transform:translateX(-100%)}
+details.tbl{margin-top:16px;font-family:var(--f-mono);font-size:12px}
+details.tbl summary{cursor:pointer;color:var(--muted);letter-spacing:.06em}
+details.tbl .scroll{overflow-x:auto;margin-top:10px;border:1px solid var(--rule)}
+details.tbl table{border-collapse:collapse;width:100%;min-width:380px}
+details.tbl td,details.tbl th{padding:5px 10px;border-bottom:1px solid var(--rule-2);
+  text-align:right;font-variant-numeric:tabular-nums}
+details.tbl th:first-child,details.tbl td:first-child{text-align:left}
+details.tbl th{color:var(--muted);font-weight:400;background:var(--card)}
+
+/* 가로 막대 */
+.hbars{display:flex;flex-direction:column;gap:2px}
+.hrow{display:grid;grid-template-columns:minmax(80px,110px) 1fr minmax(76px,auto);
+  gap:14px;align-items:center;padding:5px 0}
+.hrow .cat{font-size:14px;font-weight:500}
+.hrow .track{display:block;background:var(--bar-track);height:22px}
+.hrow .bar{display:block;height:100%;background:var(--seal);border-radius:0 4px 4px 0;
+  width:0;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.hrow:hover .bar{filter:brightness(1.12)}
+.hrow .val{font-family:var(--f-mono);font-size:12.5px;color:var(--ink-2);text-align:right;
+  font-variant-numeric:tabular-nums}
+@media (max-width:560px){.hrow{grid-template-columns:1fr auto;gap:4px 10px}
+  .hrow .track{grid-column:1/-1;order:3}}
+
+/* 목록 */
+.list{border-top:1px solid var(--rule)}
+.li{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.5fr) minmax(84px,auto);
+  gap:16px;padding:14px 0;border-bottom:1px solid var(--rule-2);align-items:baseline}
+.li .nm{font-family:var(--f-display);font-weight:600;font-size:17px;word-break:keep-all}
+.li .ad{font-size:13.5px;color:var(--ink-2);font-weight:300}
+.li .dt{font-family:var(--f-mono);font-size:12px;color:var(--muted);text-align:right;
+  font-variant-numeric:tabular-nums}
+.li .dt.on{color:var(--seal-ink)}
+@media (max-width:640px){.li{grid-template-columns:1fr auto;gap:2px 12px}.li .ad{grid-column:1/-1}}
+
+/* 흠 */
+.flaws{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.flaw{border:1px solid var(--rule);background:var(--card);padding:20px 18px;
+  display:flex;flex-direction:column;gap:9px}
+.flaw .h{font-family:var(--f-mono);font-size:11px;letter-spacing:.11em;color:var(--seal-ink)}
+.flaw .b{font-family:var(--f-display);font-weight:600;font-size:17px;line-height:1.5;margin:0;word-break:keep-all}
+.flaw .c{font-size:13.5px;color:var(--ink-2);font-weight:300;margin:0}
+
+.foot{margin-top:80px;border-top:1.5px solid var(--ink);padding:24px 0 60px;
+  font-family:var(--f-mono);font-size:11.5px;color:var(--muted);line-height:2}
+.foot .r{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot b{color:var(--ink-2);font-weight:400}
+.foot a{color:var(--seal-ink);text-decoration:none;border-bottom:1px solid var(--seal-soft)}
+.foot a:hover{border-bottom-color:var(--seal)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<style>
+/* 제10호 전용 */
+.two{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  border-top:1px solid var(--rule);margin-top:6px}
+.two > div{padding:24px 20px 22px 0;border-right:1px solid var(--rule-2)}
+.two > div:last-child{border-right:0}
+.two .n{display:block;font-family:var(--f-display);font-weight:800;
+  font-size:clamp(30px,5vw,44px);line-height:1;font-variant-numeric:tabular-nums}
+.two .n.hot{color:var(--seal-ink)}
+.two .s{display:block;font-size:14px;color:var(--ink-2);font-weight:300;margin-top:12px}
+.mono-li{border-top:1px solid var(--rule);font-family:var(--f-mono);font-size:13px;margin-top:6px}
+.mono-li div{display:flex;justify-content:space-between;gap:14px;padding:9px 0;
+  border-bottom:1px solid var(--rule-2);font-variant-numeric:tabular-nums;align-items:baseline}
+.mono-li b{font-weight:400;color:var(--ink);word-break:keep-all}
+.mono-li span{color:var(--muted);white-space:nowrap}
+.slip{font-family:var(--f-mono);font-size:12.5px;background:var(--card);
+  border:1px solid var(--rule);border-left:3px solid var(--seal);
+  padding:15px 17px;margin:16px 0 0;color:var(--ink-2);line-height:1.9;
+  overflow-x:auto;white-space:pre-wrap;word-break:break-all}
+.say{font-size:14.5px;color:var(--ink-2);font-weight:300;margin:22px 0 0;max-width:58ch}
+.say b{font-weight:500;color:var(--ink)}
+</style>
+
+<div class="top">
+  <div class="wrap">
+    <span><a href="./index.html">← 세모지</a> · 제10호 열람실</span>
+    <span>원자료 <b>청소년게임제공업</b> · LOCALDATA · 2026-09-03 내려받음</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="head">
+    <p class="eyebrow">제10호 열람실 · 청소년게임제공업 등록 기록</p>
+    <h1>곰탱이</h1>
+    <p class="lede">
+      오락실을 등록할 때는 「제작취급품목내용」 칸에 무슨 기계를 갖다 놓았는지 적습니다.
+      19,445곳이 이 칸을 채웠고, 적힌 표현이 <b>13,267가지</b>입니다.
+      그중 52곳이 적은 이름이 <b>곰탱이</b>입니다.
+    </p>
+
+    <div class="figs">
+      <div class="fig"><span class="n">30,771</span><span class="l">누적 등록</span><span class="s">2005년 이후 기록</span></div>
+      <div class="fig hot"><span class="n">23,954</span><span class="l">사라짐</span><span class="s">전체의 77.8%</span></div>
+      <div class="fig"><span class="n">6,817</span><span class="l">영업 중</span><span class="s">전체의 22.2%</span></div>
+      <div class="fig"><span class="n">13,267</span><span class="l">취급품목 표현</span><span class="s">11,596가지는 단 한 번</span></div>
+    </div>
+  </div>
+
+  <article class="form reader">
+    <span class="form-label">제작취급품목 열람</span>
+    <div class="seal" id="seal" aria-hidden="true"><b>取扱</b><i>제작취급품목</i></div>
+    <p class="q-cat" id="q-cat">&mdash;</p>
+    <p class="q-text" id="q-text">불러오는 중</p>
+    <p class="q-meta" id="q-meta">&nbsp;</p>
+    <div class="reader-act">
+      <button class="btn" id="draw" type="button">다음 품목</button>
+      <button class="btn ghost" id="copy" type="button">복사</button>
+      <span class="tally" id="tally"></span>
+    </div>
+  </article>
+
+  <section class="blk">
+    <div class="blk-head"><h2>오락실이 아니라 인형뽑기방</h2><span>취급품목 낱말 빈도</span></div>
+    <p class="blk-note">
+      취급품목 칸에 가장 많이 나오는 낱말은 <b>‘토이’로 2,687곳</b>입니다.
+      크레인·뽑기·인형까지 더하면 옛날 오락실의 낱말인 아케이드·펀치·농구를 크게 웃돕니다.
+      법은 이 업종을 ‘청소년게임제공업’이라 부르지만, 기계 이름이 말하는 실체는 인형뽑기방입니다.
+    </p>
+    <div class="hbars" id="words"></div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>1년을 못 넘긴다</h2><span>폐업 18,970곳</span></div>
+    <p class="blk-note">
+      등록일과 폐업일이 모두 남은 18,970곳의 영업 기간입니다.
+      <b>중앙값이 1.3년</b>입니다. 제2호에서 본 PC방의 3.1년에 견주면 절반도 안 됩니다.
+    </p>
+    <div class="two">
+      <div>
+        <span class="n hot">44.1%</span>
+        <span class="s">문을 연 지 <b>1년을 못 넘기고</b> 닫은 비율입니다.
+          8,371곳이 여기 해당합니다.</span>
+      </div>
+      <div>
+        <span class="n">1.3년</span>
+        <span class="s">버틴 기간의 중앙값. 평균은 2.3년입니다.
+          기계는 빌려 놓고 자리만 얻으면 열 수 있는 업종의 속도입니다.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>두 번의 봉우리</h2><span>연도별 신규 등록</span></div>
+    <p class="blk-note">
+      2009년 3,395곳으로 한 번 솟고, 잦아들었다가 <b>2017년 3,851곳</b>으로 다시 솟습니다.
+      그리고 2020년 860곳, 2023년 369곳까지 주저앉았다가 2025년 1,823곳으로 되돌아옵니다.
+      데이터는 언제 몇 곳이 등록했는지만 알려줍니다.
+    </p>
+    <div class="cols" id="years"></div>
+    <div class="axis" id="yaxis"></div>
+    <details class="tbl">
+      <summary>표로 보기</summary>
+      <div class="scroll"><table id="ytbl"><thead><tr><th>연도</th><th>신규 등록</th></tr></thead><tbody></tbody></table></div>
+    </details>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>넷에 하나는 정확히 마흔 대</h2><span>총게임기수</span></div>
+    <p class="blk-note">
+      게임기가 몇 대인지 적는 칸입니다. 20,318곳이 답했는데
+      <b>5,097곳이 정확히 40이라고 적었습니다.</b> 기재한 곳의 25.1%입니다.
+      41대 이상은 3,236곳이고 가장 많은 곳은 470대입니다. 중앙값은 27대입니다.
+    </p>
+    <div class="two">
+      <div>
+        <span class="n hot">5,097</span>
+        <span class="s">‘40’이라고 적은 곳. 그다음으로 많은 숫자는 50으로 1,310곳입니다.</span>
+      </div>
+      <div>
+        <span class="n">27대</span>
+        <span class="s">기재한 20,318곳의 중앙값.
+          <b>왜 40에 몰렸는지는 데이터에 적혀 있지 않습니다.</b></span>
+      </div>
+    </div>
+    <div class="mono-li" id="counts"></div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>기계 목록을 통째로 적은 칸</h2><span>가장 긴 기재 167자</span></div>
+    <p class="blk-note">
+      칸이 작지 않았던 모양입니다. 어떤 곳은 가진 기계를 심의번호까지 붙여 전부 적었습니다.
+      아래는 원본에 실제로 들어 있는 한 칸의 내용입니다.
+    </p>
+    <div class="slip">밀땅(CC-NA-170726-003)2대, 뉴미니미니(CC-NA-230824-003)4대, 럭키7((CC-NA-241017-005)1대, CACTI GOTCHA(CC-NA-241212-005)8대, 토이즈팝미니(CC-NA-231005-003)8대, 드래곤펀치2(CC-NA-140226-001)1대,</div>
+    <p class="say">
+      괄호가 하나 더 열린 채 닫히지 않은 곳(<b>럭키7((</b>)과, 마지막이 쉼표로 끝난 것까지
+      그대로 남아 있습니다. 이 칸을 채운 사람은 목록을 옮겨 적다가 멈췄습니다.
+    </p>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>데이터에 남은 흠</h2><span>공식 자료입니다</span></div>
+    <p class="blk-note">원본 파일에 실제로 들어 있는 값입니다.</p>
+    <div class="flaws">
+      <div class="flaw">
+        <span class="h">빈칸 11,326</span>
+        <p class="b">무슨 기계를 두었는지 적지 않은 곳이 36.8%입니다.</p>
+        <p class="c">셋 중 하나 이상이 이 칸을 비웠습니다.</p>
+      </div>
+      <div class="flaw">
+        <span class="h">취급품목 · 청소년게임제공업</span>
+        <p class="b">취급품목 칸에 업종 이름을 그대로 옮겨 적은 곳이 23곳 있습니다.</p>
+        <p class="c">무엇을 취급하느냐는 물음에 ‘청소년게임제공업’이라고 답한 셈입니다.</p>
+      </div>
+      <div class="flaw">
+        <span class="h">취급품목 · 전체이용가</span>
+        <p class="b">40곳은 취급품목 칸에 등급을 적었습니다.</p>
+        <p class="c">‘전체이용가’는 바로 옆 「제공게임물명」 칸의 답입니다.</p>
+      </div>
+      <div class="flaw">
+        <span class="h">사업장명 49자</span>
+        <p class="b">가장 긴 상호명은 담당자의 업무 메모였습니다.</p>
+        <p class="c">「오성게임랜드 (유선통보 2009.03.13. 21:00, 2009.07.07 17:40)」.
+           제2호 PC방에서 본 것과 같은 일이 여기서도 일어났습니다.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="tip" id="tip"></div>
+
+<footer class="foot">
+  <div class="wrap r">
+    <span><a href="./index.html">세모지로 돌아가기 &rarr;</a> · 제10호 열람실 · <a href="./about.html">소개</a> · <a href="./contact.html">연락처</a> · <a href="./privacy.html">개인정보처리방침</a></span>
+    <span>출처 <b>청소년게임제공업</b> — 지방행정인허가데이터개방(LOCALDATA) · 2026-09-03 내려받은 30,771행 기준<br>취급품목은 기계 이름이므로 그대로 실었고, 상호는 폐업·행정 기록과 엮지 않았습니다.</span>
+  </div>
+</footer>
+
+<script>
+/* 모든 값은 원본 CSV 30,771행에서 계산했습니다. scripts/analyze_game.py 로 재현됩니다. */
+
+const WORDS = [
+ ["토이", 2687], ["크레인", 1261], ["아케이드", 950], ["곰", 522],
+ ["뽑기", 363], ["인형", 334], ["펀치", 265], ["농구", 42]
+];
+
+const COUNTS = [
+ ["40대", 5097], ["50대", 1310], ["10대", 1117], ["8대", 793],
+ ["12대", 742], ["9대", 642], ["11대", 622], ["15대", 567]
+];
+
+const ITEMS = [
+ ["곰탱이", 52, "52곳이 이 이름을 적었습니다. 이 페이지의 제목이 된 기계입니다."],
+ ["용팔아", 23, "23곳. 무엇을 뽑는 기계인지는 이름만으로 알기 어렵습니다."],
+ ["코코짱", 32, "32곳. ‘짱’으로 끝나는 이름이 여럿 있습니다."],
+ ["뽀끼뽀끼2", 22, "2편입니다. 1편도 데이터 어딘가에 있습니다."],
+ ["씨로켓", 27, "27곳. 바다와 로켓이 붙었습니다."],
+ ["손오공연대기", 26, "26곳. 서유기가 인형뽑기 기계가 되었습니다."],
+ ["신 사대천왕", 24, "24곳. ‘신(新)’이 붙었다는 건 앞 세대가 있었다는 뜻입니다."],
+ ["씨앤드래곤3알파", 23, "23곳. 3편의 알파 버전입니다."],
+ ["마켓크레프트3", 22, "22곳. 이것도 3편입니다."],
+ ["오바센스", 21, "21곳. 소리 내어 읽으면 뜻이 짐작됩니다."],
+ ["놀러와", 21, "21곳. 기계 이름이 권유형입니다."],
+ ["민속윷놀이", 21, "21곳. 오락실 기계 목록에 민속놀이가 있습니다."],
+ ["레전드 오브 히어로", 21, "21곳. 영어를 한글로 옮겨 적었습니다."],
+ ["골든오션플러스", 21, "21곳. ‘플러스’가 붙은 판본입니다."],
+ ["토이즈팝", 189, "가장 흔한 기계 이름. 189곳이 적었습니다."],
+ ["스마일토이", 34, "34곳. 띄어 쓴 ‘스마일 토이’도 31곳 따로 있습니다."],
+ ["우미", 34, "34곳. 두 글자짜리 이름입니다."],
+ ["청소년게임제공업", 23, "취급품목 칸에 업종 이름을 그대로 옮겨 적은 경우입니다."],
+ ["전체이용가", 40, "취급품목 칸에 등급을 적었습니다. 옆 칸의 답입니다."]
+];
+
+const YEARS = [
+ [2005,9],[2006,5],[2007,830],[2008,2932],[2009,3395],[2010,1762],[2011,1754],
+ [2012,1394],[2013,1055],[2014,798],[2015,948],[2016,2484],[2017,3851],[2018,1870],
+ [2019,1662],[2020,860],[2021,499],[2022,381],[2023,369],[2024,885],[2025,1823],[2026,1114]
+];
+
+const $ = s => document.querySelector(s);
+const nf = n => n.toLocaleString("ko-KR");
+
+/* 열람기 */
+const seal = $("#seal");
+let seen = new Set(), cur = 0;
+function pick(){
+  if (seen.size >= ITEMS.length) seen.clear();
+  let i; do { i = Math.floor(Math.random()*ITEMS.length); } while (seen.has(i));
+  seen.add(i); cur = i;
+  const [name, cnt, note] = ITEMS[i];
+  $("#q-cat").textContent = "전국 " + nf(cnt) + "곳이 적음";
+  $("#q-text").textContent = name;
+  $("#q-meta").textContent = note;
+  ["#q-cat","#q-text","#q-meta"].forEach(s => {
+    const n = $(s); n.classList.remove("fade"); void n.offsetWidth; n.classList.add("fade");
+  });
+  seal.classList.remove("go"); void seal.offsetWidth; seal.classList.add("go");
+  $("#tally").textContent = "열람 " + seen.size + " / " + ITEMS.length;
+}
+$("#draw").addEventListener("click", pick);
+$("#copy").addEventListener("click", async e => {
+  const [name, , note] = ITEMS[cur], b = e.currentTarget;
+  try {
+    await navigator.clipboard.writeText(
+      "「" + name + "」\n\n" + note + "\n출처: 청소년게임제공업 · LOCALDATA\n— 세모지");
+    b.textContent = "복사됨";
+  } catch { b.textContent = "복사 실패"; }
+  setTimeout(() => { b.textContent = "복사"; }, 1500);
+});
+
+/* 툴팁 */
+const tip = $("#tip");
+function bindTips(){
+  document.querySelectorAll("[data-t]").forEach(el => {
+    el.addEventListener("mousemove", e => {
+      tip.textContent = el.dataset.t; tip.classList.add("on");
+      tip.style.left = e.clientX + "px"; tip.style.top = e.clientY + "px";
+    });
+    el.addEventListener("mouseleave", () => tip.classList.remove("on"));
+  });
+}
+
+/* 낱말 막대 */
+const maxW = Math.max(...WORDS.map(r => r[1]));
+$("#words").innerHTML = WORDS.map(([w, n]) =>
+  '<div class="hrow" data-t="‘' + w + '’ — ' + nf(n) + '곳">' +
+  '<span class="cat">' + w + '</span>' +
+  '<span class="track"><span class="bar" data-w="' + (n / maxW * 100).toFixed(1) + '"></span></span>' +
+  '<span class="val">' + nf(n) + '곳</span></div>').join("");
+
+$("#counts").innerHTML = COUNTS.map(([t, n]) =>
+  '<div><b>' + t + '</b><span>' + nf(n) + '곳</span></div>').join("");
+
+/* 연도 막대 */
+const maxY = Math.max(...YEARS.map(r => r[1]));
+$("#years").innerHTML = YEARS.map(([y, n]) => {
+  const peak = y === 2017;
+  const tag = peak ? '<span class="tag">2017년 ' + nf(n) + '곳</span>' : "";
+  return '<span class="col' + (peak ? " peak" : "") + '" data-t="' + y + '년 — 신규 ' + nf(n) + '곳"' +
+    ' style="height:' + Math.max(n / maxY * 100, 1.2) + '%">' + tag + '</span>';
+}).join("");
+const AXIS = [2005, 2009, 2013, 2017, 2021, 2026];
+$("#yaxis").innerHTML = AXIS.map((y, k) => {
+  const i = YEARS.findIndex(r => r[0] === y);
+  const pct = (i + 0.5) / YEARS.length * 100;
+  const cls = k === 0 ? ' class="first"' : k === AXIS.length - 1 ? ' class="last"' : "";
+  return '<span' + cls + ' style="left:' + pct.toFixed(2) + '%">' + y + '</span>';
+}).join("");
+$("#ytbl").querySelector("tbody").innerHTML =
+  YEARS.map(([y, n]) => '<tr><td>' + y + '</td><td>' + nf(n) + '</td></tr>').join("");
+
+bindTips();
+requestAnimationFrame(() => {
+  document.querySelectorAll(".bar").forEach(b => b.style.width = b.dataset.w + "%");
+});
+pick();
+</script>

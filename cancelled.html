@@ -1,0 +1,516 @@
+<title>모범이었던 것들</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;600;800&family=IBM+Plex+Sans+KR:wght@300;400;500;600&family=Nanum+Gothic+Coding:wght@400;700&display=swap">
+
+<style>
+:root{
+  --paper:#EBEDE6; --card:#F5F6F1;
+  --ink:#1B1D19; --ink-2:#454A3F; --muted:#787E6F;
+  --rule:#C4C9B9; --rule-2:#DADED0; --chip:#DFE3D6;
+  --seal:#BE3B2E; --seal-ink:#BE3B2E; --seal-soft:rgba(190,59,46,.10);
+  --seal-blend:multiply;
+  --bar-neutral:#5A6052; --bar-track:#DDE1D4;
+  --f-display:'Hahmlet','Nanum Myeongjo','Apple SD Gothic Neo','Malgun Gothic',serif;
+  --f-body:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+  --f-mono:'Nanum Gothic Coding',ui-monospace,'Consolas',monospace;
+  --pad:clamp(18px,4vw,34px); --maxw:1080px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#15170F; --card:#1D2018;
+    --ink:#E8EBDE; --ink-2:#B5BBA7; --muted:#8C927E;
+    --rule:#343A28; --rule-2:#282D1E; --chip:#2A2F21;
+    --seal:#E2604F; --seal-ink:#F07C6A; --seal-soft:rgba(226,96,79,.15);
+    --seal-blend:normal;
+    --bar-neutral:#9AA189; --bar-track:#262B1D;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15170F; --card:#1D2018;
+  --ink:#E8EBDE; --ink-2:#B5BBA7; --muted:#8C927E;
+  --rule:#343A28; --rule-2:#282D1E; --chip:#2A2F21;
+  --seal:#E2604F; --seal-ink:#F07C6A; --seal-soft:rgba(226,96,79,.15);
+  --seal-blend:normal;
+  --bar-neutral:#9AA189; --bar-track:#262B1D;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{word-break:keep-all;overflow-wrap:break-word;margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--f-body);font-size:16px;line-height:1.72;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+
+/* 상단 바 */
+.top{border-bottom:1px solid var(--rule);font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.top .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:9px 0}
+.top a{color:var(--seal-ink);text-decoration:none;border-bottom:1px solid var(--seal-soft)}
+.top a:hover{border-bottom-color:var(--seal)}
+
+/* 표제 */
+.head{padding:56px 0 40px}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.15em;color:var(--muted);margin:0 0 16px}
+h1{font-family:var(--f-display);font-weight:800;letter-spacing:-.025em;
+  font-size:clamp(38px,8vw,76px);line-height:1.04;margin:0 0 20px;text-wrap:balance}
+h1 .struck{position:relative;white-space:nowrap}
+h1 .struck::after{content:"";position:absolute;left:-.04em;right:-.04em;top:52%;
+  height:.055em;background:var(--seal);transform:scaleX(0);transform-origin:left;
+  animation:strike .7s .5s cubic-bezier(.65,0,.35,1) forwards}
+@keyframes strike{to{transform:scaleX(1)}}
+.lede{max-width:56ch;font-size:17px;font-weight:300;color:var(--ink-2);margin:0}
+.lede b{font-weight:500;color:var(--ink)}
+
+/* 지표 */
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  border-block:1.5px solid var(--ink);margin-top:40px}
+.fig{padding:24px 20px 22px 0;border-right:1px solid var(--rule-2)}
+.fig:last-child{border-right:0}
+.fig .n{font-family:var(--f-display);font-weight:800;font-size:clamp(30px,5vw,42px);
+  line-height:1;font-variant-numeric:tabular-nums;display:block;letter-spacing:-.02em}
+.fig.hot .n{color:var(--seal-ink)}
+.fig .l{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;color:var(--muted);
+  display:block;margin-top:10px}
+.fig .s{font-size:12.5px;color:var(--ink-2);display:block;margin-top:4px;font-weight:300}
+
+/* 서식 박스 */
+.form{border:1.5px solid var(--ink);background:var(--card);position:relative}
+.form-label{position:absolute;top:-8px;left:16px;background:var(--card);padding:0 8px;
+  font-family:var(--f-mono);font-size:10.5px;font-weight:700;letter-spacing:.16em;color:var(--ink-2)}
+
+/* 열람기 */
+.reader{margin:70px 0 0;padding:40px var(--pad) 0;min-height:300px}
+.seal{position:absolute;top:24px;right:22px;width:96px;height:96px;border-radius:50%;
+  border:3px solid var(--seal);display:grid;place-content:center;text-align:center;
+  color:var(--seal);mix-blend-mode:var(--seal-blend);transform:rotate(-11deg);pointer-events:none}
+.seal::after{content:"";position:absolute;inset:5px;border:1px solid var(--seal);border-radius:50%}
+.seal b{display:block;font-family:var(--f-display);font-weight:800;font-size:26px;line-height:1;letter-spacing:.06em}
+.seal i{display:block;font-style:normal;font-family:var(--f-mono);font-size:8.5px;letter-spacing:.18em;margin-top:6px}
+@keyframes stamp{0%{opacity:0;transform:rotate(-32deg) scale(2.5)}
+  62%{opacity:1;transform:rotate(-9deg) scale(.93)}100%{opacity:1;transform:rotate(-11deg) scale(1)}}
+.seal.go{animation:stamp .5s cubic-bezier(.2,.9,.3,1) both}
+@media (max-width:620px){.seal{width:70px;height:70px;top:16px;right:14px}.seal b{font-size:19px}.seal i{font-size:7px}}
+
+.q-cat{font-family:var(--f-mono);font-size:11px;font-weight:700;letter-spacing:.13em;
+  color:var(--seal-ink);margin:0 0 16px}
+.q-text{font-family:var(--f-display);font-weight:600;font-size:clamp(21px,4vw,36px);
+  line-height:1.5;margin:0 0 20px;max-width:22ch;text-wrap:balance}
+.q-text::before{content:"「";opacity:.4}
+.q-text::after{content:"」";opacity:.4}
+.q-meta{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin:0 0 30px}
+.q-meta em{font-style:normal;color:var(--ink-2)}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.fade{animation:fadein .3s ease both}
+.reader-act{display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  border-top:1.5px solid var(--ink);padding:16px var(--pad);margin:0 calc(var(--pad)*-1)}
+.btn{font-family:var(--f-body);font-size:14px;font-weight:500;padding:11px 20px;
+  border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;
+  transition:transform .12s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.tally{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);margin-left:auto}
+
+/* 섹션 */
+section.blk{padding:74px 0 0}
+.blk-head{display:flex;align-items:baseline;gap:14px;border-bottom:1.5px solid var(--ink);
+  padding-bottom:10px;margin-bottom:14px}
+.blk-head h2{font-family:var(--f-display);font-weight:800;font-size:22px;margin:0;letter-spacing:-.01em}
+.blk-head span{margin-left:auto;font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.08em}
+.blk-note{margin:0 0 30px;max-width:60ch;color:var(--ink-2);font-weight:300;font-size:15px}
+
+/* 차트 공통 */
+.chart{position:relative}
+.tip{position:fixed;z-index:50;pointer-events:none;opacity:0;transition:opacity .12s;
+  background:var(--ink);color:var(--paper);font-family:var(--f-mono);font-size:11.5px;
+  padding:6px 10px;white-space:nowrap;transform:translate(-50%,-140%)}
+.tip.on{opacity:1}
+
+/* 가로 막대 */
+.hbars{display:flex;flex-direction:column;gap:2px}
+.hrow{display:grid;grid-template-columns:minmax(96px,132px) 1fr minmax(84px,auto);
+  gap:14px;align-items:center;padding:5px 0;cursor:default}
+.hrow .cat{font-size:14px;font-weight:500}
+.hrow .track{display:block;background:var(--bar-track);height:22px;position:relative}
+.hrow .bar{display:block;height:100%;background:var(--seal);border-radius:0 4px 4px 0;
+  width:0;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.hrow:hover .bar{filter:brightness(1.12)}
+.hrow .val{font-family:var(--f-mono);font-size:12.5px;color:var(--ink-2);
+  text-align:right;font-variant-numeric:tabular-nums}
+.hrow.mute .bar{background:var(--bar-neutral)}
+@media (max-width:560px){
+  .hrow{grid-template-columns:1fr auto;gap:4px 10px}
+  .hrow .track{grid-column:1/-1;order:3}
+}
+
+/* 세로 막대 */
+.cols{display:flex;align-items:flex-end;gap:2px;height:210px;
+  border-bottom:1px solid var(--rule);padding-top:26px;position:relative}
+.col{flex:1 1 0;min-width:0;background:var(--bar-neutral);border-radius:4px 4px 0 0;
+  position:relative;cursor:default;transition:background .15s}
+.col:hover{background:var(--seal)}
+.col.peak{background:var(--seal)}
+.col .tag{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);
+  font-family:var(--f-mono);font-size:10px;color:var(--ink-2);white-space:nowrap;margin-bottom:5px}
+.colaxis{position:relative;height:16px;margin-top:7px;
+  font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.colaxis span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap}
+.colaxis span.first{transform:none}
+.colaxis span.last{transform:translateX(-100%)}
+details.tbl{margin-top:16px;font-family:var(--f-mono);font-size:12px}
+details.tbl summary{cursor:pointer;color:var(--muted);letter-spacing:.06em}
+details.tbl .scroll{overflow-x:auto;margin-top:10px;border:1px solid var(--rule)}
+details.tbl table{border-collapse:collapse;width:100%;min-width:480px}
+details.tbl td,details.tbl th{padding:5px 10px;border-bottom:1px solid var(--rule-2);text-align:right;
+  font-variant-numeric:tabular-nums}
+details.tbl th:first-child,details.tbl td:first-child{text-align:left}
+details.tbl th{color:var(--muted);font-weight:400;background:var(--card)}
+
+/* 점수 벽 */
+.wallgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;
+  border-top:1px solid var(--rule)}
+.wallcell{padding:22px 20px 22px 0;border-right:1px solid var(--rule-2)}
+.wallcell:last-child{border-right:0}
+.wallcell .sc{font-family:var(--f-display);font-weight:800;font-size:40px;line-height:1;
+  color:var(--seal-ink);font-variant-numeric:tabular-nums}
+.wallcell p{margin:10px 0 0;font-size:14px;color:var(--ink-2);font-weight:300}
+
+/* 목록 */
+.list{border-top:1px solid var(--rule)}
+.li{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) minmax(84px,auto);
+  gap:16px;padding:14px 0;border-bottom:1px solid var(--rule-2);align-items:baseline}
+.li .nm{font-family:var(--f-display);font-weight:600;font-size:17px}
+.li .ad{font-size:13.5px;color:var(--ink-2);font-weight:300}
+.li .dt{font-family:var(--f-mono);font-size:12px;color:var(--muted);text-align:right;
+  font-variant-numeric:tabular-nums}
+@media (max-width:640px){.li{grid-template-columns:1fr auto;gap:2px 12px}.li .ad{grid-column:1/-1}}
+
+/* 흠 */
+.flaws{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.flaw{border:1px solid var(--rule);background:var(--card);padding:20px 18px;
+  display:flex;flex-direction:column;gap:9px}
+.flaw .h{font-family:var(--f-mono);font-size:11px;letter-spacing:.11em;color:var(--seal-ink)}
+.flaw .b{font-family:var(--f-display);font-weight:600;font-size:17px;line-height:1.5;margin:0}
+.flaw .c{font-size:13.5px;color:var(--ink-2);font-weight:300;margin:0}
+
+/* 각주 */
+.foot{margin-top:80px;border-top:1.5px solid var(--ink);padding:24px 0 60px;
+  font-family:var(--f-mono);font-size:11.5px;color:var(--muted);line-height:2}
+.foot .r{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot b{color:var(--ink-2);font-weight:400}
+.foot a{color:var(--seal-ink);text-decoration:none;border-bottom:1px solid var(--seal-soft)}
+.foot a:hover{border-bottom-color:var(--seal)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="top">
+  <div class="wrap">
+    <span><a href="./index.html">← 세모지</a> · 세상에 모든 쓸데없는 지식</span>
+    <span>원자료 <b>모범음식점정보</b> · 지방행정인허가데이터개방(LOCALDATA) · 2026-09-02 내려받음</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="head">
+    <p class="eyebrow">제1호 열람실 · 지정취소 사유록</p>
+    <h1>모범이었던<br><span class="struck">것들</span></h1>
+    <p class="lede">
+      1987년부터 지금까지 정부가 ‘모범음식점’이라고 도장을 찍어준 가게는 <b>65,426곳</b>입니다.
+      그중 오늘까지 그 자격을 지키고 있는 곳은 <b>11,419곳</b>뿐입니다.
+      나머지가 왜 모범이 아니게 되었는지는, 담당 공무원이 손으로 적어놓은 문장으로 데이터에 남아 있습니다.
+    </p>
+
+    <div class="figs">
+      <div class="fig"><span class="n">65,426</span><span class="l">누적 지정</span><span class="s">1987년 이후 전체 기록</span></div>
+      <div class="fig hot"><span class="n">53,707</span><span class="l">지정 취소</span><span class="s">전체의 82.1%</span></div>
+      <div class="fig"><span class="n">11,419</span><span class="l">현재 유지</span><span class="s">영업 중 · 취소 이력 없음</span></div>
+      <div class="fig hot"><span class="n">16,094</span><span class="l">서로 다른 사유</span><span class="s">이 중 14,194개는 단 한 번만 등장</span></div>
+    </div>
+  </div>
+
+  <article class="form reader">
+    <span class="form-label">사유 열람</span>
+    <div class="seal" id="seal" aria-hidden="true"><b>取消</b><i>지정취소</i></div>
+    <p class="q-cat" id="q-cat">—</p>
+    <p class="q-text" id="q-text">불러오는 중</p>
+    <p class="q-meta" id="q-meta">&nbsp;</p>
+    <div class="reader-act">
+      <button class="btn" id="draw" type="button">다음 사유</button>
+      <button class="btn ghost" id="copy" type="button">복사</button>
+      <span class="tally" id="tally"></span>
+    </div>
+  </article>
+
+  <section class="blk">
+    <div class="blk-head"><h2>왜 모범이 아니게 되었나</h2><span>53,707건 분류</span></div>
+    <p class="blk-note">
+      자유 입력 필드라 표현이 제각각입니다. 문장에 포함된 낱말을 기준으로 묶었습니다.
+      가장 흔한 이유는 위생 문제가 아니라 <b>가게가 그냥 없어진 것</b>이고, 그다음이 <b>주인이 바뀐 것</b>입니다.
+      정작 행정처분으로 잘린 경우는 6.3%뿐입니다.
+    </p>
+    <div class="chart hbars" id="cats"></div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>85점의 벽</h2><span>점수가 적힌 511건</span></div>
+    <p class="blk-note">
+      취소 사유에 실제 평가 점수를 적어둔 기록이 511건 있습니다. 여러 지자체가 <b>85점</b>을 재지정 커트라인으로 쓰고 있어서,
+      점수가 나쁘지 않아도 떨어집니다. 100점 만점에 84점을 받고 모범 자격을 잃은 가게가 있습니다.
+    </p>
+    <div class="wallgrid">
+      <div class="wallcell"><span class="sc">85점</span><p>여러 지자체가 쓰는 재지정 커트라인. 「평가점수85점미달」이라고 적혀 있습니다.</p></div>
+      <div class="wallcell"><span class="sc">84점</span><p>「평가점수 미달(84점)」. 1점이 모자라 모범이 아니게 된 기록입니다.</p></div>
+      <div class="wallcell"><span class="sc">38점</span><p>기록에 남은 가장 낮은 점수. 「평가점수 미달(38점)」 한 줄이 전부입니다.</p></div>
+    </div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>모범음식점이 만들어진 속도</h2><span>연도별 신규 지정</span></div>
+    <p class="blk-note">
+      2001년에 갑자기 연 5,000곳대로 뛰어오른 뒤 10년간 그 수준을 유지하다가, 2020년 531곳으로 주저앉습니다.
+      데이터는 언제 몇 곳을 지정했는지만 알려줄 뿐, 왜 그랬는지는 말해주지 않습니다.
+    </p>
+    <div class="chart">
+      <div class="cols" id="years"></div>
+      <div class="colaxis" id="yaxis"></div>
+    </div>
+    <details class="tbl">
+      <summary>표로 보기</summary>
+      <div class="scroll"><table id="ytbl"><thead><tr><th>연도</th><th>신규 지정</th></tr></thead><tbody></tbody></table></div>
+    </details>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>34년째 모범인 집</h2><span>현역 최장수</span></div>
+    <p class="blk-note">
+      한 번도 취소되지 않고 지금도 영업 중인 곳 중, 지정일자가 가장 이른 여섯 곳입니다.
+      1992년 여름에 도장을 받고 그대로입니다.
+    </p>
+    <div class="list" id="oldest"></div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>데이터에 남은 흠</h2><span>공식 자료입니다</span></div>
+    <p class="blk-note">공공데이터도 사람이 입력합니다. 아래는 전부 원본 파일에 실제로 들어 있는 값입니다.</p>
+    <div class="flaws">
+      <div class="flaw">
+        <span class="h">지정일자 1911-11-11</span>
+        <p class="b">모범음식점 제도가 생기기 훨씬 전에 지정된 것으로 기록된 가게가 한 곳 있습니다.</p>
+        <p class="c">1이 여섯 번 들어간 날짜입니다. 입력 칸을 채우려고 누른 것으로 보입니다.</p>
+      </div>
+      <div class="flaw">
+        <span class="h">지정일자 2029-09-30</span>
+        <p class="b">아직 오지 않은 날에 지정된 가게도 한 곳 있습니다.</p>
+        <p class="c">3년 뒤에 모범이 될 예정입니다.</p>
+      </div>
+      <div class="flaw">
+        <span class="h">주된음식종류 · 팔보채</span>
+        <p class="b">1987년 4월 9일에 지정된 162곳 중 150곳의 대표 메뉴가 전부 ‘팔보채’로 적혀 있습니다.</p>
+        <p class="c">그날 등록된 곳에는 갈비집도 경양식집도 호프집도 있습니다.</p>
+      </div>
+      <div class="flaw">
+        <span class="h">주된음식종류 · 111</span>
+        <p class="b">대표 메뉴 칸에 숫자만 들어간 기록이 일곱 건 있습니다.</p>
+        <p class="c">‘111’, ‘2603’, ‘21225’, ‘000000’ 같은 값입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>그리고 206곳은 돌아왔다</h2><span>재지정</span></div>
+    <p class="blk-note">
+      한 번 취소당했다가 다시 지정받고, 지금도 영업 중인 가게가 206곳 있습니다.
+      데이터에는 취소일자와 재지정일자가 나란히 남습니다. 사이가 넉 달인 곳도 있습니다.
+    </p>
+  </section>
+</main>
+
+<div class="tip" id="tip"></div>
+
+<footer class="foot">
+  <div class="wrap r">
+    <span><a href="./index.html">세모지로 돌아가기 →</a> · 제1호 열람실 · <a href="./about.html">소개</a> · <a href="./contact.html">연락처</a> · <a href="./privacy.html">개인정보처리방침</a></span>
+    <span>출처 <b>모범음식점정보</b> — 지방행정인허가데이터개방(LOCALDATA), 행정안전부 · 2026-09-02 내려받은 65,426행 기준<br>업소명이 드러나는 취소 사유는 상호를 뺀 문장만 실었습니다.</span>
+  </div>
+</footer>
+
+<script>
+/* ── 실제 데이터에서 뽑은 취소 사유 원문 (상호 제외) ── */
+const REASONS = [
+ ["영업자지위승계", 7142, "주인이 바뀜"],
+ ["행정처분", 2994, "행정처분"],
+ ["기준미달", 1391, "재심사 탈락"],
+ ["자진폐업", 754, "가게가 사라짐"],
+ ["점수미달", 407, "재심사 탈락"],
+ ["명의변경", 380, "주인이 바뀜"],
+ ["장기휴업", 325, "가게가 사라짐"],
+ ["자료정비", 288, "행정 정리"],
+ ["재심사 부적합", 220, "재심사 탈락"],
+ ["초기자료 폐업일자 입력에 따른 지정취소", 187, "행정 정리"],
+ ["대장정리", 155, "행정 정리"],
+ ["폐문", 128, "가게가 사라짐"],
+ ["자진반납", 122, "본인이 그만둠"],
+ ["시설물멸실", 109, "가게가 사라짐"],
+ ["재심사 탈락", 104, "재심사 탈락"],
+ ["장기폐문", 100, "가게가 사라짐"],
+ ["자진포기", 75, "본인이 그만둠"],
+ ["자진취하", 74, "본인이 그만둠"],
+ ["위생등급 60점이하", 69, "재심사 탈락"],
+ ["자격미달", 51, "재심사 탈락"],
+ ["지정 취소 요청", 50, "본인이 그만둠"],
+ ["영업안함", 49, "본인이 그만둠"],
+ ["재평가 결과 등급외", 17, "재심사 탈락"],
+ ["위생등급 등외", 13, "재심사 탈락"],
+ ["재지정 포기", 30, "본인이 그만둠"],
+ ["자진철회", 29, "본인이 그만둠"],
+ ["지정의사 없음", 25, "본인이 그만둠"],
+ ["영업하지 않음", 18, "본인이 그만둠"],
+ ["포기", 17, "본인이 그만둠"],
+ ["지정포기", 16, "본인이 그만둠"],
+ ["식품위생법 제3조 위반", 32, "행정처분"],
+ ["시설기준위반", 14, "행정처분"],
+ ["행정처분(영업정지15일)", 8, "행정처분"],
+ ["타법위반", 6, "행정처분"],
+ ["위반건축물", 4, "행정처분"],
+ ["재지정 심사 결과 평가점수 85점 미만", 10, "재심사 탈락"],
+ ["평가점수 미달(83점)", 7, "재심사 탈락"],
+ ["평가점수 미달(84점)", 4, "재심사 탈락"],
+ ["평가점수 미달(38점)", 1, "재심사 탈락"],
+ ["2014년,2015년 연속 C등급 판정업소", 1, "재심사 탈락"],
+ ["방충망 시설 불량", 1, "재심사 탈락"],
+ ["재조사 기준미흡", 1, "재심사 탈락"],
+ ["시설기준이하 부적합", 1, "재심사 탈락"],
+ ["주취급음식이 주류", 1, "기타"],
+ ["업태변경(주점)", 1, "기타"],
+ ["상호변경(감자탕)", 1, "기타"],
+ ["소재지변경으로 지정취소", 1, "기타"],
+ ["명의 및 대표음식 변경", 1, "주인이 바뀜"],
+ ["메뉴, 영업자 변경", 1, "주인이 바뀜"],
+ ["지위승계,상호변경, 주류판매", 1, "주인이 바뀜"],
+ ["장지휴업", 1, "가게가 사라짐"],
+ ["재점검시 시설물 멸실", 1, "가게가 사라짐"],
+ ["영업소폐쇄", 1, "가게가 사라짐"],
+ ["3월경부터 개인사유로 인해 무단장기휴업중", 1, "가게가 사라짐"],
+ ["휴업중으로 재심사 불가", 1, "가게가 사라짐"],
+ ["현장점검 불가", 1, "가게가 사라짐"],
+ ["수시재심사 불가(리모델링 공사)", 1, "가게가 사라짐"],
+ ["영업정지 진행중", 1, "행정처분"],
+ ["영업자 모범음식점 해제 원함.", 1, "본인이 그만둠"],
+ ["지정유지 의사없음", 1, "본인이 그만둠"],
+ ["지정 신청 안함", 1, "본인이 그만둠"],
+ ["지정취소 자진요청", 1, "본인이 그만둠"],
+ ["모범 대장 정리(2019년 이후 재지정 없음)", 1, "행정 정리"]
+];
+
+const CATS = [
+ ["가게가 사라짐", 18263, 34.0],
+ ["주인이 바뀜", 11535, 21.5],
+ ["재심사 탈락", 10451, 19.5],
+ ["기타", 5944, 11.1],
+ ["행정처분", 3382, 6.3],
+ ["(사유 없음)", 2185, 4.1],
+ ["본인이 그만둠", 1947, 3.6]
+];
+
+const YEARS = [[1987,791],[1988,14],[1989,0],[1990,0],[1991,1],[1992,38],[1993,16],[1994,47],
+ [1995,58],[1996,109],[1997,181],[1998,256],[1999,691],[2000,1189],[2001,5122],[2002,5511],
+ [2003,4048],[2004,5336],[2005,4078],[2006,3785],[2007,3758],[2008,4191],[2009,3523],[2010,3400],
+ [2011,2151],[2012,1925],[2013,1763],[2014,1761],[2015,1855],[2016,1831],[2017,1499],[2018,1598],
+ [2019,1078],[2020,531],[2021,641],[2022,611],[2023,727],[2024,820],[2025,449],[2026,39]];
+
+const OLDEST = [
+ ["송어의집","강원 평창군 평창읍 아랫상리길","송어회 · 송어튀김 · 송어탕수","1992-07-01"],
+ ["부림식당","강원 평창군 진부면 진부중앙로","산채정식","1992-07-01"],
+ ["경상도추어탕","경북 안동시 태사길","추어탕","1992-07-01"],
+ ["종가집","경기 남양주시 조안면 북한강로","장어구이","1992-07-15"],
+ ["한밭식당","대전 동구 태전로","설렁탕","1992-07-28"],
+ ["광치막국수","강원 양구군 국토정중앙면 남동로","막국수","1992-08-24"]
+];
+
+const $ = s => document.querySelector(s);
+const nf = n => n.toLocaleString("ko-KR");
+
+/* ── 열람기 ── */
+const seal = $("#seal");
+let seen = new Set(), cur = 0;
+function pick(){
+  if (seen.size >= REASONS.length) seen.clear();
+  let i;
+  do { i = Math.floor(Math.random()*REASONS.length); } while (seen.has(i));
+  seen.add(i); cur = i;
+  const [txt, cnt, cat] = REASONS[i];
+  $("#q-cat").textContent = cat;
+  $("#q-text").textContent = txt;
+  $("#q-meta").innerHTML = cnt === 1
+    ? "전국에서 <em>이 한 곳</em>에만 적힌 문장입니다."
+    : `같은 문장이 적힌 가게 <em>${nf(cnt)}곳</em>`;
+  ["#q-cat","#q-text","#q-meta"].forEach(s=>{
+    const n=$(s); n.classList.remove("fade"); void n.offsetWidth; n.classList.add("fade");
+  });
+  seal.classList.remove("go"); void seal.offsetWidth; seal.classList.add("go");
+  $("#tally").textContent = `열람 ${seen.size} / ${REASONS.length}`;
+}
+$("#draw").addEventListener("click", pick);
+$("#copy").addEventListener("click", async e => {
+  const [txt,,cat] = REASONS[cur];
+  const b = e.currentTarget;
+  try {
+    await navigator.clipboard.writeText(
+      `「${txt}」\n\n모범음식점 지정취소 사유 (${cat})\n출처: 모범음식점정보 · LOCALDATA\n— 세모지`);
+    b.textContent = "복사됨";
+  } catch { b.textContent = "복사 실패"; }
+  setTimeout(()=>{ b.textContent = "복사"; }, 1500);
+});
+
+/* ── 툴팁 ── */
+const tip = $("#tip");
+function showTip(e, html){
+  tip.innerHTML = html; tip.classList.add("on");
+  tip.style.left = e.clientX + "px";
+  tip.style.top = e.clientY + "px";
+}
+function hideTip(){ tip.classList.remove("on"); }
+
+/* ── 사유 분류 막대 ── */
+const maxCat = Math.max(...CATS.map(c=>c[1]));
+$("#cats").innerHTML = CATS.map(([name,n,pct]) => `
+  <div class="hrow${/기타|사유 없음/.test(name) ? " mute" : ""}" data-t="${name} — ${nf(n)}건 (${pct.toFixed(1)}%)">
+    <span class="cat">${name}</span>
+    <span class="track"><span class="bar" data-w="${(n/maxCat*100).toFixed(1)}"></span></span>
+    <span class="val">${pct.toFixed(1)}% · ${nf(n)}</span>
+  </div>`).join("");
+
+/* ── 연도별 세로 막대 ── */
+const maxY = Math.max(...YEARS.map(y=>y[1]));
+$("#years").innerHTML = YEARS.map(([y,n]) => {
+  const peak = (y===2002);
+  const tag = (y===2002) ? `<span class="tag">2002년 ${nf(n)}곳</span>` : "";
+  return `<span class="col${peak?" peak":""}" data-t="${y}년 — 신규 지정 ${nf(n)}곳"
+    style="height:${Math.max(n/maxY*100, n>0?1.2:0.4)}%">${tag}</span>`;
+}).join("");
+/* 연도 축: 실제 막대 중심 위치에 맞춰 배치 */
+const AXIS = [1987, 2000, 2010, 2020, 2026];
+$("#yaxis").innerHTML = AXIS.map((y, k) => {
+  const i = YEARS.findIndex(r => r[0] === y);
+  const pct = (i + 0.5) / YEARS.length * 100;
+  const cls = k === 0 ? " class=\"first\"" : k === AXIS.length - 1 ? " class=\"last\"" : "";
+  return `<span${cls} style="left:${pct.toFixed(2)}%">${y}</span>`;
+}).join("");
+$("#ytbl").querySelector("tbody").innerHTML =
+  YEARS.map(([y,n])=>`<tr><td>${y}</td><td>${nf(n)}</td></tr>`).join("");
+
+/* ── 최장수 목록 ── */
+$("#oldest").innerHTML = OLDEST.map(([nm,ad,menu,dt])=>`
+  <div class="li"><span class="nm">${nm}</span><span class="ad">${ad} · ${menu}</span>
+  <span class="dt">${dt}</span></div>`).join("");
+
+/* ── 툴팁 바인딩 + 막대 등장 ── */
+document.querySelectorAll("[data-t]").forEach(el=>{
+  el.addEventListener("mousemove", e => showTip(e, el.dataset.t));
+  el.addEventListener("mouseleave", hideTip);
+});
+requestAnimationFrame(()=>{
+  document.querySelectorAll(".bar").forEach(b => b.style.width = b.dataset.w + "%");
+});
+pick();
+</script>

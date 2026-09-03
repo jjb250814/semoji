@@ -1,0 +1,442 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>전국에 서른다섯 개</title>
+<meta name="description" content="전국 자전거보관소 18,518곳의 기록. 자전거 수리대가 있는 곳은 35곳이고, 그중 16곳이 구리시에 있다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;600;800&family=IBM+Plex+Sans+KR:wght@300;400;500;600&family=Nanum+Gothic+Coding:wght@400;700&display=swap">
+
+<style>
+:root{
+  --paper:#EBEDE6; --card:#F5F6F1;
+  --ink:#1B1D19; --ink-2:#454A3F; --muted:#787E6F;
+  --rule:#C4C9B9; --rule-2:#DADED0; --chip:#DFE3D6;
+  --seal:#BE3B2E; --seal-ink:#BE3B2E; --seal-soft:rgba(190,59,46,.10);
+  --seal-blend:multiply;
+  --bar-neutral:#5A6052; --bar-track:#DDE1D4;
+  --f-display:'Hahmlet','Nanum Myeongjo','Apple SD Gothic Neo','Malgun Gothic',serif;
+  --f-body:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+  --f-mono:'Nanum Gothic Coding',ui-monospace,'Consolas',monospace;
+  --pad:clamp(18px,4vw,34px); --maxw:1080px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#15170F; --card:#1D2018;
+    --ink:#E8EBDE; --ink-2:#B5BBA7; --muted:#8C927E;
+    --rule:#343A28; --rule-2:#282D1E; --chip:#2A2F21;
+    --seal:#E2604F; --seal-ink:#F07C6A; --seal-soft:rgba(226,96,79,.15);
+    --seal-blend:normal;
+    --bar-neutral:#9AA189; --bar-track:#262B1D;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15170F; --card:#1D2018;
+  --ink:#E8EBDE; --ink-2:#B5BBA7; --muted:#8C927E;
+  --rule:#343A28; --rule-2:#282D1E; --chip:#2A2F21;
+  --seal:#E2604F; --seal-ink:#F07C6A; --seal-soft:rgba(226,96,79,.15);
+  --seal-blend:normal;
+  --bar-neutral:#9AA189; --bar-track:#262B1D;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{word-break:keep-all;overflow-wrap:break-word;margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);
+  font-size:16px;line-height:1.72;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+
+.top{border-bottom:1px solid var(--rule);font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.top .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:9px 0}
+.top b{color:var(--ink-2);font-weight:400}
+.top a{color:var(--seal-ink);text-decoration:none;border-bottom:1px solid var(--seal-soft)}
+.top a:hover{border-bottom-color:var(--seal)}
+
+/* 표제 */
+.head{padding:56px 0 40px}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.15em;color:var(--muted);margin:0 0 16px}
+h1{font-family:var(--f-display);font-weight:800;letter-spacing:-.025em;
+  font-size:clamp(38px,8vw,76px);line-height:1.04;margin:0 0 20px;text-wrap:balance}
+h1 .or{color:var(--muted);font-weight:400}
+h1 .off{position:relative;opacity:.42}
+h1 .off::after{content:"";position:absolute;left:-.04em;right:-.04em;top:52%;height:.05em;
+  background:currentColor;transform:scaleX(0);transform-origin:left;
+  animation:strike .7s .6s cubic-bezier(.65,0,.35,1) forwards}
+@keyframes strike{to{transform:scaleX(1)}}
+.lede{max-width:56ch;font-size:17px;font-weight:300;color:var(--ink-2);margin:0}
+.lede b{font-weight:500;color:var(--ink)}
+
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  border-block:1.5px solid var(--ink);margin-top:40px}
+.fig{padding:24px 20px 22px 0;border-right:1px solid var(--rule-2)}
+.fig:last-child{border-right:0}
+.fig .n{font-family:var(--f-display);font-weight:800;font-size:clamp(30px,5vw,42px);
+  line-height:1;font-variant-numeric:tabular-nums;display:block;letter-spacing:-.02em}
+.fig.hot .n{color:var(--seal-ink)}
+.fig .l{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;color:var(--muted);
+  display:block;margin-top:10px}
+.fig .s{font-size:12.5px;color:var(--ink-2);display:block;margin-top:4px;font-weight:300}
+
+/* 서식 박스 */
+.form{border:1.5px solid var(--ink);background:var(--card);position:relative}
+.form-label{position:absolute;top:-8px;left:16px;background:var(--card);padding:0 8px;
+  font-family:var(--f-mono);font-size:10.5px;font-weight:700;letter-spacing:.16em;color:var(--ink-2)}
+
+/* 재생기 칸 — 이 페이지의 상징 */
+.player{margin:66px 0 0;padding:36px var(--pad) 32px}
+.player-q{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--muted);margin:0 0 22px}
+.player-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule)}
+.player-cell{padding:24px 20px 22px 0;border-right:1px solid var(--rule-2)}
+.player-cell:last-child{border-right:0}
+.player-cell .box{display:inline-flex;align-items:center;gap:10px;margin-bottom:14px}
+.player-cell .tick{width:15px;height:15px;border:1.5px solid var(--ink);display:grid;place-content:center;
+  font-family:var(--f-mono);font-size:11px;line-height:1;color:var(--seal-ink)}
+.player-cell .lab{font-family:var(--f-display);font-weight:800;font-size:22px}
+.player-cell .n{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,4.6vw,38px);
+  line-height:1;display:block;font-variant-numeric:tabular-nums}
+.player-cell.on .n{color:var(--seal-ink)}
+.player-cell .s{font-size:13.5px;color:var(--ink-2);font-weight:300;display:block;margin-top:10px}
+
+/* 열람기 */
+.reader{margin:66px 0 0;padding:40px var(--pad) 0;min-height:290px}
+.seal{position:absolute;top:24px;right:22px;width:96px;height:96px;border-radius:50%;
+  border:3px solid var(--seal);display:grid;place-content:center;text-align:center;
+  color:var(--seal);mix-blend-mode:var(--seal-blend);transform:rotate(-11deg);pointer-events:none}
+.seal::after{content:"";position:absolute;inset:5px;border:1px solid var(--seal);border-radius:50%}
+.seal b{display:block;font-family:var(--f-display);font-weight:800;font-size:24px;line-height:1;letter-spacing:.05em}
+.seal i{display:block;font-style:normal;font-family:var(--f-mono);font-size:8.5px;letter-spacing:.16em;margin-top:6px}
+@keyframes stamp{0%{opacity:0;transform:rotate(-32deg) scale(2.5)}
+  62%{opacity:1;transform:rotate(-9deg) scale(.93)}100%{opacity:1;transform:rotate(-11deg) scale(1)}}
+.seal.go{animation:stamp .5s cubic-bezier(.2,.9,.3,1) both}
+@media (max-width:620px){.seal{width:70px;height:70px;top:16px;right:14px}.seal b{font-size:17px}.seal i{font-size:7px}}
+
+.q-cat{font-family:var(--f-mono);font-size:11px;font-weight:700;letter-spacing:.13em;
+  color:var(--seal-ink);margin:0 0 16px}
+.q-text{font-family:var(--f-display);font-weight:600;font-size:clamp(21px,3.6vw,34px);
+  line-height:1.45;margin:0 0 18px;max-width:22ch;text-wrap:balance;word-break:keep-all}
+.q-text::before{content:"「";opacity:.4}
+.q-text::after{content:"」";opacity:.4}
+.q-meta{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin:0 0 30px;line-height:1.9}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.fade{animation:fadein .3s ease both}
+.reader-act{display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  border-top:1.5px solid var(--ink);padding:16px var(--pad);margin:0 calc(var(--pad)*-1)}
+.btn{font-family:var(--f-body);font-size:14px;font-weight:500;padding:11px 20px;
+  border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;
+  transition:transform .12s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.tally{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);margin-left:auto}
+
+/* 섹션 */
+section.blk{padding:74px 0 0}
+.blk-head{display:flex;align-items:baseline;gap:14px;border-bottom:1.5px solid var(--ink);
+  padding-bottom:10px;margin-bottom:14px}
+.blk-head h2{font-family:var(--f-display);font-weight:800;font-size:22px;margin:0;letter-spacing:-.01em}
+.blk-head span{margin-left:auto;font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.08em}
+.blk-note{margin:0 0 30px;max-width:60ch;color:var(--ink-2);font-weight:300;font-size:15px}
+.blk-note b{font-weight:500;color:var(--ink)}
+
+.tip{position:fixed;z-index:50;pointer-events:none;opacity:0;transition:opacity .12s;
+  background:var(--ink);color:var(--paper);font-family:var(--f-mono);font-size:11.5px;
+  padding:6px 10px;white-space:nowrap;transform:translate(-50%,-140%)}
+.tip.on{opacity:1}
+
+/* 소멸 곡선 */
+.cols{display:flex;align-items:flex-end;gap:2px;height:230px;
+  border-bottom:1px solid var(--rule);padding-top:34px;position:relative}
+.col{flex:1 1 0;min-width:0;background:var(--bar-neutral);border-radius:4px 4px 0 0;
+  position:relative;transition:background .15s}
+.col:hover{background:var(--seal)}
+.col.peak{background:var(--seal)}
+.col .tag{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);
+  font-family:var(--f-mono);font-size:10px;color:var(--ink-2);white-space:nowrap;margin-bottom:6px}
+.col .tag.r{left:auto;right:-2px;transform:none}
+.axis{position:relative;height:16px;margin-top:7px;
+  font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.axis span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap}
+.axis span.first{transform:none}
+.axis span.last{transform:translateX(-100%)}
+details.tbl{margin-top:16px;font-family:var(--f-mono);font-size:12px}
+details.tbl summary{cursor:pointer;color:var(--muted);letter-spacing:.06em}
+details.tbl .scroll{overflow-x:auto;margin-top:10px;border:1px solid var(--rule)}
+details.tbl table{border-collapse:collapse;width:100%;min-width:380px}
+details.tbl td,details.tbl th{padding:5px 10px;border-bottom:1px solid var(--rule-2);
+  text-align:right;font-variant-numeric:tabular-nums}
+details.tbl th:first-child,details.tbl td:first-child{text-align:left}
+details.tbl th{color:var(--muted);font-weight:400;background:var(--card)}
+
+/* 가로 막대 */
+.hbars{display:flex;flex-direction:column;gap:2px}
+.hrow{display:grid;grid-template-columns:minmax(80px,110px) 1fr minmax(76px,auto);
+  gap:14px;align-items:center;padding:5px 0}
+.hrow .cat{font-size:14px;font-weight:500}
+.hrow .track{display:block;background:var(--bar-track);height:22px}
+.hrow .bar{display:block;height:100%;background:var(--seal);border-radius:0 4px 4px 0;
+  width:0;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.hrow:hover .bar{filter:brightness(1.12)}
+.hrow .val{font-family:var(--f-mono);font-size:12.5px;color:var(--ink-2);text-align:right;
+  font-variant-numeric:tabular-nums}
+@media (max-width:560px){.hrow{grid-template-columns:1fr auto;gap:4px 10px}
+  .hrow .track{grid-column:1/-1;order:3}}
+
+/* 목록 */
+.list{border-top:1px solid var(--rule)}
+.li{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.5fr) minmax(84px,auto);
+  gap:16px;padding:14px 0;border-bottom:1px solid var(--rule-2);align-items:baseline}
+.li .nm{font-family:var(--f-display);font-weight:600;font-size:17px;word-break:keep-all}
+.li .ad{font-size:13.5px;color:var(--ink-2);font-weight:300}
+.li .dt{font-family:var(--f-mono);font-size:12px;color:var(--muted);text-align:right;
+  font-variant-numeric:tabular-nums}
+.li .dt.on{color:var(--seal-ink)}
+@media (max-width:640px){.li{grid-template-columns:1fr auto;gap:2px 12px}.li .ad{grid-column:1/-1}}
+
+/* 흠 */
+.flaws{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.flaw{border:1px solid var(--rule);background:var(--card);padding:20px 18px;
+  display:flex;flex-direction:column;gap:9px}
+.flaw .h{font-family:var(--f-mono);font-size:11px;letter-spacing:.11em;color:var(--seal-ink)}
+.flaw .b{font-family:var(--f-display);font-weight:600;font-size:17px;line-height:1.5;margin:0;word-break:keep-all}
+.flaw .c{font-size:13.5px;color:var(--ink-2);font-weight:300;margin:0}
+
+.foot{margin-top:80px;border-top:1.5px solid var(--ink);padding:24px 0 60px;
+  font-family:var(--f-mono);font-size:11.5px;color:var(--muted);line-height:2}
+.foot .r{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot b{color:var(--ink-2);font-weight:400}
+.foot a{color:var(--seal-ink);text-decoration:none;border-bottom:1px solid var(--seal-soft)}
+.foot a:hover{border-bottom-color:var(--seal)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<style>
+/* 제8호 전용 */
+.yn-box{padding:36px var(--pad) 32px;margin:66px 0 0}
+.yn-lab{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--muted);margin:0 0 22px}
+.yn-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule)}
+.yn-cell{padding:24px 20px 22px 0;border-right:1px solid var(--rule-2)}
+.yn-cell:last-child{border-right:0}
+.yn-cell .tick{display:inline-grid;place-content:center;width:15px;height:15px;
+  border:1.5px solid var(--ink);font-family:var(--f-mono);font-size:11px;line-height:1;
+  color:var(--seal-ink);margin-right:9px;vertical-align:2px}
+.yn-cell .lab{font-family:var(--f-display);font-weight:800;font-size:20px}
+.yn-cell .n{display:block;font-family:var(--f-display);font-weight:800;
+  font-size:clamp(30px,5vw,44px);line-height:1;margin-top:14px;font-variant-numeric:tabular-nums}
+.yn-cell.on .n{color:var(--seal-ink)}
+.yn-cell .s{display:block;font-size:13.5px;color:var(--ink-2);font-weight:300;margin-top:10px}
+.yn-say{font-size:14px;color:var(--ink-2);font-weight:300;margin:22px 0 0;max-width:58ch}
+.yn-say b{font-weight:500;color:var(--ink)}
+.two{display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:8px}
+.mono-li{border-top:1px solid var(--rule);font-family:var(--f-mono);font-size:13px}
+.mono-li div{display:flex;justify-content:space-between;gap:14px;padding:8px 0;
+  border-bottom:1px solid var(--rule-2);font-variant-numeric:tabular-nums}
+.mono-li b{font-weight:400;color:var(--ink)}
+.mono-li span{color:var(--muted)}
+.hbars.wide .hrow{grid-template-columns:minmax(126px,178px) 1fr minmax(60px,auto)}
+@media (max-width:560px){.hbars.wide .hrow{grid-template-columns:1fr auto}}
+/* 서른다섯 곳 목록 */
+.spots{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  border-top:1px solid var(--rule)}
+.spot{padding:11px 14px 11px 0;border-bottom:1px solid var(--rule-2);
+  display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.spot .p{font-size:14px;word-break:keep-all}
+.spot .c{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);white-space:nowrap}
+.spot.guri .p{color:var(--seal-ink)}
+.longname{font-family:var(--f-mono);font-size:13px;background:var(--card);
+  border:1px solid var(--rule);padding:14px 16px;margin:14px 0 0;color:var(--ink-2);overflow-x:auto}
+</style>
+<div class="top">
+  <div class="wrap">
+    <span><a href="./index.html">← 세모지</a> · 제8호 열람실</span>
+    <span>원자료 <b>전국자전거보관소표준데이터</b> · LOCALDATA · 2026-09-02 내려받음</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="head">
+    <p class="eyebrow">제8호 열람실 · 전국 자전거보관소 기록</p>
+    <h1>전국에 <span class="or">서른다섯</span> 개</h1>
+    <p class="lede">
+      자전거보관소 서식에는 「수리대설치여부」 칸이 있습니다.
+      바람 넣고 체인 고칠 공구가 걸린 그 거치대입니다.
+      전국 18,518곳이 이 칸에 답했고, <b>「있음」이라 답한 곳은 35곳입니다.</b>
+      0.19%입니다. 그리고 그 35곳 중 <b>16곳이 구리시에</b> 있습니다.
+    </p>
+
+    <div class="figs">
+      <div class="fig"><span class="n">18,518</span><span class="l">등록된 보관소</span><span class="s">전국 표준데이터 전체</span></div>
+      <div class="fig"><span class="n">369,495</span><span class="l">보관대수 합계</span><span class="s">한 곳 중앙값 10대</span></div>
+      <div class="fig hot"><span class="n">35</span><span class="l">수리대가 있는 곳</span><span class="s">18,518곳 가운데 0.19%</span></div>
+      <div class="fig hot"><span class="n">23</span><span class="l">구리시와 마포구</span><span class="s">서른다섯 곳의 65.7%</span></div>
+    </div>
+  </div>
+
+  <article class="form yn-box">
+    <span class="form-label">수리대설치여부</span>
+    <p class="yn-lab">자전거를 고칠 수 있는 곳이 있는가. 답은 둘 중 하나다.</p>
+    <div class="yn-grid">
+      <div class="yn-cell on">
+        <div><span class="tick"></span><span class="lab">있음</span></div>
+        <span class="n">35</span>
+        <span class="s">0.19%</span>
+      </div>
+      <div class="yn-cell">
+        <div><span class="tick"></span><span class="lab">없음</span></div>
+        <span class="n">18,483</span>
+        <span class="s">99.81%</span>
+      </div>
+    </div>
+    <p class="yn-say">18,518곳 <b>전부가</b> 이 칸에 답했습니다. 비워 둔 곳이 하나도 없습니다.
+      묻기는 다 물었고, 답은 거의 다 「없음」이었습니다.</p>
+  </article>
+
+  <section class="blk">
+    <div class="blk-head"><h2>서른다섯 곳이 어디에 있나</h2><span>관리기관별</span></div>
+    <p class="blk-note">열세 개 기관이 나눠 갖고 있는데, <b>구리시가 16곳, 마포구가 7곳</b>입니다.
+      둘이 합쳐 23곳으로 <b>전체의 65.7%</b>입니다.
+      나머지 열 개 기관은 <b>한 곳씩</b>이라, 낱낱이 그리면 막대가 보이지 않아 한 줄로 묶었습니다.</p>
+    <div class="hbars wide">
+    <div class="hrow"><span class="cat">경기도 구리시청</span><span class="track"><span class="bar" data-w="100.00"></span></span><span class="val">16곳</span></div>
+    <div class="hrow"><span class="cat">서울특별시 마포구청</span><span class="track"><span class="bar" data-w="43.75"></span></span><span class="val">7곳</span></div>
+    <div class="hrow"><span class="cat">경기도 고양시청</span><span class="track"><span class="bar" data-w="12.50"></span></span><span class="val">2곳</span></div>
+    <div class="hrow"><span class="cat">그 밖의 10개 기관</span><span class="track"><span class="bar" data-w="62.50"></span></span><span class="val">10곳</span></div>
+    </div>
+    <p class="blk-note" style="margin-top:34px">구리시의 것은 공원과 하천을 따라 있고,
+      마포구의 것은 대학과 학교 안에 있습니다. 같은 시설인데 놓는 자리가 다릅니다.
+      <b>왜 이 두 곳만 이렇게 많이 놓았는지는 데이터에 없습니다.</b> 붉은 글씨가 구리시입니다.</p>
+    <div class="spots"><div class="spot guri"><span class="p">왕숙천공원 자전거 수리센터</span><span class="c">구리</span></div><div class="spot guri"><span class="p">한강시민공원 쉼터</span><span class="c">구리</span></div><div class="spot guri"><span class="p">용암천 자전거 쉼터</span><span class="c">구리</span></div><div class="spot guri"><span class="p">갈매중앙공원</span><span class="c">구리</span></div><div class="spot guri"><span class="p">한강시민공원 시계탑</span><span class="c">구리</span></div><div class="spot guri"><span class="p">한다리마을입구 삼거리</span><span class="c">구리</span></div><div class="spot guri"><span class="p">장자초교 정문 좌,우</span><span class="c">구리</span></div><div class="spot guri"><span class="p">경의중앙선 하부 체육공원</span><span class="c">구리</span></div><div class="spot guri"><span class="p">부양어린이공원</span><span class="c">구리</span></div><div class="spot guri"><span class="p">인창도서관</span><span class="c">구리</span></div><div class="spot"><span class="p">홍익대학교(교사내)</span><span class="c">마포</span></div><div class="spot"><span class="p">서강대학교(교사내)</span><span class="c">마포</span></div><div class="spot"><span class="p">마포구민체육센터(센터내)</span><span class="c">마포</span></div><div class="spot"><span class="p">성산중학교(교사내)</span><span class="c">마포</span></div><div class="spot"><span class="p">수유역 6번출구 자전거 주차장</span><span class="c">강북</span></div><div class="spot"><span class="p">영등포구청 자전거 주차타워</span><span class="c">영등포</span></div><div class="spot"><span class="p">청계산입구역 2번출구 옆1</span><span class="c">서초</span></div><div class="spot"><span class="p">자전거종합서비스센터</span><span class="c">금천</span></div><div class="spot"><span class="p">늘푸른센터</span><span class="c">옹진 영흥</span></div><div class="spot"><span class="p">평화누리7코스자전거쉼터</span><span class="c">연천</span></div></div>
+    <p class="blk-note" style="margin-top:20px">서른다섯 곳 중 스무 곳만 옮겼습니다.</p>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>서식이 묻는 세 가지</h2><span>「있음」이라 답한 비율</span></div>
+    <p class="blk-note">차양막이 있는가, 공기주입기가 있는가, 수리대가 있는가.
+      셋 다 자전거를 세워 두는 사람에게는 큰 차이입니다.
+      <b>비를 막아 주는 곳은 셋에 하나, 바람 넣을 데가 있는 곳은 여덟에 하나,
+      고칠 수 있는 곳은 오백에 하나입니다.</b></p>
+    <div class="hbars wide">
+    <div class="hrow"><span class="cat">차양막</span><span class="track"><span class="bar" data-w="100.00"></span></span><span class="val">36.92%</span></div>
+    <div class="hrow"><span class="cat">공기주입기</span><span class="track"><span class="bar" data-w="32.39"></span></span><span class="val">11.96%</span></div>
+    <div class="hrow"><span class="cat">수리대</span><span class="track"><span class="bar" data-w="0.51"></span></span><span class="val">0.19%</span></div>
+    </div>
+    <p class="blk-note" style="margin-top:26px">차양막 칸은 절반(53.0%)만 답했고,
+      나머지 두 칸은 전부 답했습니다. 그래서 차양막 비율은 <b>답을 적은 9,817곳</b> 기준입니다.</p>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>태양광으로 바람을 넣는다</h2><span>공기주입기유형명</span></div>
+    <p class="blk-note">공기주입기가 있다고 답한 곳에는 <b>어떤 종류인지</b>를 적는 칸이 또 있습니다.
+      답은 넷뿐입니다. 수동식, 기계식, 그리고 <b>태양광식</b>.
+      전국에 태양광 자전거 공기주입기가 <b>349개</b> 있습니다.</p>
+    <div class="hbars wide">
+    <div class="hrow"><span class="cat">기타</span><span class="track"><span class="bar" data-w="100.00"></span></span><span class="val">806곳</span></div>
+    <div class="hrow"><span class="cat">수동식</span><span class="track"><span class="bar" data-w="65.38"></span></span><span class="val">527곳</span></div>
+    <div class="hrow"><span class="cat">기계식</span><span class="track"><span class="bar" data-w="45.66"></span></span><span class="val">368곳</span></div>
+    <div class="hrow"><span class="cat">태양광식</span><span class="track"><span class="bar" data-w="43.30"></span></span><span class="val">349곳</span></div>
+    </div>
+    <p class="blk-note" style="margin-top:26px">다만 공기주입기가 <b>있다</b>고 답한 2,215곳 중
+      <b>1,000곳(45.1%)은 종류 칸을 비워 두었습니다.</b>
+      가장 많은 답이 「기타」(806)인 것도 그래서일 수 있습니다.</p>
+    <div class="two" style="margin-top:36px">
+      <div>
+        <p class="yn-lab">설치형태 — 「휀스형」이라는 말</p>
+        <div class="hbars wide">
+    <div class="hrow"><span class="cat">거치형</span><span class="track"><span class="bar" data-w="100.00"></span></span><span class="val">7,495곳</span></div>
+    <div class="hrow"><span class="cat">단독형</span><span class="track"><span class="bar" data-w="19.52"></span></span><span class="val">1,463곳</span></div>
+    <div class="hrow"><span class="cat">휀스형</span><span class="track"><span class="bar" data-w="16.78"></span></span><span class="val">1,258곳</span></div>
+    <div class="hrow"><span class="cat">기타</span><span class="track"><span class="bar" data-w="10.51"></span></span><span class="val">788곳</span></div>
+    </div>
+        <p class="blk-note" style="margin-top:16px">7,514곳은 이 칸도 비워 두었습니다.</p>
+      </div>
+      <div>
+        <p class="yn-lab">이름에 자주 들어간 낱말</p>
+        <div class="hbars wide">
+    <div class="hrow"><span class="cat">출구</span><span class="track"><span class="bar" data-w="100.00"></span></span><span class="val">520회</span></div>
+    <div class="hrow"><span class="cat">버스정류장</span><span class="track"><span class="bar" data-w="54.81"></span></span><span class="val">285회</span></div>
+    <div class="hrow"><span class="cat">입구</span><span class="track"><span class="bar" data-w="47.50"></span></span><span class="val">247회</span></div>
+    <div class="hrow"><span class="cat">1번출구</span><span class="track"><span class="bar" data-w="47.12"></span></span><span class="val">245회</span></div>
+    <div class="hrow"><span class="cat">주민센터</span><span class="track"><span class="bar" data-w="43.65"></span></span><span class="val">227회</span></div>
+    <div class="hrow"><span class="cat">2번출구</span><span class="track"><span class="bar" data-w="41.92"></span></span><span class="val">218회</span></div>
+    <div class="hrow"><span class="cat">주차장</span><span class="track"><span class="bar" data-w="41.35"></span></span><span class="val">215회</span></div>
+    <div class="hrow"><span class="cat">행정복지센터</span><span class="track"><span class="bar" data-w="39.04"></span></span><span class="val">203회</span></div>
+    <div class="hrow"><span class="cat">정문</span><span class="track"><span class="bar" data-w="33.27"></span></span><span class="val">173회</span></div>
+    <div class="hrow"><span class="cat">3번출구</span><span class="track"><span class="bar" data-w="32.31"></span></span><span class="val">168회</span></div>
+    <div class="hrow"><span class="cat">맞은편</span><span class="track"><span class="bar" data-w="30.00"></span></span><span class="val">156회</span></div>
+    <div class="hrow"><span class="cat">건너편</span><span class="track"><span class="bar" data-w="27.88"></span></span><span class="val">145회</span></div>
+    </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>이름이 아니라 위치다</h2><span>14,983가지</span></div>
+    <p class="blk-note">보관소에도 이름 칸이 있는데, 적힌 것은 대부분 <b>이름이 아니라 위치</b>입니다.
+      「경복궁역 3번 출구 앞」, 「세검정초교 후문 육교 하부」, 「동십자각지하보도 입구」.
+      가장 많이 쓰인 낱말이 <b>「출구」(520)</b>인 이유입니다.
+      14,983가지 중 <b>12,988개는 딱 한 번만</b> 쓰였습니다.</p>
+    <p class="blk-note">가장 흔한 이름은 그냥 <b>「자전거거치대」</b> 124곳입니다.
+      가장 긴 것은 42자인데, 이름이 아니라 <b>주소 일곱 개</b>를 한 칸에 이어 붙인 것입니다.</p>
+    <div class="longname">천호대로 365, 369, 381, 383, 389, 393, 395-2 앞</div>
+    <p class="blk-note" style="margin-top:22px">반대로 <b>한 글자로 답한 곳이 9곳</b> 있습니다.
+      전부 숫자입니다 — 1, 2, 3, 4, 5, 6, 7, 8, 9.</p>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>2010년에 몰려 있다</h2><span>설치연도</span></div>
+    <p class="blk-note">설치연도를 적은 곳은 7,291곳(39.4%)뿐입니다.
+      그중 <b>2010년 한 해가 1,449곳</b>으로 다른 해의 서너 배입니다.
+      전국에 공영자전거와 자전거도로가 한꺼번에 깔리던 때입니다.</p>
+    <div class="cols"><div class="col" style="height:1.4%" data-t="1996년 20곳"></div><div class="col" style="height:2.8%" data-t="1997년 40곳"></div><div class="col" style="height:1.1%" data-t="1998년 16곳"></div><div class="col" style="height:5.1%" data-t="1999년 74곳"></div><div class="col" style="height:5.7%" data-t="2000년 82곳"></div><div class="col" style="height:4.8%" data-t="2001년 70곳"></div><div class="col" style="height:7.6%" data-t="2002년 110곳"></div><div class="col" style="height:6.8%" data-t="2003년 99곳"></div><div class="col" style="height:6.1%" data-t="2004년 88곳"></div><div class="col" style="height:4.3%" data-t="2005년 63곳"></div><div class="col" style="height:5.2%" data-t="2006년 76곳"></div><div class="col" style="height:17.6%" data-t="2007년 255곳"></div><div class="col" style="height:15.9%" data-t="2008년 231곳"></div><div class="col" style="height:33.5%" data-t="2009년 486곳"></div><div class="col peak" style="height:100.0%" data-t="2010년 1,449곳"></div><div class="col" style="height:30.9%" data-t="2011년 448곳"></div><div class="col" style="height:39.1%" data-t="2012년 567곳"></div><div class="col" style="height:21.4%" data-t="2013년 310곳"></div><div class="col" style="height:17.8%" data-t="2014년 258곳"></div><div class="col" style="height:18.8%" data-t="2015년 273곳"></div><div class="col" style="height:21.3%" data-t="2016년 309곳"></div><div class="col" style="height:28.4%" data-t="2017년 411곳"></div><div class="col" style="height:19.8%" data-t="2018년 287곳"></div><div class="col" style="height:15.3%" data-t="2019년 221곳"></div><div class="col" style="height:19.4%" data-t="2020년 281곳"></div><div class="col" style="height:11.3%" data-t="2021년 164곳"></div><div class="col" style="height:9.0%" data-t="2022년 131곳"></div><div class="col" style="height:10.1%" data-t="2023년 146곳"></div><div class="col" style="height:8.3%" data-t="2024년 120곳"></div><div class="col" style="height:12.4%" data-t="2025년 179곳"></div><div class="col" style="height:1.1%" data-t="2026년 16곳"></div></div>
+    <div class="axis"><span class="first">1996</span><span style="left:50%">2011</span><span class="last" style="left:100%">2026</span></div>
+
+    <div class="flaws" style="margin-top:48px">
+      <div class="flaw"><span class="h">999</span>
+        <p class="b">보관대수가 999대로 적힌 곳이 있다.</p>
+        <p class="c">전국 합계는 369,495대이고 한 곳의 가운뎃값은 10대입니다.
+          999는 칸을 채우려고 넣은 값으로 보입니다.</p></div>
+      <div class="flaw"><span class="h">75</span>
+        <p class="b">자전거를 0대 세울 수 있다고 적힌 보관소.</p>
+        <p class="c">보관대수 칸은 18,518곳 전부가 채웠는데 그중 75곳이 0입니다.</p></div>
+      <div class="flaw"><span class="h">교?행정과</span>
+        <p class="b">관리기관 이름의 글자가 깨져 있다.</p>
+        <p class="c">「종로구 교?행정과」입니다. 보관소 이름에도 물음표가 든 것이 12곳 있습니다.
+          한글 인코딩이 어긋난 자리입니다.</p></div>
+      <div class="flaw"><span class="h">1,000</span>
+        <p class="b">공기주입기가 있다면서 종류는 안 적은 곳.</p>
+        <p class="c">있다고 답한 2,215곳의 45.1%입니다. 앞 칸과 뒤 칸이 서로 어긋납니다.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap r">
+    <span><a href="./index.html">세모지로 돌아가기 →</a> · 제8호 열람실 · <a href="./about.html">소개</a> · <a href="./contact.html">연락처</a> · <a href="./privacy.html">개인정보처리방침</a></span>
+    <span>출처 <b>전국자전거보관소표준데이터</b> — 지방행정인허가데이터개방(LOCALDATA) · 2026-09-02 내려받은 18,518행 기준<br>페이지의 모든 수치는 scripts/analyze_bike.py 로 재현됩니다.</span>
+  </div>
+</footer>
+
+<div class="tip" id="tip"></div>
+<script>
+/* 모든 값은 원본 CSV 18,518행에서 계산했습니다. scripts/analyze_bike.py 로 재현됩니다. */
+
+const io = new IntersectionObserver(function (es) {
+  es.forEach(function (e) {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('.bar').forEach(function (b, n) {
+      setTimeout(function () { b.style.width = b.dataset.w + '%'; }, n * 45);
+    });
+    io.unobserve(e.target);
+  });
+}, { threshold: .25 });
+document.querySelectorAll('.hbars').forEach(function (el) { io.observe(el); });
+
+const tip = document.getElementById('tip');
+document.querySelectorAll('.col').forEach(function (c) {
+  c.addEventListener('mouseenter', function () {
+    tip.textContent = c.dataset.t;
+    tip.classList.add('on');
+    const r = c.getBoundingClientRect();
+    tip.style.left = (r.left + r.width / 2) + 'px';
+    tip.style.top = r.top + 'px';
+  });
+  c.addEventListener('mouseleave', function () { tip.classList.remove('on'); });
+});
+</script>

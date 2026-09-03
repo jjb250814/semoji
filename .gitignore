@@ -1,0 +1,13 @@
+# 원본 CSV는 저장소에 넣지 않는다. scripts/fetch.py 로 언제든 다시 받는다.
+data/*.csv
+data/raw/
+
+# 로컬 미리보기 서버
+.claude/
+
+# 파이썬 캐시
+__pycache__/
+*.pyc
+
+# OneDrive가 두 PC 충돌 시 만드는 사본
+*-DESKTOP-*.md

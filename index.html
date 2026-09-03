@@ -1,0 +1,731 @@
+<title>세모지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;600;800&family=IBM+Plex+Sans+KR:wght@300;400;500;600&family=Nanum+Gothic+Coding:wght@400;700&display=swap">
+
+<style>
+:root{
+  --paper:#EBEDE6; --card:#F5F6F1;
+  --ink:#1B1D19; --ink-2:#454A3F; --muted:#787E6F;
+  --rule:#C4C9B9; --rule-2:#DADED0; --chip:#DFE3D6;
+  --seal:#BE3B2E; --seal-ink:#BE3B2E; --seal-soft:rgba(190,59,46,.10);
+  --seal-blend:multiply;
+  --f-display:'Hahmlet','Nanum Myeongjo','Apple SD Gothic Neo','Malgun Gothic',serif;
+  --f-body:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+  --f-mono:'Nanum Gothic Coding',ui-monospace,'Consolas',monospace;
+  --pad:clamp(18px,4vw,34px); --maxw:1080px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#15170F; --card:#1D2018;
+    --ink:#E8EBDE; --ink-2:#B5BBA7; --muted:#8C927E;
+    --rule:#343A28; --rule-2:#282D1E; --chip:#2A2F21;
+    --seal:#E2604F; --seal-ink:#F07C6A; --seal-soft:rgba(226,96,79,.15);
+    --seal-blend:normal;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15170F; --card:#1D2018;
+  --ink:#E8EBDE; --ink-2:#B5BBA7; --muted:#8C927E;
+  --rule:#343A28; --rule-2:#282D1E; --chip:#2A2F21;
+  --seal:#E2604F; --seal-ink:#F07C6A; --seal-soft:rgba(226,96,79,.15);
+  --seal-blend:normal;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{word-break:keep-all;overflow-wrap:break-word;margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);
+  font-size:16px;line-height:1.72;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+
+/* 상단 바 */
+.top{border-bottom:1px solid var(--rule);font-family:var(--f-mono);
+  font-size:11.5px;color:var(--muted)}
+.top .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:9px 0}
+.top b{color:var(--ink-2);font-weight:400}
+
+/* 마스트헤드 */
+header.mast{border-bottom:1px solid var(--rule)}
+.mast-in{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+  flex-wrap:wrap;padding:26px 0 18px}
+.brand{display:flex;flex-direction:column;gap:2px}
+.brand h1{font-family:var(--f-display);font-weight:800;font-size:clamp(30px,5.5vw,44px);
+  line-height:1;margin:0;letter-spacing:-.02em}
+.brand .full{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);letter-spacing:.06em}
+.docmeta{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);text-align:right;line-height:1.9}
+.docmeta span{display:block}
+.docmeta em{font-style:normal;color:var(--ink-2)}
+
+/* 서식 박스 */
+.form{border:1.5px solid var(--ink);background:var(--card);position:relative}
+.form-label{position:absolute;top:-8px;left:16px;background:var(--card);padding:0 8px;
+  font-family:var(--f-mono);font-size:10.5px;font-weight:700;letter-spacing:.16em;color:var(--ink-2)}
+
+/* 히어로 */
+.hero{padding:52px 0 40px}
+.hero-lead{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--muted);margin:0 0 14px}
+.hero-title{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,4.6vw,46px);
+  line-height:1.24;margin:0 0 18px;text-wrap:balance;letter-spacing:-.015em;max-width:20ch}
+.hero-title .hl{background:linear-gradient(to top,var(--seal-soft) 0 .55em,transparent .55em);
+  box-shadow:inset 0 -2px 0 var(--seal)}
+.hero-sub{margin:0 0 34px;max-width:54ch;color:var(--ink-2);font-size:16.5px;font-weight:300}
+.hero-sub b{font-weight:500;color:var(--ink)}
+
+/* 지식 카드 */
+.card{padding:34px var(--pad) 0}
+.card-cat{font-family:var(--f-mono);font-size:11px;font-weight:700;letter-spacing:.14em;
+  color:var(--seal-ink);margin:0 0 12px}
+.card-body{font-family:var(--f-display);font-weight:600;font-size:clamp(20px,3vw,29px);
+  line-height:1.55;margin:0 0 22px;max-width:26ch;text-wrap:balance}
+.card-note{color:var(--ink-2);font-size:14.5px;font-weight:300;max-width:50ch;margin:0 0 26px}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  border-top:1px solid var(--rule);padding-inline:var(--pad)}
+.field{padding:13px 16px 14px 0;border-right:1px solid var(--rule-2)}
+.field:last-child{border-right:0}
+.field dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;color:var(--muted);margin:0 0 3px}
+.field dd{margin:0;font-size:13.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.chip{display:inline-block;font-family:var(--f-mono);font-size:10.5px;padding:2px 8px;
+  border:1px solid var(--rule);background:var(--chip);color:var(--ink-2)}
+.chip.ok{border-color:var(--seal);color:var(--seal-ink);background:var(--seal-soft)}
+
+/* 직인 */
+.seal{position:absolute;top:26px;right:22px;width:104px;height:104px;border-radius:50%;
+  border:3px solid var(--seal);display:grid;place-content:center;text-align:center;
+  color:var(--seal);mix-blend-mode:var(--seal-blend);transform:rotate(-11deg);pointer-events:none}
+.seal::after{content:"";position:absolute;inset:5px;border:1px solid var(--seal);border-radius:50%}
+.seal b{display:block;font-family:var(--f-display);font-weight:800;font-size:19px;
+  line-height:1.18;letter-spacing:.06em}
+.seal i{display:block;font-style:normal;font-family:var(--f-mono);font-size:9px;
+  letter-spacing:.2em;margin-top:5px}
+@media (max-width:640px){.seal{width:78px;height:78px;top:auto;bottom:96px;right:14px}
+  .seal b{font-size:14px}.seal i{font-size:7.5px}}
+@keyframes stamp{0%{opacity:0;transform:rotate(-30deg) scale(2.4)}
+  62%{opacity:1;transform:rotate(-9deg) scale(.94)}100%{opacity:1;transform:rotate(-11deg) scale(1)}}
+.seal.go{animation:stamp .52s cubic-bezier(.2,.9,.3,1) both}
+@keyframes swapin{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.swap{animation:swapin .3s ease both}
+
+/* 버튼 */
+.actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+  border-top:1.5px solid var(--ink);padding:16px var(--pad)}
+.btn{font-family:var(--f-body);font-size:14px;font-weight:500;padding:11px 20px;
+  border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;
+  transition:transform .12s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.counter{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);margin-left:auto}
+
+/* 지표 */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  border-block:1px solid var(--rule)}
+.stat{padding:22px 0;border-right:1px solid var(--rule-2)}
+.stat:last-child{border-right:0}
+.stat .n{font-family:var(--f-display);font-weight:800;font-size:34px;line-height:1;
+  font-variant-numeric:tabular-nums;display:block;letter-spacing:-.02em}
+.stat .l{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--muted);
+  margin-top:8px;display:block}
+.stat.mark .n{color:var(--seal-ink)}
+
+/* 섹션 */
+section.blk{padding:64px 0 0}
+.blk-head{display:flex;align-items:baseline;gap:14px;border-bottom:1.5px solid var(--ink);
+  padding-bottom:10px;margin-bottom:24px}
+.blk-head h2{font-family:var(--f-display);font-weight:800;font-size:22px;margin:0;letter-spacing:-.01em}
+.blk-head span{margin-left:auto;font-family:var(--f-mono);font-size:11px;color:var(--muted);
+  letter-spacing:.08em;text-align:right}
+
+/* 열람실 카드 */
+a.room{display:block;text-decoration:none;color:inherit;margin-top:6px;
+  transition:transform .16s ease,box-shadow .16s ease}
+a.room:hover{transform:translateY(-3px);box-shadow:6px 6px 0 var(--seal-soft)}
+a.room + a.room{margin-top:20px}
+.room-in{padding:34px var(--pad) 30px;display:grid;
+  grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:28px;align-items:end}
+@media (max-width:720px){.room-in{grid-template-columns:1fr;gap:22px}}
+.room-no{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--seal-ink);margin:0 0 12px}
+.room-t{font-family:var(--f-display);font-weight:800;font-size:clamp(26px,4.4vw,38px);
+  line-height:1.2;margin:0 0 14px;letter-spacing:-.02em}
+.room-t .struck{position:relative}
+.room-t .struck::after{content:"";position:absolute;left:-.03em;right:-.03em;top:53%;
+  height:.06em;background:var(--seal)}
+.room-d{margin:0;color:var(--ink-2);font-size:15px;font-weight:300;max-width:44ch}
+.room-go{font-family:var(--f-mono);font-size:12px;color:var(--seal-ink);margin:18px 0 0;
+  display:inline-flex;gap:8px;align-items:center}
+a.room:hover .room-go{text-decoration:underline;text-underline-offset:4px}
+.room-figs{display:grid;grid-template-columns:1fr 1fr;gap:18px 14px}
+/* 지난 열람실 — 편수가 늘어도 스크롤이 늘어나지 않게 한 줄로 접는다 */
+.lite-head{display:flex;align-items:baseline;gap:12px;margin:38px 0 0;
+  padding-bottom:9px;border-bottom:1.5px solid var(--ink)}
+.lite-head b{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;
+  color:var(--muted);font-weight:400}
+.room-lite{display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;gap:16px;
+  align-items:baseline;padding:15px 2px;border-bottom:1px solid var(--rule-2);
+  text-decoration:none;color:inherit;transition:padding-left .14s ease}
+.room-lite:hover{padding-left:8px}
+.room-lite .no{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--seal-ink)}
+.room-lite .t{font-family:var(--f-display);font-weight:800;font-size:19px;
+  letter-spacing:-.01em;white-space:nowrap}
+.room-lite .d{font-size:13.5px;color:var(--ink-2);font-weight:300;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.room-lite .go{font-family:var(--f-mono);font-size:13px;color:var(--seal-ink);opacity:.45}
+.room-lite:hover .go{opacity:1}
+@media (max-width:720px){
+  .room-lite{grid-template-columns:auto 1fr auto;gap:4px 12px}
+  .room-lite .d{grid-column:1/-1;white-space:normal;margin-top:2px}
+}
+.room-fig .n{font-family:var(--f-display);font-weight:800;font-size:26px;line-height:1;
+  display:block;font-variant-numeric:tabular-nums}
+.room-fig.hot .n{color:var(--seal-ink)}
+.room-fig .l{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:var(--muted);
+  display:block;margin-top:7px}
+
+/* 추출 공식 */
+.rules{border-top:1px solid var(--rule)}
+.rule-row{display:grid;grid-template-columns:minmax(84px,110px) minmax(0,1fr) minmax(0,1.15fr);
+  gap:16px;padding:10px 0;border-bottom:1px solid var(--rule-2);align-items:baseline}
+.rule-row .name{font-family:var(--f-display);font-weight:800;font-size:15px;white-space:nowrap}
+.rule-row .how{font-family:var(--f-mono);font-size:11.5px;color:var(--seal-ink);word-break:break-word}
+.rule-row .ex{font-size:13px;color:var(--ink-2);font-weight:300}
+@media (max-width:720px){.rule-row{grid-template-columns:1fr;gap:5px}}
+
+/* 출처 표 */
+.srcwrap{overflow-x:auto;border:1px solid var(--rule);background:var(--card)}
+table.src{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+table.src th,table.src td{text-align:left;padding:12px 16px;
+  border-bottom:1px solid var(--rule-2);vertical-align:top}
+table.src th{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:var(--muted);
+  font-weight:400;background:var(--paper);border-bottom:1px solid var(--rule);white-space:nowrap}
+table.src td:first-child{font-weight:500}
+table.src td.org{color:var(--ink-2);font-size:13px}
+table.src tr:last-child td{border-bottom:0}
+
+/* CTA */
+.cta{margin:64px 0 0;padding:38px var(--pad) 34px;text-align:center}
+.cta h2{font-family:var(--f-display);font-weight:800;font-size:clamp(22px,3.4vw,32px);
+  margin:0 0 10px;text-wrap:balance}
+.cta p{margin:0 auto 24px;max-width:44ch;color:var(--ink-2);font-weight:300;font-size:15px}
+.subscribe{display:flex;max-width:420px;margin:0 auto;flex-wrap:wrap}
+.subscribe input{flex:1 1 220px;min-width:0;font-family:var(--f-body);font-size:14px;
+  padding:12px 14px;border:1.5px solid var(--ink);border-right:0;background:var(--paper);color:var(--ink)}
+.subscribe input::placeholder{color:var(--muted)}
+.subscribe .btn{flex:0 0 auto}
+.formmsg{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);margin:12px 0 0;min-height:1.2em}
+
+footer{margin-top:64px;border-top:1px solid var(--rule);padding:26px 0 46px;
+  font-family:var(--f-mono);font-size:11px;color:var(--muted);line-height:2}
+footer .row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+footer a{color:var(--seal-ink);text-decoration:none;border-bottom:1px solid var(--seal-soft)}
+footer a:hover{border-bottom-color:var(--seal)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="top">
+  <div class="wrap">
+    <span>지식은 전부 원본 데이터에서 계산한 값입니다 · 지어낸 내용 없음</span>
+    <span>분석 완료 <b>10개 데이터셋 818,919행</b> · LOCALDATA</span>
+  </div>
+</div>
+
+<header class="mast">
+  <div class="wrap mast-in">
+    <div class="brand">
+      <h1>세모지</h1>
+      <span class="full">세상에 모든 쓸데없는 지식</span>
+    </div>
+    <div class="docmeta">
+      <span>문서번호 <em>세모지-2026-0001</em></span>
+      <span>근거 <em>공공데이터포털 · LOCALDATA</em></span>
+      <span>열람실 <em>10곳 개관</em></span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <p class="hero-lead">별지 제1호 서식 · 무용지식 확인서</p>
+    <h2 class="hero-title">정부가 공식으로 집계했지만<br><span class="hl">아무 데도 쓸 데가 없는</span> 사실들.</h2>
+    <p class="hero-sub">
+      원본 CSV를 직접 내려받아 계산했습니다. <b>쓸모없다는 것까지 공식입니다.</b>
+    </p>
+
+    <article class="form">
+      <span class="form-label">오늘의 세모지</span>
+      <div class="seal" id="seal" aria-hidden="true"><b>쓸모<br>없음</b><i>확인</i></div>
+
+      <div class="card">
+        <p class="card-cat" id="k-cat">—</p>
+        <p class="card-body" id="k-body">불러오는 중</p>
+        <p class="card-note" id="k-note"></p>
+      </div>
+
+      <dl class="fields">
+        <div class="field"><dt>데이터 출처</dt><dd id="k-src">—</dd></div>
+        <div class="field"><dt>제공 기관</dt><dd>LOCALDATA · 행정안전부</dd></div>
+        <div class="field"><dt>계산 근거</dt><dd><span class="chip ok" id="k-rows">—</span></dd></div>
+        <div class="field"><dt>쓸모없음 지수</dt><dd id="k-score">—</dd></div>
+      </dl>
+
+      <div class="actions">
+        <button class="btn" id="draw" type="button">다른 지식 뽑기</button>
+        <button class="btn ghost" id="copy" type="button">이 지식 복사</button>
+        <span class="counter" id="counter"></span>
+      </div>
+    </article>
+  </div>
+
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><span class="n" id="s1">14</span><span class="l">수록 지식</span></div>
+      <div class="stat"><span class="n">10</span><span class="l">분석 완료 데이터셋</span></div>
+      <div class="stat"><span class="n">818,919</span><span class="l">읽은 데이터 행</span></div>
+      <div class="stat mark"><span class="n">0</span><span class="l">실생활 도움</span></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="blk">
+      <div class="blk-head"><h2>열람실</h2><span>지식 하나를 끝까지 판 곳</span></div>
+
+      <a class="room form" href="./game.html">
+        <span class="form-label">제10호</span>
+        <div class="room-in">
+          <div>
+            <p class="room-no">청소년게임제공업 등록 기록</p>
+            <p class="room-t">곰탱이</p>
+            <p class="room-d">
+              오락실을 등록할 때는 「제작취급품목내용」 칸에 무슨 기계를 갖다 놓았는지 적습니다.
+              19,445곳이 채웠고 표현이 13,267가지입니다. 그중 52곳이 적은 이름이 「곰탱이」입니다.
+            </p>
+            <p class="room-go">열람실 들어가기 →</p>
+          </div>
+          <div class="room-figs">
+            <div class="room-fig hot"><span class="n">13,267</span><span class="l">취급품목 표현</span></div>
+            <div class="room-fig"><span class="n">77.8%</span><span class="l">사라진 비율</span></div>
+            <div class="room-fig"><span class="n">1.3년</span><span class="l">수명 중앙값</span></div>
+            <div class="room-fig"><span class="n">5,097</span><span class="l">‘40대’라 적은 곳</span></div>
+          </div>
+        </div>
+      </a>
+
+      <div class="lite-head"><b>지난 열람실</b></div>
+      <a class="room-lite" href="./bell.html">
+        <span class="no">제9호</span>
+        <span class="t">약자보호</span>
+        <span class="d">안전비상벨 88,634개는 설치목적을 방범용·약자보호·기타 중에서 골라야 했다</span>
+        <span class="go">→</span>
+      </a>
+      <a class="room-lite" href="./bike.html">
+        <span class="no">제8호</span>
+        <span class="t">전국에 서른다섯 개</span>
+        <span class="d">자전거보관소 18,518곳 중 수리대가 있는 곳은 35곳. 그중 16곳이 구리시에 있다</span>
+        <span class="go">→</span>
+      </a>
+      <a class="room-lite" href="./vending.html">
+        <span class="no">제7호</span>
+        <span class="t">본사 직원 0명</span>
+        <span class="d">자판기 270,591대. 서식이 묻는 본사 직원 수에 122,599대가 0이라 답했다</span>
+        <span class="go">→</span>
+      </a>
+      <a class="room-lite" href="./karaoke.html">
+        <span class="no">제6호</span>
+        <span class="t">노래를 연습하는 곳</span>
+        <span class="d">노래방 64,396곳. 서류에 적힌 이름은 ‘노래연습장’이고 청소년실은 121,696개다</span>
+        <span class="go">→</span>
+      </a>
+      <a class="room-lite" href="./bump.html">
+        <span class="no">제5호</span>
+        <span class="t">그냥 도로</span>
+        <span class="d">과속방지턱 141,140개 중 67,524개가 설치장소를 「도로」라고만 적었다</span>
+        <span class="go">→</span>
+      </a>
+      <a class="room-lite" href="./restroom.html">
+        <span class="no">제4호</span>
+        <span class="t">아홉 시부터 여섯 시까지</span>
+        <span class="d">공중화장실 53,572곳. 같은 여덟 시간을 36가지로 적었다</span>
+        <span class="go">→</span>
+      </a>
+      <a class="room-lite" href="./videoroom.html">
+        <span class="no">제3호</span>
+        <span class="t">자동 또는 수동</span>
+        <span class="d">비디오감상실 3,627곳. 신청서가 물어본 「비디오재생기명」</span>
+        <span class="go">→</span>
+      </a>
+      <a class="room-lite" href="./pcbang.html">
+        <span class="no">제2호</span>
+        <span class="t">대박이라는 이름</span>
+        <span class="d">PC방 82,244곳. 대박이라는 이름을 달고 버티는 기간 3.1년</span>
+        <span class="go">→</span>
+      </a>
+      <a class="room-lite" href="./cancelled.html">
+        <span class="no">제1호</span>
+        <span class="t">모범이었던 것들</span>
+        <span class="d">모범음식점 65,426곳. 담당자가 손으로 적은 취소 사유 16,094가지</span>
+        <span class="go">→</span>
+      </a>
+
+    </section>
+
+    <section class="blk">
+      <div class="blk-head"><h2>데이터 서가</h2><span>SOURCE REGISTRY</span></div>
+      <div class="srcwrap">
+        <table class="src">
+          <thead><tr><th>데이터셋</th><th>제공</th><th>캐낸 지식</th><th>상태</th></tr></thead>
+          <tbody>
+            <tr><td>청소년게임제공업</td><td class="org">LOCALDATA</td><td class="org">제작취급품목 · 게임기수 · 30,771행</td><td><span class="chip ok">분석 완료</span></td></tr>
+            <tr><td>안전비상벨</td><td class="org">LOCALDATA</td><td class="org">설치목적 · 설치위치 · 88,634행</td><td><span class="chip ok">분석 완료</span></td></tr>
+            <tr><td>모범음식점정보</td><td class="org">LOCALDATA</td><td class="org">지정취소 사유 · 업소명 · 65,426행</td><td><span class="chip ok">분석 완료</span></td></tr>
+            <tr><td>국가지명 정보</td><td class="org">국토지리정보원</td><td class="org">지명 유래 · 유일 지명</td><td><span class="chip">대기</span></td></tr>
+            <tr><td>인터넷컴퓨터게임시설제공업</td><td class="org">LOCALDATA</td><td class="org">PC방 작명 · 수명 · 82,244행</td><td><span class="chip ok">분석 완료</span></td></tr>
+            <tr><td>비디오물감상실업</td><td class="org">LOCALDATA</td><td class="org">업종의 소멸 · 3,627행</td><td><span class="chip ok">분석 완료</span></td></tr>
+            <tr><td>동물병원 인허가</td><td class="org">LOCALDATA</td><td class="org">병원 작명 · 폐업률</td><td><span class="chip">다음</span></td></tr>
+            <tr><td>동물장묘업 인허가</td><td class="org">LOCALDATA</td><td class="org">전국 분포</td><td><span class="chip">대기</span></td></tr>
+            <tr><td>도로명주소 · 법정동</td><td class="org">행정안전부</td><td class="org">극값 · 이름 장난</td><td><span class="chip">대기</span></td></tr>
+            <tr><td>전국 자전거보관소</td><td class="org">행정안전부</td><td class="org">수리대 · 공기주입기 · 위치</td><td><span class="chip ok">분석 완료</span></td></tr>
+            <tr><td>식품자동판매기영업</td><td class="org">LOCALDATA</td><td class="org">서식의 질문 · 작명 · 소멸</td><td><span class="chip ok">분석 완료</span></td></tr>
+            <tr><td>노래연습장업</td><td class="org">LOCALDATA</td><td class="org">청소년실 · 조도 · 작명</td><td><span class="chip ok">분석 완료</span></td></tr>
+            <tr><td>전국 과속방지턱</td><td class="org">행정안전부</td><td class="org">설치장소 표기 · 규격</td><td><span class="chip ok">분석 완료</span></td></tr>
+            <tr><td>전국 공중화장실</td><td class="org">행정안전부</td><td class="org">개방시간 표기 · 이름</td><td><span class="chip ok">분석 완료</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="blk">
+      <div class="blk-head"><h2>지식을 캐는 방법</h2><span>추출 공식</span></div>
+      <div class="rules">
+        <div class="rule-row">
+          <span class="name">극값</span><span class="how">줄 세워서 맨 끝 하나</span>
+          <span class="ex">가장 긴 업소명 44자, 가장 오래 버틴 모범음식점 34년</span>
+        </div>
+        <div class="rule-row">
+          <span class="name">유일값</span><span class="how">딱 한 번만 나온 값</span>
+          <span class="ex">전국에 딱 한 번 쓰인 취소 사유 14,194가지</span>
+        </div>
+        <div class="rule-row">
+          <span class="name">이름</span><span class="how">상호에서 낱말 세기</span>
+          <span class="ex">‘가든’ 1,768곳, ‘할매’ 251곳, ‘할머니’ 184곳</span>
+        </div>
+        <div class="rule-row">
+          <span class="name">자유 입력</span><span class="how">사람이 손으로 적은 칸</span>
+          <span class="ex">규격이 없어서 오히려 진심이 남는 필드</span>
+        </div>
+        <div class="rule-row">
+          <span class="name">수명</span><span class="how">개업일에서 폐업일까지</span>
+          <span class="ex">PC방이 버티는 기간 중앙값 3.1년, 가장 짧은 곳은 2일</span>
+        </div>
+        <div class="rule-row">
+          <span class="name">사라진 칸</span><span class="how">지금은 없는 서식 항목</span>
+          <span class="ex">「비디오재생기명 — 자동 또는 수동」, 노래방의 「청소년실여부」</span>
+        </div>
+        <div class="rule-row">
+          <span class="name">데이터의 흠</span><span class="how">범위 밖 · 형식 위반</span>
+          <span class="ex">지정일자 1911-11-11, 메뉴 칸에 적힌 ‘111’</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="form cta">
+      <span class="form-label">수신 신청</span>
+      <h2>매주 한 통, 쓸데없는 지식 5개</h2>
+      <p>알아도 인생이 나아지지 않는 정보만 골라서 보냅니다. 광고 없음, 언제든 해지.</p>
+      <form class="subscribe" id="sub" novalidate>
+        <label for="mail" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">이메일 주소</label>
+        <input id="mail" type="email" placeholder="이메일 주소" autocomplete="email">
+        <button class="btn" type="submit">신청</button>
+      </form>
+      <p class="formmsg" id="msg" role="status">아직 서버 연결 전입니다 — 화면만 동작합니다.</p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span>세모지 · 세상에 모든 쓸데없는 지식 · <a href="./about.html">소개</a> · <a href="./contact.html">연락처</a> · <a href="./privacy.html">개인정보처리방침</a></span>
+    <span>출처 <b>모범음식점정보</b> — 지방행정인허가데이터개방(LOCALDATA), 행정안전부<br>공공누리 조건에 따라 이용하며 지식마다 출처를 표기합니다.</span>
+  </div>
+</footer>
+
+<script>
+/* 전부 원본 CSV(65,426행)에서 직접 계산한 값입니다. */
+/* 카드마다 근거가 되는 원본이 다르다. 합계를 보여주면 틀린 말이 된다. */
+const ROWS = {
+  "모범음식점정보": 65426,
+  "인터넷컴퓨터게임시설제공업": 82244,
+  "비디오물감상실업": 3627,
+  "전국공중화장실표준데이터": 53572,
+  "전국과속방지턱표준데이터": 141140,
+  "노래연습장업": 64396,
+  "식품자동판매기영업": 270591,
+  "전국자전거보관소표준데이터": 18518,
+  "안전비상벨": 88634,
+  "청소년게임제공업": 30771,
+};
+const FACTS = [
+ { cat:"오락실 · 서식",
+   body:"오락실을 등록할 때 「제작취급품목내용」 칸에 적힌 표현이 13,267가지다.",
+   note:"19,445곳이 이 칸을 채웠고 그중 11,596가지는 전국에서 한 번만 쓰였다. 52곳이 적은 이름은 ‘곰탱이’다.",
+   src:"청소년게임제공업", score:"98 / 100" },
+ { cat:"오락실 · 실체",
+   body:"취급품목 칸에 가장 많이 나오는 낱말은 ‘토이’로 2,687곳이다.",
+   note:"크레인 1,261곳, 뽑기 363곳, 인형 334곳. 옛 오락실의 낱말인 아케이드 950곳, 펀치 265곳, 농구 42곳을 크게 웃돈다. 법은 이 업종을 ‘청소년게임제공업’이라 부른다.",
+   src:"청소년게임제공업", score:"88 / 100" },
+ { cat:"오락실 · 수명",
+   body:"오락실이 버티는 기간의 중앙값은 1.3년이다. 44.1%는 1년을 못 넘긴다.",
+   note:"제2호에서 본 PC방의 3.1년에 견주면 절반도 안 된다.",
+   src:"청소년게임제공업", score:"66 / 100" },
+ { cat:"오락실 · 쏠림",
+   body:"게임기 대수를 적은 20,318곳 중 5,097곳이 정확히 ‘40’이라고 적었다.",
+   note:"기재한 곳의 25.1%다. 중앙값은 27대이고 가장 많은 곳은 470대다. 왜 40에 몰렸는지는 데이터에 적혀 있지 않다.",
+   src:"청소년게임제공업", score:"79 / 100" },
+ { cat:"비상벨 · 서식",
+   body:"안전비상벨을 등록할 때는 설치목적을 방범용·약자보호·기타 중에서 골라야 한다.",
+   note:"88,634개가 셋 중 하나를 골랐다. 그런데 ‘약자’의 정의도 ‘방범’과의 경계도 원본 어디에도 적혀 있지 않다.",
+   src:"안전비상벨", score:"97 / 100" },
+ { cat:"비상벨 · 분포",
+   body:"‘약자보호’로 등록된 비상벨 4,625개 중 다섯에 하나는 화장실에 있다.",
+   note:"전체 비상벨 중 화장실 비중은 8.2%인데, 약자보호 벨만 보면 21.8%다. 두 배가 넘는다.",
+   src:"안전비상벨", score:"85 / 100" },
+ { cat:"비상벨 · 기준",
+   body:"화장실 비상벨 7,286개 중 6,247개는 ‘방범용’, 1,010개는 ‘약자보호’로 등록됐다.",
+   note:"같은 화장실의 같은 장치인데 목적이 갈린다. 화장실 벨을 등록한 476개 기관 중 13곳은 자기가 관리하는 벨끼리도 서로 다른 목적을 적었다.",
+   src:"안전비상벨", score:"92 / 100" },
+ { cat:"비상벨 · 선택지",
+   body:"설치장소를 고르는 칸에 선택지가 다섯 개 있는데, 21,754개가 ‘기타’를 골랐다.",
+   note:"전체의 24.5%다. 그 ‘기타’들이 설치위치 칸에 적은 것은 「경기도 파주시」 1,725건, 「CCTV폴대」 976건이었다.",
+   src:"안전비상벨", score:"89 / 100" },
+ { cat:"자전거 · 서식",
+   body:"자전거보관소 18,518곳 중 자전거 수리대가 있는 곳은 35곳이다. 0.19%다.",
+   note:"「수리대설치여부」 칸은 18,518곳이 전부 답했다. 비워 둔 곳이 하나도 없다. 묻기는 다 물었다.",
+   src:"전국자전거보관소표준데이터", score:"96 / 100" },
+ { cat:"자전거 · 지역",
+   body:"전국 자전거 수리대 35곳 중 16곳이 구리시에, 7곳이 마포구에 있다.",
+   note:"두 곳이 합쳐 65.7%다. 구리시의 것은 공원과 하천을 따라 있고, 마포구의 것은 대학과 학교 안에 있다.",
+   src:"전국자전거보관소표준데이터", score:"91 / 100" },
+ { cat:"자전거 · 설비",
+   body:"전국에 태양광으로 돌아가는 자전거 공기주입기가 349개 있다.",
+   note:"공기주입기 종류를 적는 칸의 답은 넷뿐이다. 기타, 수동식, 기계식, 태양광식.",
+   src:"전국자전거보관소표준데이터", score:"88 / 100" },
+ { cat:"자전거 · 이름",
+   body:"자전거보관소의 이름 칸에 가장 많이 들어간 낱말은 ‘출구’다. 520번 쓰였다.",
+   note:"이름이 아니라 위치를 적기 때문이다. 「경복궁역 3번 출구 앞」, 「세검정초교 후문 육교 하부」 같은 식이다.",
+   src:"전국자전거보관소표준데이터", score:"84 / 100" },
+ { cat:"자전거 · 흠",
+   body:"자전거를 0대 세울 수 있다고 적힌 보관소가 75곳 있다.",
+   note:"보관대수 칸은 18,518곳 전부가 채웠고 전국 합계는 369,495대다. 999대라고 적힌 곳도 있다.",
+   src:"전국자전거보관소표준데이터", score:"80 / 100" },
+
+ { cat:"자판기 · 서식",
+   body:"자판기 영업신고 서식은 자판기에게 본사 직원이 몇 명인지 묻는다. 122,599대가 0명이라고 답했다.",
+   note:"공장 생산직 직원 수, 보증금, 월세를 묻는 칸도 있다. 전부 90%가 넘게 0이다. 음식점과 공장을 위해 만든 서식을 자판기도 같이 쓴다.",
+   src:"식품자동판매기영업", score:"99 / 100" },
+ { cat:"자판기 · 이름",
+   body:"자판기에도 상호를 적어야 한다. 393대는 이름 칸에 ‘무(無)’라고 적었다.",
+   note:"붙임표로 답한 것이 236대, 마침표가 145대, 빗금이 45대다. 가장 흔한 이름은 그냥 ‘자동판매기’로 496대다.",
+   src:"식품자동판매기영업", score:"94 / 100" },
+ { cat:"자판기 · 넓이",
+   body:"자판기의 넓이를 적는 칸에서, 0을 뺀 가장 흔한 답은 3.3이다. 딱 한 평이다.",
+   note:"270,591대 전부가 이 칸을 채웠고 그중 262,344대는 0이라고 적었다.",
+   src:"식품자동판매기영업", score:"86 / 100" },
+ { cat:"자판기 · 소멸",
+   body:"2001년 한 해에 자판기 38,051대가 등록했다. 2013년에는 1,648대였다.",
+   note:"2016년부터 다시 오른다. 무인카페와 커피 기계가 자판기로 신고되면서다.",
+   src:"식품자동판매기영업", score:"72 / 100" },
+ { cat:"자판기 · 수명",
+   body:"등록된 자판기 270,591대 중 231,564대가 이미 사라졌다. 85.6%다.",
+   note:"버틴 기간의 가운뎃값은 5.31년이고, 18,785대는 1년을 못 넘겼다. 하루 만에 사라진 것도 895대 있다.",
+   src:"식품자동판매기영업", score:"77 / 100" },
+
+ { cat:"노래방 · 이름",
+   body:"우리는 노래방이라 부르지만, 서류에 등록된 이름은 ‘노래연습장’이다.",
+   note:"전국 64,396곳 중 50,535곳이 상호에 ‘노래연습장’을 넣었다. ‘노래방’이라 적은 곳은 2,325곳, ‘가라오케’는 단 한 곳뿐이다.",
+   src:"노래연습장업", score:"92 / 100" },
+ { cat:"노래방 · 방",
+   body:"전국 노래방에는 ‘청소년실’이라는 방이 121,696개 있다.",
+   note:"영업 중인 노래방이 이 칸에 ‘없음’이라 적은 것은 301곳뿐이다. 가장 흔한 답은 한 개다.",
+   src:"노래연습장업", score:"87 / 100" },
+ { cat:"노래방 · 서식",
+   body:"노래방 등록 서류에는 조명이 얼마나 밝은지를 숫자로 적는 칸이 있다. 가장 흔한 답은 40이다.",
+   note:"12,436곳이 적었고 40과 30에 몰려 있다. 가장 큰 값은 150,180으로, 한낮의 야외보다 밝다.",
+   src:"노래연습장업", score:"95 / 100" },
+ { cat:"노래방 · 크기",
+   body:"전국 노래방의 방을 전부 더하면 524,993개다. 가장 흔한 크기는 방 다섯 개짜리다.",
+   note:"가운뎃값도 6개다. 방이 999개라고 적힌 곳도 한 곳 있다.",
+   src:"노래연습장업", score:"78 / 100" },
+ { cat:"노래방 · 소멸",
+   body:"1999년 한 해에 노래방 8,310곳이 새로 등록했다. 2021년에는 249곳이었다.",
+   note:"지금까지 등록된 64,396곳 중 33,104곳이 폐업했다. 버틴 기간의 가운뎃값은 9.5년으로 PC방의 세 배다.",
+   src:"노래연습장업", score:"69 / 100" },
+
+ { cat:"방지턱 · 서식",
+   body:"과속방지턱 141,140개 중 67,524개는 「설치장소」 칸에 그냥 ‘도로’라고 적혀 있다.",
+   note:"틀린 말은 아니다. 과속방지턱은 도로에 있다. ‘도로상’ ‘노면’ ‘주변’이라고 적은 것도 각각 따로 있다.",
+   src:"전국과속방지턱표준데이터", score:"98 / 100" },
+ { cat:"방지턱 · 서식",
+   body:"399개의 과속방지턱은 설치장소가 ‘ooo’으로 등록되어 있다.",
+   note:"서식에 적힌 예시를 지우지 않고 그대로 제출한 것으로 보인다. 전국 공공데이터에 그대로 남아 있다.",
+   src:"전국과속방지턱표준데이터", score:"96 / 100" },
+ { cat:"방지턱 · 칸",
+   body:"「과속방지턱재료」 칸에 적힌 답은 원호형·사다리꼴·가상형·기타 넷뿐이다. 넷 다 재료가 아니라 모양이다.",
+   note:"콘크리트도 아스팔트도 고무도 한 건 없다. 모양을 묻는 칸은 따로 있는데, 두 칸에 같은 값을 적은 것은 63.9%뿐이다.",
+   src:"전국과속방지턱표준데이터", score:"93 / 100" },
+ { cat:"방지턱 · 단위",
+   body:"폭을 적는 칸에 단위가 없어서, 누구는 360이라 적고 누구는 4라고 적었다.",
+   note:"둘 다 3.6미터와 4미터를 뜻한다. 센티미터로 보이는 값이 100,329개, 미터로 보이는 값이 37,426개다.",
+   src:"전국과속방지턱표준데이터", score:"89 / 100" },
+ { cat:"방지턱 · 높이",
+   body:"높이가 0으로 적힌 과속방지턱이 30,898개 있다.",
+   note:"그중 16,954개는 바닥에 그림만 그린 ‘가상형’이다. 나머지 13,944개가 왜 0인지는 데이터에 없다.",
+   src:"전국과속방지턱표준데이터", score:"85 / 100" },
+
+ { cat:"화장실 · 서식",
+   body:"공중화장실 서류의 「개방시간상세」 칸에는 규격이 없다. 그래서 같은 여덟 시간이 36가지로 적혔다.",
+   note:"8,885곳은 ‘09:00~18:00’, 135곳은 ‘0900-1800’이라 썼다. 한 곳은 ‘평일 9시 ~ 18시’라고 적었다.",
+   src:"전국공중화장실표준데이터", score:"97 / 100" },
+ { cat:"화장실 · 이름",
+   body:"전국 화장실 53,572곳에는 저마다 이름이 있고, 그중 47,302개는 전국에서 딱 한 번만 쓰였다.",
+   note:"가장 흔한 이름은 그냥 ‘공원’으로 57곳. 23곳은 이름 칸에 ‘기타’라고 적었고, 강원의 한 곳은 이름이 ‘선’ 한 글자다.",
+   src:"전국공중화장실표준데이터", score:"88 / 100" },
+ { cat:"화장실 · 흠",
+   body:"설치연월이 1884년으로 적힌 화장실이 있다. 2453년에 지어질 화장실은 81곳 있다.",
+   note:"1905년으로 적힌 곳이 374곳 몰려 있다. 일괄 입력으로 보이지만 왜 하필 1905년인지는 데이터에 없다.",
+   src:"전국공중화장실표준데이터", score:"94 / 100" },
+ { cat:"화장실 · 설비",
+   body:"전국 공중화장실의 변기를 전부 더하면 677,500개다.",
+   note:"변기가 한 개도 없다고 적힌 화장실이 1,027곳, 한 줄에 3,445개가 적힌 곳이 한 곳 있다.",
+   src:"전국공중화장실표준데이터", score:"79 / 100" },
+ { cat:"화장실 · 처리",
+   body:"2026년에도 수거식으로 적힌 화장실이 4,227곳 남아 있다.",
+   note:"제주는 다섯 곳 중 한 곳(22.9%), 경북도 비슷하다(21.6%). ‘오물처리방식’ 칸의 답은 수세식 아니면 수거식, 둘뿐이다.",
+   src:"전국공중화장실표준데이터", score:"81 / 100" },
+
+ { cat:"비디오방 · 서류",
+   body:"비디오감상실 인허가 신청서에는 「비디오재생기명」 칸이 있었다. 답은 자동 아니면 수동.",
+   note:"2,631곳이 이 칸을 채웠고 2,569곳이 ‘자동’이라고 적었다. 둘이 무엇을 가르는 구분이었는지는 데이터에 없다.",
+   src:"비디오물감상실업", score:"99 / 100" },
+ { cat:"비디오방 · 소멸",
+   body:"1996년 한 해에 923곳이 문을 연 업종이, 2022년에는 딱 1곳 등록으로 끝났다.",
+   note:"그런데도 308곳이 아직 영업 중이다. 1996년에 문을 연 923곳 중 54곳은 30년째 그 자리에 있다.",
+   src:"비디오물감상실업", score:"73 / 100" },
+ { cat:"비디오방 · 작명",
+   body:"이 업종의 상호에는 ‘비디오’가 1,451곳, ‘DVD’가 957곳 들어 있다.",
+   note:"매체 이름을 간판에 박아버린 탓에 매체가 사라지자 간판도 같이 낡았다. 2021년에 문을 연 곳은 상호에 ‘OTT’를 넣었다.",
+   src:"비디오물감상실업", score:"86 / 100" },
+ { cat:"PC방 · 작명",
+   body:"전국에서 가장 흔한 PC방 상호는 「대박PC」다. 721곳.",
+   note:"골드·킹·에이스·세븐·황금·행운·로얄·럭키까지 더하면 6,256곳이 도박장 어휘를 쓴다. 전체의 7.6%다.",
+   src:"인터넷컴퓨터게임시설제공업", score:"95 / 100" },
+ { cat:"PC방 · 수명",
+   body:"PC방이 버티는 기간의 중앙값은 3.1년이다. 넷에 하나는 1년을 못 넘긴다.",
+   note:"등록일과 폐업일이 모두 남은 56,179곳 기준. 평균은 4.6년, 최장은 25.9년이다.",
+   src:"인터넷컴퓨터게임시설제공업", score:"62 / 100" },
+ { cat:"PC방 · 극값",
+   body:"「황금PC방」은 문을 연 지 이틀 만에 닫았다.",
+   note:"2012년 8월 28일 등록, 8월 30일 폐업. 하루 만에 접은 곳도 73군데 있다.",
+   src:"인터넷컴퓨터게임시설제공업", score:"91 / 100" },
+ { cat:"PC방 · 자유 입력",
+   body:"가게 이름 칸에 담당자가 업무 처리 경과를 적어버린 기록이 507곳 있다.",
+   note:"가장 긴 상호명은 66자인데, 내용은 「전화상으로 폐업했다고 하여 직접 폐업신청하라고 안내함」이다.",
+   src:"인터넷컴퓨터게임시설제공업", score:"98 / 100" },
+ { cat:"지역 · 유일값",
+   body:"세종특별자치시에는 현역 모범음식점이 한 곳도 없다.",
+   note:"지금까지 141곳이 지정됐지만 전부 취소됐다. 그중 82곳은 지금도 멀쩡히 영업 중이다. 모범 자격만 없다.",
+   score:"94 / 100" },
+ { cat:"작명 · 낱말 세기",
+   body:"모범음식점 이름에 가장 많이 들어간 낱말은 ‘가든’이다. 1,768곳.",
+   note:"정원이 있는 집이 1,768곳일 리는 없다. ‘가든’은 한국 외식업 상호에서 뜻이 아니라 부품으로 쓰인다.",
+   score:"88 / 100" },
+ { cat:"작명 · 대결",
+   body:"‘할매’(251곳)가 ‘할머니’(184곳)보다 많다.",
+   note:"참고로 ‘엄마’는 75곳뿐이다. 모범음식점 작명에서 세대는 한 칸 위가 유리하다.",
+   score:"97 / 100" },
+ { cat:"이름 · 극값",
+   body:"가장 긴 업소명은 44자다. 괄호 안에 영문 상호를 통째로 넣었다.",
+   note:"「63뷔페파빌리온 더프리미엄(63BUFFETPAVILION THE PREMIUM)」. 간판에 다 들어갔을지 궁금하다.",
+   score:"79 / 100" },
+ { cat:"이름 · 극값",
+   body:"업소명이 한 글자인 모범음식점이 110곳 있다.",
+   note:"‘곰’, ‘뻘’, ‘꿉’, ‘틈’, ‘짝’ 같은 이름들이다. 한자 ‘宮’도 있고, 숫자 ‘2’도 한 곳 있다.",
+   score:"92 / 100" },
+ { cat:"이름 · 중복",
+   body:"65,426곳 중 13,124곳은 다른 가게와 이름이 겹친다.",
+   note:"가장 흔한 상호는 ‘남원추어탕’으로 전국 48곳. 그다음이 ‘등촌샤브칼국수’와 ‘장수촌’ 각 40곳이다.",
+   score:"71 / 100" },
+ { cat:"제도 · 통계",
+   body:"모범음식점 자격을 잃는 가장 큰 이유는 위생이 아니라 가게가 없어져서다.",
+   note:"취소 53,707건 중 34.0%가 폐업·폐문·시설 멸실이다. 행정처분으로 잘린 경우는 6.3%뿐이다.",
+   score:"64 / 100" },
+ { cat:"제도 · 커트라인",
+   body:"재지정 커트라인은 85점이다. 84점을 받고 모범이 아니게 된 가게가 있다.",
+   note:"「평가점수 미달(84점)」이라고 적혀 있다. 기록에 남은 가장 낮은 점수는 38점이다.",
+   score:"83 / 100" },
+ { cat:"데이터 · 흠",
+   body:"1987년 4월 9일에 지정된 162곳 중 150곳의 대표 메뉴가 전부 ‘팔보채’로 적혀 있다.",
+   note:"그날 목록에는 갈비집도 경양식집도 호프집도 있다. 누군가 한 칸을 복사해 내린 흔적이다.",
+   score:"99 / 100" },
+ { cat:"데이터 · 흠",
+   body:"지정일자가 1911년 11월 11일인 가게가 한 곳 있다.",
+   note:"1이 여섯 번이다. 반대편에는 2029년 9월 30일에 지정될 예정인 가게가 한 곳 있다.",
+   score:"96 / 100" },
+ { cat:"기록 · 최장수",
+   body:"34년째 모범인 집이 있다. 강원 평창의 송어 전문점이다.",
+   note:"1992년 7월 1일에 지정된 뒤 한 번도 취소되지 않았다. 같은 날 지정된 안동 추어탕집도 아직 현역이다.",
+   score:"58 / 100" },
+ { cat:"제도 · 부활",
+   body:"모범 자격을 잃었다가 다시 따내고 지금도 영업 중인 가게가 206곳 있다.",
+   note:"취소일자와 재지정일자가 나란히 남는다. 넉 달 만에 돌아온 곳도 있다.",
+   score:"76 / 100" },
+ { cat:"기재 · 자유 입력",
+   body:"대표 메뉴 칸에 적힌 표현이 14,640가지다.",
+   note:"규격이 없으니 이렇게 된다. 「낙지볶음(4,5000원)」처럼 자릿수를 틀린 것도 그대로 남아 있다.",
+   score:"81 / 100" },
+ { cat:"누락 · 빈칸",
+   body:"현역 모범음식점 11,419곳 중 1,517곳은 전화번호 칸이 비어 있다.",
+   note:"모범이라고 도장은 찍었는데 연락처는 모른다. 전체로 보면 9,349곳이 번호 없이 등록돼 있다.",
+   score:"69 / 100" }
+];
+
+const el = id => document.getElementById(id);
+const seal = el("seal");
+let idx = -1;
+
+function render(i){
+  const f = FACTS[i];
+  el("k-cat").textContent = f.cat;
+  el("k-body").textContent = f.body;
+  el("k-note").textContent = f.note;
+  el("k-score").textContent = f.score;
+  el("k-src").textContent = f.src || "모범음식점정보";
+  const src = f.src || "모범음식점정보";
+  el("k-rows").textContent = "원본 " + (ROWS[src] || 0).toLocaleString() + "행";
+  el("counter").textContent = "지식 " + String(i+1).padStart(2,"0") + " / " + String(FACTS.length).padStart(2,"0");
+  ["k-cat","k-body","k-note"].forEach(id => {
+    const n = el(id); n.classList.remove("swap"); void n.offsetWidth; n.classList.add("swap");
+  });
+  seal.classList.remove("go"); void seal.offsetWidth; seal.classList.add("go");
+}
+function draw(){
+  let n; do { n = Math.floor(Math.random()*FACTS.length); } while (n === idx && FACTS.length > 1);
+  idx = n; render(idx);
+}
+el("draw").addEventListener("click", draw);
+
+el("copy").addEventListener("click", async () => {
+  const f = FACTS[idx], btn = el("copy");
+  const text = f.body + "\n\n" + f.note + "\n\n출처: " + (f.src || "모범음식점정보") + " (LOCALDATA)\n— 세모지";
+  try { await navigator.clipboard.writeText(text); btn.textContent = "복사됨"; }
+  catch { btn.textContent = "복사 실패"; }
+  setTimeout(() => { btn.textContent = "이 지식 복사"; }, 1600);
+});
+
+el("sub").addEventListener("submit", e => {
+  e.preventDefault();
+  const v = el("mail").value.trim(), msg = el("msg");
+  if (!v || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { msg.textContent = "이메일 주소 형식을 확인해 주세요."; return; }
+  msg.textContent = "확인했습니다 — 다만 아직 서버가 없어 저장되지 않습니다.";
+});
+
+el("s1").textContent = FACTS.length;
+draw();
+</script>

@@ -1,0 +1,492 @@
+<title>대박이라는 이름</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;600;800&family=IBM+Plex+Sans+KR:wght@300;400;500;600&family=Nanum+Gothic+Coding:wght@400;700&display=swap">
+
+<style>
+:root{
+  --paper:#EBEDE6; --card:#F5F6F1;
+  --ink:#1B1D19; --ink-2:#454A3F; --muted:#787E6F;
+  --rule:#C4C9B9; --rule-2:#DADED0; --chip:#DFE3D6;
+  --seal:#BE3B2E; --seal-ink:#BE3B2E; --seal-soft:rgba(190,59,46,.10);
+  --seal-blend:multiply;
+  --open:#0F63A8;                 /* 신규 등록 — 검증 통과 (protan ΔE 18.8) */
+  --close:#BE3B2E;                /* 폐업 */
+  --bar-track:#DDE1D4;
+  --f-display:'Hahmlet','Nanum Myeongjo','Apple SD Gothic Neo','Malgun Gothic',serif;
+  --f-body:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+  --f-mono:'Nanum Gothic Coding',ui-monospace,'Consolas',monospace;
+  --pad:clamp(18px,4vw,34px); --maxw:1080px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#15170F; --card:#1D2018;
+    --ink:#E8EBDE; --ink-2:#B5BBA7; --muted:#8C927E;
+    --rule:#343A28; --rule-2:#282D1E; --chip:#2A2F21;
+    --seal:#E2604F; --seal-ink:#F07C6A; --seal-soft:rgba(226,96,79,.15);
+    --seal-blend:normal;
+    --open:#3D8FC9; --close:#E2604F; --bar-track:#262B1D;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15170F; --card:#1D2018;
+  --ink:#E8EBDE; --ink-2:#B5BBA7; --muted:#8C927E;
+  --rule:#343A28; --rule-2:#282D1E; --chip:#2A2F21;
+  --seal:#E2604F; --seal-ink:#F07C6A; --seal-soft:rgba(226,96,79,.15);
+  --seal-blend:normal;
+  --open:#3D8FC9; --close:#E2604F; --bar-track:#262B1D;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{word-break:keep-all;overflow-wrap:break-word;margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);
+  font-size:16px;line-height:1.72;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+
+.top{border-bottom:1px solid var(--rule);font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.top .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:9px 0}
+.top b{color:var(--ink-2);font-weight:400}
+.top a{color:var(--seal-ink);text-decoration:none;border-bottom:1px solid var(--seal-soft)}
+.top a:hover{border-bottom-color:var(--seal)}
+
+/* 표제 */
+.head{padding:56px 0 40px}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.15em;color:var(--muted);margin:0 0 16px}
+h1{font-family:var(--f-display);font-weight:800;letter-spacing:-.025em;
+  font-size:clamp(38px,8vw,76px);line-height:1.04;margin:0 0 20px;text-wrap:balance}
+h1 .struck{position:relative;white-space:nowrap}
+h1 .struck::after{content:"";position:absolute;left:-.04em;right:-.04em;top:52%;height:.055em;
+  background:var(--seal);transform:scaleX(0);transform-origin:left;
+  animation:strike .7s .5s cubic-bezier(.65,0,.35,1) forwards}
+@keyframes strike{to{transform:scaleX(1)}}
+.lede{max-width:56ch;font-size:17px;font-weight:300;color:var(--ink-2);margin:0}
+.lede b{font-weight:500;color:var(--ink)}
+
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  border-block:1.5px solid var(--ink);margin-top:40px}
+.fig{padding:24px 20px 22px 0;border-right:1px solid var(--rule-2)}
+.fig:last-child{border-right:0}
+.fig .n{font-family:var(--f-display);font-weight:800;font-size:clamp(30px,5vw,42px);
+  line-height:1;font-variant-numeric:tabular-nums;display:block;letter-spacing:-.02em}
+.fig.hot .n{color:var(--seal-ink)}
+.fig .l{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.11em;color:var(--muted);
+  display:block;margin-top:10px}
+.fig .s{font-size:12.5px;color:var(--ink-2);display:block;margin-top:4px;font-weight:300}
+
+/* 서식 박스 */
+.form{border:1.5px solid var(--ink);background:var(--card);position:relative}
+.form-label{position:absolute;top:-8px;left:16px;background:var(--card);padding:0 8px;
+  font-family:var(--f-mono);font-size:10.5px;font-weight:700;letter-spacing:.16em;color:var(--ink-2)}
+
+/* 열람기 */
+.reader{margin:70px 0 0;padding:40px var(--pad) 0;min-height:300px}
+.seal{position:absolute;top:24px;right:22px;width:96px;height:96px;border-radius:50%;
+  border:3px solid var(--seal);display:grid;place-content:center;text-align:center;
+  color:var(--seal);mix-blend-mode:var(--seal-blend);transform:rotate(-11deg);pointer-events:none}
+.seal::after{content:"";position:absolute;inset:5px;border:1px solid var(--seal);border-radius:50%}
+.seal b{display:block;font-family:var(--f-display);font-weight:800;font-size:26px;line-height:1;letter-spacing:.06em}
+.seal i{display:block;font-style:normal;font-family:var(--f-mono);font-size:8.5px;letter-spacing:.18em;margin-top:6px}
+@keyframes stamp{0%{opacity:0;transform:rotate(-32deg) scale(2.5)}
+  62%{opacity:1;transform:rotate(-9deg) scale(.93)}100%{opacity:1;transform:rotate(-11deg) scale(1)}}
+.seal.go{animation:stamp .5s cubic-bezier(.2,.9,.3,1) both}
+@media (max-width:620px){.seal{width:70px;height:70px;top:16px;right:14px}.seal b{font-size:19px}.seal i{font-size:7px}}
+
+.q-cat{font-family:var(--f-mono);font-size:11px;font-weight:700;letter-spacing:.13em;
+  color:var(--seal-ink);margin:0 0 16px}
+.q-text{font-family:var(--f-display);font-weight:600;font-size:clamp(20px,3.4vw,32px);
+  line-height:1.45;margin:0 0 18px;max-width:24ch;text-wrap:balance;word-break:keep-all}
+.q-text::before{content:"「";opacity:.4}
+.q-text::after{content:"」";opacity:.4}
+.q-meta{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin:0 0 30px;line-height:1.9}
+.q-meta em{font-style:normal;color:var(--ink-2)}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.fade{animation:fadein .3s ease both}
+.reader-act{display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  border-top:1.5px solid var(--ink);padding:16px var(--pad);margin:0 calc(var(--pad)*-1)}
+.btn{font-family:var(--f-body);font-size:14px;font-weight:500;padding:11px 20px;
+  border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);cursor:pointer;
+  transition:transform .12s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.tally{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);margin-left:auto}
+
+/* 섹션 */
+section.blk{padding:74px 0 0}
+.blk-head{display:flex;align-items:baseline;gap:14px;border-bottom:1.5px solid var(--ink);
+  padding-bottom:10px;margin-bottom:14px}
+.blk-head h2{font-family:var(--f-display);font-weight:800;font-size:22px;margin:0;letter-spacing:-.01em}
+.blk-head span{margin-left:auto;font-family:var(--f-mono);font-size:11px;color:var(--muted);letter-spacing:.08em}
+.blk-note{margin:0 0 30px;max-width:60ch;color:var(--ink-2);font-weight:300;font-size:15px}
+.blk-note b{font-weight:500;color:var(--ink)}
+
+/* 툴팁 */
+.tip{position:fixed;z-index:50;pointer-events:none;opacity:0;transition:opacity .12s;
+  background:var(--ink);color:var(--paper);font-family:var(--f-mono);font-size:11.5px;
+  padding:6px 10px;white-space:nowrap;transform:translate(-50%,-140%)}
+.tip.on{opacity:1}
+
+/* 가로 막대 */
+.hbars{display:flex;flex-direction:column;gap:2px}
+.hrow{display:grid;grid-template-columns:minmax(92px,124px) 1fr minmax(92px,auto);
+  gap:14px;align-items:center;padding:5px 0}
+.hrow .cat{font-size:14px;font-weight:500}
+.hrow .track{display:block;background:var(--bar-track);height:22px}
+.hrow .bar{display:block;height:100%;background:var(--seal);border-radius:0 4px 4px 0;
+  width:0;transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.hrow:hover .bar{filter:brightness(1.12)}
+.hrow .val{font-family:var(--f-mono);font-size:12.5px;color:var(--ink-2);text-align:right;
+  font-variant-numeric:tabular-nums}
+@media (max-width:560px){.hrow{grid-template-columns:1fr auto;gap:4px 10px}
+  .hrow .track{grid-column:1/-1;order:3}}
+
+/* 범례 */
+.legend{display:flex;gap:20px;flex-wrap:wrap;margin:0 0 14px;
+  font-family:var(--f-mono);font-size:11.5px;color:var(--ink-2)}
+.legend i{display:inline-block;width:11px;height:11px;margin-right:7px;
+  vertical-align:-1px;border-radius:2px;font-style:normal}
+.legend .o i{background:var(--open)}
+.legend .c i{background:var(--close)}
+
+/* 2계열 세로 막대 */
+.pairs{display:flex;align-items:flex-end;gap:3px;height:220px;
+  border-bottom:1px solid var(--rule);padding-top:30px;position:relative}
+.pair{flex:1 1 0;min-width:0;display:flex;align-items:flex-end;gap:1px;height:100%;position:relative}
+.pair .p{flex:1 1 0;border-radius:3px 3px 0 0;transition:filter .15s}
+.pair .p.o{background:var(--open)}
+.pair .p.c{background:var(--close)}
+.pair:hover .p{filter:brightness(1.15)}
+.pair .tag{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);
+  font-family:var(--f-mono);font-size:10px;color:var(--ink-2);white-space:nowrap;margin-bottom:6px}
+.axis{position:relative;height:16px;margin-top:7px;
+  font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.axis span{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap}
+.axis span.first{transform:none}
+.axis span.last{transform:translateX(-100%)}
+details.tbl{margin-top:16px;font-family:var(--f-mono);font-size:12px}
+details.tbl summary{cursor:pointer;color:var(--muted);letter-spacing:.06em}
+details.tbl .scroll{overflow-x:auto;margin-top:10px;border:1px solid var(--rule)}
+details.tbl table{border-collapse:collapse;width:100%;min-width:420px}
+details.tbl td,details.tbl th{padding:5px 10px;border-bottom:1px solid var(--rule-2);
+  text-align:right;font-variant-numeric:tabular-nums}
+details.tbl th:first-child,details.tbl td:first-child{text-align:left}
+details.tbl th{color:var(--muted);font-weight:400;background:var(--card)}
+
+/* 목록 */
+.list{border-top:1px solid var(--rule)}
+.li{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(70px,auto);
+  gap:16px;padding:14px 0;border-bottom:1px solid var(--rule-2);align-items:baseline}
+.li .nm{font-family:var(--f-display);font-weight:600;font-size:17px;word-break:keep-all}
+.li .ad{font-family:var(--f-mono);font-size:12px;color:var(--ink-2)}
+.li .dt{font-family:var(--f-mono);font-size:12.5px;color:var(--seal-ink);text-align:right;
+  font-variant-numeric:tabular-nums}
+@media (max-width:640px){.li{grid-template-columns:1fr auto;gap:2px 12px}.li .ad{grid-column:1/-1}}
+
+/* 인용 카드 */
+.quotes{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.quote{border:1px solid var(--rule);background:var(--card);padding:20px 18px;
+  display:flex;flex-direction:column;gap:10px}
+.quote .q{font-family:var(--f-display);font-weight:600;font-size:16px;line-height:1.55;
+  margin:0;word-break:keep-all}
+.quote .c{font-family:var(--f-mono);font-size:11px;color:var(--muted);margin:0;
+  padding-top:9px;border-top:1px dashed var(--rule)}
+
+.foot{margin-top:80px;border-top:1.5px solid var(--ink);padding:24px 0 60px;
+  font-family:var(--f-mono);font-size:11.5px;color:var(--muted);line-height:2}
+.foot .r{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot b{color:var(--ink-2);font-weight:400}
+.foot a{color:var(--seal-ink);text-decoration:none;border-bottom:1px solid var(--seal-soft)}
+.foot a:hover{border-bottom-color:var(--seal)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="top">
+  <div class="wrap">
+    <span><a href="./index.html">← 세모지</a> · 제2호 열람실</span>
+    <span>원자료 <b>인터넷컴퓨터게임시설제공업</b> · LOCALDATA · 2026-09-02 내려받음</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="head">
+    <p class="eyebrow">제2호 열람실 · PC방 등록·폐업 기록</p>
+    <h1>대박이라는<br><span class="struck">이름</span></h1>
+    <p class="lede">
+      전국에 등록된 PC방은 <b>82,244곳</b>입니다. 그중 <b>63,566곳</b>이 이미 사라졌습니다.
+      가장 흔한 상호는 「대박PC」로 721곳. 그리고 PC방이 버티는 기간의 중앙값은 <b>3.1년</b>입니다.
+      대박이라는 이름을 달고 3년을 삽니다.
+    </p>
+
+    <div class="figs">
+      <div class="fig"><span class="n">82,244</span><span class="l">누적 등록</span><span class="s">1996년 이후 전체 기록</span></div>
+      <div class="fig hot"><span class="n">63,566</span><span class="l">사라짐</span><span class="s">전체의 77.3%</span></div>
+      <div class="fig"><span class="n">18,678</span><span class="l">현재 영업</span><span class="s">전체의 22.7%</span></div>
+      <div class="fig hot"><span class="n">3.1년</span><span class="l">버틴 기간 중앙값</span><span class="s">평균은 4.6년</span></div>
+    </div>
+  </div>
+
+  <article class="form reader">
+    <span class="form-label">상호 열람</span>
+    <div class="seal" id="seal" aria-hidden="true"><b>閉業</b><i>폐업</i></div>
+    <p class="q-cat" id="q-cat">—</p>
+    <p class="q-text" id="q-text">불러오는 중</p>
+    <p class="q-meta" id="q-meta">&nbsp;</p>
+    <div class="reader-act">
+      <button class="btn" id="draw" type="button">다음 상호</button>
+      <button class="btn ghost" id="copy" type="button">복사</button>
+      <span class="tally" id="tally"></span>
+    </div>
+  </article>
+
+  <section class="blk">
+    <div class="blk-head"><h2>PC방은 얼마나 버티나</h2><span>폐업 56,179곳</span></div>
+    <p class="blk-note">
+      등록일과 폐업일이 모두 남아 있는 56,179곳의 영업 기간입니다.
+      <b>넷에 하나는 1년을 못 넘깁니다.</b> 개업 이틀 만에 문을 닫은 곳도 있습니다.
+      반대편 끝에는 25.9년을 버틴 곳이 있습니다.
+    </p>
+    <div class="hbars" id="life"></div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>이틀 만에 닫은 황금</h2><span>최단 영업</span></div>
+    <p class="blk-note">
+      등록하고 사흘 안에 폐업한 곳들입니다. 이름은 하나같이 좋습니다.
+      「복돼지 PC」는 올해 1월 12일에 열어 사흘 뒤 닫았습니다.
+    </p>
+    <div class="list" id="short"></div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>PC방 작명 사전</h2><span>상호명 낱말 빈도</span></div>
+    <p class="blk-note">
+      상호에 가장 많이 쓰인 낱말입니다. 「대박」이 1,553곳으로 압도적이고,
+      골드·킹·에이스·세븐·황금·행운·로얄·럭키까지 더하면 <b>6,256곳</b>이 도박장 어휘를 씁니다.
+      전체의 7.6%입니다. 그 옆에 넷·존·인터넷·사이버·스타 같은 1999년의 말들이 남아 있습니다.
+    </p>
+    <div class="hbars" id="words"></div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>열고 닫은 기록</h2><span>2009~2026 · 신규 등록 · 폐업</span></div>
+    <p class="blk-note">
+      1999년(2,151곳)과 2007~2008년(22,553곳)에 등록이 몰립니다. 특히 2008년 15,393곳은
+      실제 개업이라기보다 제도가 바뀌며 기존 업소가 한꺼번에 다시 등록된 것으로 보입니다.
+      그 봉우리를 그대로 그리면 나머지가 전부 눌리므로, <b>아래 그래프는 2009년부터</b> 그렸습니다.
+      전체 연도는 표로 볼 수 있습니다.<br><br>
+      2011년부터 폐업이 신규를 앞지르기 시작하고, <b>2020년</b>에 가장 크게 벌어집니다.
+      그해 신규 2,755곳, 폐업 4,806곳.
+    </p>
+    <div class="legend">
+      <span class="o"><i></i>신규 등록</span>
+      <span class="c"><i></i>폐업</span>
+    </div>
+    <div class="pairs" id="years"></div>
+    <div class="axis" id="yaxis"></div>
+    <details class="tbl">
+      <summary>표로 보기</summary>
+      <div class="scroll"><table id="ytbl"><thead><tr><th>연도</th><th>신규 등록</th><th>폐업</th></tr></thead><tbody></tbody></table></div>
+    </details>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>상호명 칸에 적힌 업무 메모</h2><span>507곳</span></div>
+    <p class="blk-note">
+      가게 이름을 적는 칸에 담당자가 처리 경과를 적어버린 기록이 507곳 있습니다.
+      아래는 원본 그대로입니다. 상호가 아니라 업무일지입니다.
+    </p>
+    <div class="quotes" id="memos"></div>
+  </section>
+
+  <section class="blk">
+    <div class="blk-head"><h2>1999년부터 계속 열려 있는 곳</h2><span>현역 최장수</span></div>
+    <p class="blk-note">
+      스타크래프트가 PC방을 만들던 해에 등록해서, 27년째 문을 닫지 않은 여섯 곳입니다.
+      전부 서울 동북부입니다.
+    </p>
+    <div class="list" id="oldest"></div>
+  </section>
+</main>
+
+<div class="tip" id="tip"></div>
+
+<footer class="foot">
+  <div class="wrap r">
+    <span><a href="./index.html">세모지로 돌아가기 →</a> · 제2호 열람실 · <a href="./about.html">소개</a> · <a href="./contact.html">연락처</a> · <a href="./privacy.html">개인정보처리방침</a></span>
+    <span>출처 <b>인터넷컴퓨터게임시설제공업</b> — 지방행정인허가데이터개방(LOCALDATA) · 2026-09-02 내려받은 82,244행 기준<br>영업 중인 가게의 상호는 폐업·행정 기록과 엮지 않았습니다.</span>
+  </div>
+</footer>
+
+<script>
+/* 아래 값은 모두 원본 CSV 82,244행에서 계산했습니다. scripts/analyze_pc.py 로 재현됩니다. */
+
+const NAMES = [
+ ["대박PC", 721, "가장 흔한 PC방 상호. 전국에 721곳."],
+ ["골드PC", 405, "‘골드’가 들어간 상호는 869곳."],
+ ["대박PC방", 260, "‘대박PC’와 따로 집계된 별개의 상호."],
+ ["행운PC", 244, "‘행운’이 들어간 상호는 481곳."],
+ ["스타PC", 207, "1999년의 말. ‘스타’가 든 상호는 1,404곳."],
+ ["놀이터PC", 205, "PC방을 놀이터라고 부른 곳이 205군데."],
+ ["로얄PC", 201, "‘로얄’ 458곳. 철자는 대부분 ‘로얄’이다."],
+ ["황금PC", 188, "‘황금’이 들어간 상호는 581곳."],
+ ["세븐PC", 186, "‘세븐’ 588곳. 슬롯머신의 숫자다."],
+ ["에이스PC", 180, "‘에이스’ 601곳. ‘잭팟’도 177곳 있다."],
+ ["팡팡PC", 156, "의성어로 지은 이름."],
+ ["천상천하유아독존 PC방", 1, "원본에는 뒤에 「(현장조사 2013-11-25 무단폐업)」이 붙어 있다."],
+ ["화성정복컴퓨터게임장", 1, "원본에는 뒤에 「(현장조사 2013-12-03 무단폐업)」이 붙어 있다."],
+ ["........................................", 1, "점 40개가 상호명 칸에 그대로 등록되어 있다."],
+ ["복돼지 PC", 1, "2026년 1월 12일 등록, 1월 15일 폐업. 사흘."],
+ ["황금PC방", 1, "2012년 8월 28일 등록, 8월 30일 폐업. 이틀."],
+ ["사이버2001", 1, "1998년 12월 등록, 2024년 10월 폐업. 25.9년으로 최장수."],
+ ["게임기 천국", 1, "1996년 7월 등록. 26년 뒤인 2022년에 문을 닫았다."]
+];
+
+const LIFE = [
+ ["1년 미만", 12630, 22.5],
+ ["1~2년", 8254, 14.7],
+ ["2~3년", 6329, 11.3],
+ ["3~5년", 9345, 16.6],
+ ["5~10년", 12850, 22.9],
+ ["10년 이상", 6771, 12.1]
+];
+
+const WORDS = [
+ ["넷", 3385], ["존", 3249], ["인터넷", 1576], ["대박", 1553], ["스타", 1404],
+ ["사이버", 1234], ["월드", 888], ["골드", 869], ["킹", 654], ["에이스", 601],
+ ["세븐", 588], ["황금", 581], ["행운", 481], ["로얄", 458], ["럭키", 334], ["잭팟", 177]
+];
+
+const SHORT = [
+ ["황금PC방", "2012-08-28 → 2012-08-30", "2일"],
+ ["Happyro PC 목동로데오점", "2017-05-10 → 2017-05-12", "2일"],
+ ["VIP PC방", "2013-04-17 → 2013-04-19", "2일"],
+ ["아이비스PC(와수리점)", "2019-06-19 → 2019-06-21", "2일"],
+ ["방학PC게임장", "2009-02-02 → 2009-02-05", "3일"],
+ ["브라보PC월드", "2024-05-31 → 2024-06-03", "3일"],
+ ["동방 pc방", "2009-01-30 → 2009-02-02", "3일"],
+ ["복돼지 PC", "2026-01-12 → 2026-01-15", "3일"]
+];
+
+const MEMOS = [
+ ["아이앤씨피시방 - 20230411 전화상으로 폐업했다고 하여 직접 폐업신청하라고 안내함(세무서는 폐업신청완료했다고 함)", "66자 · 가장 긴 상호명"],
+ ["클로바 PC방 (유선통보 1차-2009.05.04. 17:30, 2차-2009.05.19. 16:40)", "57자 · 통화 시각까지 분 단위로"],
+ ["CLICK JOY PC ZONE(무단폐업, 2019. 하반기 현장조사)", "39자"],
+ ["지존(JI ZONE)PC방 (현장조사 2013-11-13 무단폐업)", "37자"],
+ ["천상천하유아독존 PC방 (현장조사 2013-11-25 무단폐업)", "35자 · 이름값을 못 했다"],
+ ["스피드인터넷 21C (현장조사 2014-05-16 무단폐업)", "33자"]
+];
+
+const YEARS = [
+ [1996,34,3],[1997,33,18],[1998,54,36],[1999,2151,24],[2000,1662,213],[2001,1777,503],
+ [2002,31,396],[2003,249,42],[2004,40,23],[2005,18,45],[2006,53,57],[2007,7160,210],
+ [2008,15393,2108],[2009,4670,3232],[2010,4421,3298],[2011,2811,3934],[2012,2410,3049],
+ [2013,2125,3237],[2014,2903,3411],[2015,2899,3201],[2016,3013,2510],[2017,3692,2575],
+ [2018,3835,3000],[2019,3437,3358],[2020,2755,4806],[2021,2544,2923],[2022,2313,2812],
+ [2023,2904,2203],[2024,2344,2135],[2025,2545,1756],[2026,1844,1185]
+];
+
+const OLDEST = [
+ ["BNC 인터넷 PC", "서울 도봉구 방학로2길", "1999-04-30"],
+ ["매니아클럽", "서울 중랑구 사가정로50길", "1999-06-09"],
+ ["PC마스터", "서울 중랑구 상봉로", "1999-06-10"],
+ ["엔터,인터넷 PC방", "서울 강북구 솔매로43길", "1999-06-12"],
+ ["테마PC방", "서울 강북구 노해로11길", "1999-06-17"],
+ ["컴토피아 인터넷 PC 프라자", "서울 강북구 오현로", "1999-06-22"]
+];
+
+const $ = s => document.querySelector(s);
+const nf = n => n.toLocaleString("ko-KR");
+
+/* 열람기 */
+const seal = $("#seal");
+let seen = new Set(), cur = 0;
+function pick(){
+  if (seen.size >= NAMES.length) seen.clear();
+  let i; do { i = Math.floor(Math.random()*NAMES.length); } while (seen.has(i));
+  seen.add(i); cur = i;
+  const [name, cnt, note] = NAMES[i];
+  $("#q-cat").textContent = cnt > 1 ? "전국 " + nf(cnt) + "곳" : "단 한 곳";
+  $("#q-text").textContent = name;
+  $("#q-meta").textContent = note;
+  ["#q-cat","#q-text","#q-meta"].forEach(s=>{
+    const n=$(s); n.classList.remove("fade"); void n.offsetWidth; n.classList.add("fade");
+  });
+  seal.classList.remove("go"); void seal.offsetWidth; seal.classList.add("go");
+  $("#tally").textContent = `열람 ${seen.size} / ${NAMES.length}`;
+}
+$("#draw").addEventListener("click", pick);
+$("#copy").addEventListener("click", async e => {
+  const [name,,note] = NAMES[cur], b = e.currentTarget;
+  try {
+    await navigator.clipboard.writeText(
+      `「${name}」\n\n${note}\n출처: 인터넷컴퓨터게임시설제공업 · LOCALDATA\n— 세모지`);
+    b.textContent = "복사됨";
+  } catch { b.textContent = "복사 실패"; }
+  setTimeout(()=>{ b.textContent = "복사"; }, 1500);
+});
+
+/* 툴팁 */
+const tip = $("#tip");
+function bindTips(){
+  document.querySelectorAll("[data-t]").forEach(el=>{
+    el.addEventListener("mousemove", e => {
+      tip.textContent = el.dataset.t; tip.classList.add("on");
+      tip.style.left = e.clientX + "px"; tip.style.top = e.clientY + "px";
+    });
+    el.addEventListener("mouseleave", ()=> tip.classList.remove("on"));
+  });
+}
+
+/* 수명 분포 */
+const maxLife = Math.max(...LIFE.map(r=>r[1]));
+$("#life").innerHTML = LIFE.map(([k,n,pct])=>`
+  <div class="hrow" data-t="${k} — ${nf(n)}곳 (${pct}%)">
+    <span class="cat">${k}</span>
+    <span class="track"><span class="bar" data-w="${(n/maxLife*100).toFixed(1)}"></span></span>
+    <span class="val">${pct}% · ${nf(n)}</span>
+  </div>`).join("");
+
+/* 작명 사전 */
+const maxWord = WORDS[0][1];
+$("#words").innerHTML = WORDS.map(([w,n])=>`
+  <div class="hrow" data-t="‘${w}’ — ${nf(n)}곳">
+    <span class="cat">${w}</span>
+    <span class="track"><span class="bar" data-w="${(n/maxWord*100).toFixed(1)}"></span></span>
+    <span class="val">${nf(n)}곳</span>
+  </div>`).join("");
+
+/* 신규 vs 폐업 — 2008년 재등록 봉우리(15,393)가 나머지를 눌러버려 2009년부터 그린다.
+   전체 연도는 아래 표에 그대로 남긴다. */
+const CHART = YEARS.filter(r => r[0] >= 2009);
+const maxY = Math.max(...CHART.map(r=>Math.max(r[1],r[2])));
+$("#years").innerHTML = CHART.map(([y,o,c])=>{
+  const tag = y===2020 ? `<span class="tag">2020년 · 폐업 ${nf(c)}곳</span>` : "";
+  return `<span class="pair" data-t="${y}년 — 신규 ${nf(o)}곳 · 폐업 ${nf(c)}곳">
+    <span class="p o" style="height:${Math.max(o/maxY*100,.8)}%"></span>
+    <span class="p c" style="height:${Math.max(c/maxY*100,.8)}%"></span>${tag}</span>`;
+}).join("");
+const AXIS = [2009, 2013, 2017, 2020, 2026];
+$("#yaxis").innerHTML = AXIS.map((y,k)=>{
+  const i = CHART.findIndex(r=>r[0]===y);
+  const pct = (i + 0.5) / CHART.length * 100;
+  const cls = k===0 ? ' class="first"' : k===AXIS.length-1 ? ' class="last"' : "";
+  return `<span${cls} style="left:${pct.toFixed(2)}%">${y}</span>`;
+}).join("");
+$("#ytbl").querySelector("tbody").innerHTML =
+  YEARS.map(([y,o,c])=>`<tr><td>${y}</td><td>${nf(o)}</td><td>${nf(c)}</td></tr>`).join("");
+
+/* 목록 */
+$("#short").innerHTML = SHORT.map(([nm,span,d])=>`
+  <div class="li"><span class="nm">${nm}</span><span class="ad">${span}</span><span class="dt">${d}</span></div>`).join("");
+$("#oldest").innerHTML = OLDEST.map(([nm,ad,dt])=>`
+  <div class="li"><span class="nm">${nm}</span><span class="ad">${ad}</span><span class="dt">${dt}</span></div>`).join("");
+$("#memos").innerHTML = MEMOS.map(([q,c])=>`
+  <div class="quote"><p class="q">${q}</p><p class="c">${c}</p></div>`).join("");
+
+bindTips();
+requestAnimationFrame(()=>{
+  document.querySelectorAll(".bar").forEach(b => b.style.width = b.dataset.w + "%");
+});
+pick();
+</script>
