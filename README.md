@@ -93,6 +93,9 @@
 ├─ about/              소개 — 캐는 방법 · 편집 원칙 · 열람실 목록
 ├─ contact/            연락처 — 정정·삭제 요청 창구
 ├─ privacy/            개인정보처리방침 (법적으로 필요)
+├─ favicon.ico         파비콘 16/32/48 · build_favicon.py 가 생성
+├─ favicon.svg         파비콘 벡터 (최신 브라우저가 우선 사용)
+├─ apple-touch-icon.png  180x180 · iOS 홈 화면
 ├─ robots.txt          검색엔진용 · sitemap.py 가 생성
 ├─ sitemap.xml         검색엔진용 · sitemap.py 가 생성
 ├─ .nojekyll           GitHub Pages가 Jekyll을 돌리지 않게
@@ -132,7 +135,8 @@
    ├─ analyze_game.py    청소년게임제공업 숫자 재계산 · 검증
    ├─ build_game.py      제10호 페이지 조립
    ├─ analyze_shelter.py 민방위대피소 숫자 재계산 · 검증
-   └─ build_shelter.py   제11호 페이지 조립
+   ├─ build_shelter.py   제11호 페이지 조립
+   └─ build_favicon.py   파비콘 생성 (붉은 직인 + 「세」)
 ```
 
 **주소에 `.html` 이 없다.** 각 페이지를 `<슬러그>/index.html` 로 두어
@@ -304,8 +308,9 @@ python .claude/serve.py
    내용을 짐작할 수 있는 영문 소문자로 짓는다(`arcade`, `speed-bump`).
    CSS는 `videoroom/index.html`의 `<style>` 블록을 통째로 물려받는다.
 
-   **`<head>` 에 반드시 들어가야 하는 두 줄**이 있다. 기존 페이지에서 그대로 복사한다.
-   빠뜨리면 네이버 소유확인이 깨지거나 그 페이지에만 광고가 안 나온다.
+   **`<head>` 에 반드시 들어가야 하는 것들**이 있다. 기존 페이지에서 그대로 복사한다.
+   네이버 메타태그와 AdSense 스크립트를 빠뜨리면 소유확인이 깨지거나
+   그 페이지에만 광고가 안 나온다. 파비콘 링크 세 줄도 같이 복사한다.
 
        <meta name="naver-site-verification" content="e1aa1ef1b15b68297398065f83c4c5a96d1f3d0d" />
        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5277473094749097"

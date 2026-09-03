@@ -11,3 +11,6 @@ __pycache__/
 
 # OneDrive가 두 PC 충돌 시 만드는 사본
 *-DESKTOP-*.md
+
+# 파비콘 확인용 미리보기 (배포 안 함)
+favicon-preview.png

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="31" fill="#BE3B2E"/>
+  <circle cx="32" cy="32" r="24.5" fill="none" stroke="#EBEDE6" stroke-width="1.6"/>
+  <text x="32" y="33" fill="#EBEDE6" font-size="30" font-weight="700"
+        text-anchor="middle" dominant-baseline="central"
+        font-family="'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif">세</text>
+</svg>
