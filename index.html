@@ -205,12 +205,9 @@ table.src tr:last-child td{border-bottom:0}
 .cta h2{font-family:var(--f-display);font-weight:800;font-size:clamp(22px,3.4vw,32px);
   margin:0 0 10px;text-wrap:balance}
 .cta p{margin:0 auto 24px;max-width:44ch;color:var(--ink-2);font-weight:300;font-size:15px}
-.subscribe{display:flex;max-width:420px;margin:0 auto;flex-wrap:wrap}
-.subscribe input{flex:1 1 220px;min-width:0;font-family:var(--f-body);font-size:14px;
-  padding:12px 14px;border:1.5px solid var(--ink);border-right:0;background:var(--paper);color:var(--ink)}
-.subscribe input::placeholder{color:var(--muted)}
-.subscribe .btn{flex:0 0 auto}
-.formmsg{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);margin:12px 0 0;min-height:1.2em}
+.cta h2{color:var(--seal-ink)}
+.ctanote{font-family:var(--f-mono);font-size:12px;color:var(--muted);line-height:2;margin:22px 0 0}
+.ctanote a{color:var(--seal-ink)}
 
 footer{margin-top:64px;border-top:1px solid var(--rule);padding:26px 0 46px;
   font-family:var(--f-mono);font-size:11px;color:var(--muted);line-height:2}
@@ -427,15 +424,12 @@ footer a:hover{border-bottom-color:var(--seal)}
     </section>
 
     <section class="form cta">
-      <span class="form-label">수신 신청</span>
-      <h2>매주 한 통, 쓸데없는 지식 5개</h2>
-      <p>알아도 인생이 나아지지 않는 정보만 골라서 보냅니다. 광고 없음, 언제든 해지.</p>
-      <form class="subscribe" id="sub" novalidate>
-        <label for="mail" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">이메일 주소</label>
-        <input id="mail" type="email" placeholder="이메일 주소" autocomplete="email">
-        <button class="btn" type="submit">신청</button>
-      </form>
-      <p class="formmsg" id="msg" role="status">아직 서버 연결 전입니다 — 화면만 동작합니다.</p>
+      <span class="form-label">개인정보 수집 항목</span>
+      <h2>없음</h2>
+      <p>회원가입도, 로그인도, 뉴스레터 구독도 받지 않습니다.
+         읽는 사람에 대해 아무것도 모르는 편이 이 사이트에 어울립니다.</p>
+      <p class="ctanote">새 열람실은 이 페이지 맨 위에 올라옵니다. 가끔 들러 주세요.<br>
+         제보와 정정 요청은 <a href="./contact.html">연락처</a>로 받습니다.</p>
     </section>
   </div>
 </main>
@@ -717,13 +711,6 @@ el("copy").addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(text); btn.textContent = "복사됨"; }
   catch { btn.textContent = "복사 실패"; }
   setTimeout(() => { btn.textContent = "이 지식 복사"; }, 1600);
-});
-
-el("sub").addEventListener("submit", e => {
-  e.preventDefault();
-  const v = el("mail").value.trim(), msg = el("msg");
-  if (!v || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { msg.textContent = "이메일 주소 형식을 확인해 주세요."; return; }
-  msg.textContent = "확인했습니다 — 다만 아직 서버가 없어 저장되지 않습니다.";
 });
 
 el("s1").textContent = FACTS.length;
