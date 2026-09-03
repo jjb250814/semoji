@@ -121,7 +121,9 @@ header.mast{border-bottom:1px solid var(--rule)}
   line-height:1.18;letter-spacing:.06em}
 .seal i{display:block;font-style:normal;font-family:var(--f-mono);font-size:9px;
   letter-spacing:.2em;margin-top:5px}
-@media (max-width:640px){.seal{width:78px;height:78px;top:auto;bottom:96px;right:14px}
+@media (max-width:640px){
+  .actions{position:relative}
+  .seal{width:78px;height:78px;top:auto;bottom:calc(100% + 14px);right:14px}
   .seal b{font-size:14px}.seal i{font-size:7.5px}}
 @keyframes stamp{0%{opacity:0;transform:rotate(-30deg) scale(2.4)}
   62%{opacity:1;transform:rotate(-9deg) scale(.94)}100%{opacity:1;transform:rotate(-11deg) scale(1)}}
@@ -290,7 +292,6 @@ footer a:hover{border-bottom-color:var(--seal)}
 
     <article class="form">
       <span class="form-label">오늘의 세모지</span>
-      <div class="seal" id="seal" aria-hidden="true"><b>쓸모<br>없음</b><i>확인</i></div>
 
       <div class="card">
         <p class="card-cat" id="k-cat">—</p>
@@ -310,6 +311,7 @@ footer a:hover{border-bottom-color:var(--seal)}
         <button class="btn" id="draw" type="button">다른 지식 뽑기</button>
         <button class="btn ghost" id="copy" type="button">이 지식 복사</button>
         <span class="counter" id="counter"></span>
+        <div class="seal" id="seal" aria-hidden="true"><b>쓸모<br>없음</b><i>확인</i></div>
       </div>
     </article>
   </div>
