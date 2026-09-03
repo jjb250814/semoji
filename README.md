@@ -16,10 +16,10 @@
 | | 값 |
 |---|---|
 | 사이트 | **https://semoji.net** · HTTPS · 주소에 `.html` 없음 |
-| 열람실 | **10곳** (제1~10호) |
-| 전체 페이지 | 14쪽 (랜딩 + 열람실 10 + 소개 · 연락처 · 개인정보처리방침) |
-| 분석한 데이터셋 | 10개 · **818,919행** |
-| 랜딩 지식 카드 | 54장 |
+| 열람실 | **11곳** (제1~11호) |
+| 전체 페이지 | 15쪽 (랜딩 + 열람실 11 + 소개 · 연락처 · 개인정보처리방침) |
+| 분석한 데이터셋 | 11개 · **837,752행** |
+| 랜딩 지식 카드 | 58장 |
 | 도메인 | `semoji.net` (가비아, 2027-09-03 만료, 자동갱신 확인할 것) |
 | 저장소 | `github.com/jjb250814/semoji` (Public) |
 | 호스팅 | GitHub Pages · `main` 브랜치 루트 |
@@ -32,7 +32,7 @@
 **지금은 기다리는 구간이다.** AdSense 심사 며칠~2주, 구글 색인 며칠~2주,
 네이버 색인 1~4주. 조급해할 것 없다. 그 사이 할 일은 열람실을 더 쌓는 것뿐이다.
 
-**바로 다음 할 일 — 제11호 만들기.** 후보는 이 문서 맨 아래
+**바로 다음 할 일 — 제12호 만들기.** 후보는 이 문서 맨 아래
 「다음 열람실 후보」에 있고, 만드는 절차는 「열람실 하나 만드는 법」에 있다.
 
 ### 계정과 자격증명 — 헷갈리기 쉬운 부분
@@ -63,7 +63,7 @@
 
 새 PC에서는 이 폴더를 열고 `claude`를 실행한 뒤 이렇게 말하면 된다:
 
-> README.md 읽고 이어서 제11호 만들자
+> README.md 읽고 이어서 제12호 만들자
 
 같은 PC에서 어제 대화를 이어가려면 그 폴더에서 `claude --continue`,
 여러 대화 중에 고르려면 `claude --resume`.
@@ -89,6 +89,7 @@
 ├─ bike-rack/          제8호 「전국에 서른다섯 개」 — 자전거보관소
 ├─ emergency-bell/     제9호 「약자보호」 — 안전비상벨
 ├─ arcade/             제10호 「곰탱이」 — 청소년게임제공업
+├─ shelter/            제11호 「사백십만 명」 — 민방위대피소
 ├─ about/              소개 — 캐는 방법 · 편집 원칙 · 열람실 목록
 ├─ contact/            연락처 — 정정·삭제 요청 창구
 ├─ privacy/            개인정보처리방침 (법적으로 필요)
@@ -107,6 +108,7 @@
 │  ├─ 자전거보관소.csv     원본 18,518행
 │  ├─ 안전비상벨.csv       원본 88,634행
 │  ├─ 청소년게임장.csv     원본 30,771행
+│  ├─ 민방위대피소.csv     원본 18,833행
 │  ├─ 동물병원.csv        원본 10,612행 (미사용 — 자유입력 칸이 없다)
 │  ├─ 분석결과*.txt       analyze 스크립트 실행 결과
 │  ├─ 광맥순위.txt        208개 데이터셋 점수 순위 (scan_all.py)
@@ -128,7 +130,9 @@
    ├─ analyze_bell.py    안전비상벨 숫자 재계산 · 검증
    ├─ build_bell.py      제9호 페이지 조립 (공용 CSS를 bike.html에서 물려받음)
    ├─ analyze_game.py    청소년게임제공업 숫자 재계산 · 검증
-   └─ build_game.py      제10호 페이지 조립
+   ├─ build_game.py      제10호 페이지 조립
+   ├─ analyze_shelter.py 민방위대피소 숫자 재계산 · 검증
+   └─ build_shelter.py   제11호 페이지 조립
 ```
 
 **주소에 `.html` 이 없다.** 각 페이지를 `<슬러그>/index.html` 로 두어
@@ -160,6 +164,7 @@ python scripts/fetch.py food_vending_machines 식품자판기
 python scripts/fetch.py bicycle_parking_info 자전거보관소
 python scripts/fetch.py emergency_call_box_info 안전비상벨
 python scripts/fetch.py youth_game_providers 청소년게임장
+python scripts/fetch.py civil_defense_shelter_info 민방위대피소
 
 # 페이지에 박아둔 숫자가 원본과 맞는지 검증
 python scripts/analyze.py
@@ -172,6 +177,7 @@ python scripts/analyze_vending.py
 python scripts/analyze_bike.py
 python scripts/analyze_bell.py
 python scripts/analyze_game.py
+python scripts/analyze_shelter.py
 
 # 다음 열람실을 어디서 팔지 찾기
 python scripts/scan.py             # data/ 에 있는 CSV만
@@ -208,6 +214,7 @@ python .claude/serve.py
 | 전국자전거보관소표준데이터 | `bicycle_parking_info` | 18,518 | 제8호 열람실 |
 | 안전비상벨 | `emergency_call_box_info` | 88,634 | 제9호 열람실 |
 | 청소년게임제공업 | `youth_game_providers` | 30,771 | 제10호 열람실 |
+| 전국민방위대피시설표준데이터 | `civil_defense_shelter_info` | 18,833 | 제11호 열람실 |
 | 동물병원 | `animal_hospitals` | 10,612 | 미사용 |
 
 `python scripts/fetch.py --list` 로 확인한 열려 있는 데이터셋은 **208개**다.
@@ -440,9 +447,14 @@ python .claude/serve.py
 
 | 데이터셋 | 광맥 |
 |---|---|
-| 의원 | 「진료과목내용」 1회성 14,503건 · 범위 밖 날짜 265건 |
 | 이용원 | 「업태구분명」 쏠림 99.3% · 범위 밖 날짜 51건 |
 | 기타유원시설업 | 「놀이기구수내역」 1회성 1,019건 |
+
+**의원(24점)은 파봤지만 광맥이 아니었다.** 스캐너가 「진료과목내용」과
+「진료과목내용명」을 둘 다 자유입력으로 잡아 "같은 걸 두 번 묻는 서식"인 줄 알았는데,
+열어보니 앞은 숫자 코드(`301 302 303`)이고 뒤는 한글 이름이었다.
+**코드-이름 한 쌍이지 중복이 아니다.** 정상 설계다.
+**스캐너 점수는 어디를 팔지만 알려준다. 파보기 전에는 광맥인지 알 수 없다.**
 
 **주의: 식용얼음판매업(41점)은 점수가 가장 높지만 쓰지 않았다.** 높은 점수가
 「공장사무직직원수」 「월세액」 같은 식품위생 공용 서식 칸에서 나온 것이라,
