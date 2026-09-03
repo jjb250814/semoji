@@ -14,3 +14,6 @@ __pycache__/
 
 # 파비콘 확인용 미리보기 (배포 안 함)
 favicon-preview.png
+
+# OG 확인용 미리보기 (배포 안 함)
+og-preview.png

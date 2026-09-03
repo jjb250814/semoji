@@ -96,6 +96,7 @@
 ├─ favicon.ico         파비콘 16/32/48 · build_favicon.py 가 생성
 ├─ favicon.svg         파비콘 벡터 (최신 브라우저가 우선 사용)
 ├─ apple-touch-icon.png  180x180 · iOS 홈 화면
+├─ og/                 링크 공유용 썸네일 1200x630 · build_og.py 가 생성
 ├─ robots.txt          검색엔진용 · sitemap.py 가 생성
 ├─ sitemap.xml         검색엔진용 · sitemap.py 가 생성
 ├─ .nojekyll           GitHub Pages가 Jekyll을 돌리지 않게
@@ -121,6 +122,7 @@
    ├─ fetch.py          LOCALDATA 파일 내려받기
    ├─ scan.py           아무 CSV에서나 '광맥'을 찾아 점수 매기기
    ├─ scan_all.py       208개 전부 받아서 순위표 만들기
+   ├─ build_og.py       링크 공유용 썸네일 다시 만들기
    ├─ sitemap.py        robots.txt · sitemap.xml 다시 만들기
    │                    새로 생긴 주소를 따로 뽑아준다 (색인 요청에 붙여넣기)
    ├─ analyze.py        모범음식점 숫자 재계산 · 검증
@@ -189,7 +191,8 @@ python scripts/scan.py             # data/ 에 있는 CSV만
 python scripts/scan_all.py         # 208개 전부 받아서 순위표 (약 10분, 4.4GB)
 
 # 열람실을 추가했으면
-python scripts/sitemap.py
+python scripts/build_og.py         # 공유 썸네일 (제목·설명을 HTML에서 읽는다)
+python scripts/sitemap.py          # sitemap · 새로 생긴 주소 알려줌
 ```
 
 `pandas`가 필요하다. 없으면 `pip install pandas`.
@@ -309,13 +312,23 @@ python .claude/serve.py
    내용을 짐작할 수 있는 영문 소문자로 짓는다(`arcade`, `speed-bump`).
    CSS는 `videoroom/index.html`의 `<style>` 블록을 통째로 물려받는다.
 
-   **`<head>` 에 반드시 들어가야 하는 것들**이 있다. 기존 페이지에서 그대로 복사한다.
-   네이버 메타태그와 AdSense 스크립트를 빠뜨리면 소유확인이 깨지거나
-   그 페이지에만 광고가 안 나온다. 파비콘 링크 세 줄도 같이 복사한다.
+   **`<head>` 는 기존 열람실에서 통째로 복사하고 주소만 고친다.** 들어가야 하는 것:
+
+   - `<meta charset>` 과 `<meta name="viewport">` — **viewport 를 빼면 폰에서 글자가
+     3분의 1 크기로 찌그러진다.** 2026-09-03에 랜딩 포함 4쪽이 그래서 고쳤다.
+   - `<meta name="description">` — 검색 결과에 뜨는 문장이자 공유 썸네일의 설명이다.
+     한 문장으로 이 열람실이 무엇을 세었는지 적는다.
+   - 네이버 소유확인 메타태그와 AdSense 스크립트 — 빠뜨리면 소유확인이 깨지거나
+     그 페이지에만 광고가 안 나온다.
+   - 파비콘 세 줄, canonical, og:* 열두 줄.
 
        <meta name="naver-site-verification" content="e1aa1ef1b15b68297398065f83c4c5a96d1f3d0d" />
        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5277473094749097"
             crossorigin="anonymous"></script>
+
+   og 태그의 `og:image` 는 `https://semoji.net/og/<슬러그>.png` 다.
+   그 그림은 `build_og.py` 가 `<title>` 과 `description` 을 읽어서 그린다.
+   **제목과 설명을 고치면 그림도 다시 만들어야 한다.**
 
    **페이지 간 링크는 상대경로다.** 폴더 안에서 홈은 `../`, 다른 열람실은 `../pcbang/` 이다.
    생성 스크립트를 하나 짜서 숫자 배열 + 본문 템플릿으로 HTML을 뽑는 게 편하다
@@ -345,7 +358,8 @@ python .claude/serve.py
    30편이 되면 랜딩 스크롤의 대부분이 카드가 된다. 한 줄 목록은 편당 52px이라
    30편이어도 1,600px 안에 들어간다.
 
-**8. 마무리** — `python scripts/sitemap.py` 실행한다. 새로 생긴 주소를
+**8. 마무리** — `python scripts/build_og.py` 로 공유 썸네일을 만들고,
+   `python scripts/sitemap.py` 를 실행한다. 새로 생긴 주소를
    마지막에 따로 뽑아주니 **그 줄을 복사해 둔다.** 9단계에서 쓴다. 그리고 이 README의
    「지금 어디까지 왔나」·폴더 트리·데이터 출처 표·다음 후보를 갱신한다.
    `about/index.html`의 「지금까지 연 열람실」 목록과 상단 지표(열람실 수·행 수)도 같이 고친다.
