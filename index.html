@@ -84,6 +84,7 @@ header.mast{border-bottom:1px solid var(--rule)}
 
 /* 히어로 */
 .hero{padding:52px 0 40px}
+.hero .form{overflow:hidden}
 .hero-lead{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;color:var(--muted);margin:0 0 14px}
 .hero-title{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,4.6vw,46px);
   line-height:1.24;margin:0 0 18px;text-wrap:balance;letter-spacing:-.015em;max-width:20ch}
@@ -192,8 +193,11 @@ a.room:hover .room-go{text-decoration:underline;text-underline-offset:4px}
 .room-lite .go{font-family:var(--f-mono);font-size:13px;color:var(--seal-ink);opacity:.45}
 .room-lite:hover .go{opacity:1}
 @media (max-width:720px){
-  .room-lite{grid-template-columns:auto 1fr auto;gap:4px 12px}
-  .room-lite .d{grid-column:1/-1;white-space:normal;margin-top:2px}
+  /* 폰에서는 설명을 감춘다. 지난 열람실의 역할은 읽는 게 아니라 고르는 것이고,
+     두 줄짜리 14행이 랜딩 세로 길이의 4분의 1을 먹고 있었다. */
+  .room-lite{grid-template-columns:auto minmax(0,1fr) auto;gap:12px;padding:13px 2px}
+  .room-lite .d{display:none}
+  .room-lite .t{overflow:hidden;text-overflow:ellipsis}
 }
 .room-fig .n{font-family:var(--f-display);font-weight:800;font-size:26px;line-height:1;
   display:block;font-variant-numeric:tabular-nums}
@@ -421,7 +425,7 @@ footer a:hover{border-bottom-color:var(--seal)}
 
     <section class="blk">
       <div class="blk-head"><h2>데이터 서가</h2><span>다음에 팔 광맥</span></div>
-      <p class="srcnote">분석을 마친 <b>14개</b>는 <a href="#rooms">위 열람실</a>이 곧 목록입니다.
+      <p class="srcnote">분석을 마친 데이터셋은 <a href="#rooms">위 열람실</a>이 곧 목록입니다.
          출처와 읽은 행 수는 각 열람실 하단에 적었습니다.
          아래는 칸을 들여다보긴 했으나 아직 캐지 않은 것들입니다.</p>
       <div class="srcwrap">
