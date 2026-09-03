@@ -59,16 +59,18 @@ body{word-break:keep-all;overflow-wrap:break-word;margin:0;background:var(--pape
 :focus-visible{outline:2px solid var(--seal);outline-offset:3px}
 .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
 
+/* padding-block 만 쓴다. padding 축약형을 쓰면 .wrap 이 정한 좌우 여백
+   (padding-inline:var(--pad))을 0으로 덮어써 버린다 — 이 셋 다 실제로 그랬다. */
 /* 상단 바 */
 .top{border-bottom:1px solid var(--rule);font-family:var(--f-mono);
   font-size:11.5px;color:var(--muted)}
-.top .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:9px 0}
+.top .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-block:9px}
 .top b{color:var(--ink-2);font-weight:400}
 
 /* 마스트헤드 */
 header.mast{border-bottom:1px solid var(--rule)}
 .mast-in{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
-  flex-wrap:wrap;padding:26px 0 18px}
+  flex-wrap:wrap;padding-block:26px 18px}
 .brand{display:flex;flex-direction:column;gap:2px}
 .brand h1{font-family:var(--f-display);font-weight:800;font-size:clamp(30px,5.5vw,44px);
   line-height:1;margin:0;letter-spacing:-.02em}
@@ -83,7 +85,7 @@ header.mast{border-bottom:1px solid var(--rule)}
   font-family:var(--f-mono);font-size:10.5px;font-weight:700;letter-spacing:.16em;color:var(--ink-2)}
 
 /* 히어로 */
-.hero{padding:52px 0 40px}
+.hero{padding-block:52px 40px}
 /* 도장이 scale(2.4)로 부풀 때 가로로만 잘라낸다. hidden 을 쓰면 세로까지 잘려
    카드 위에 걸쳐 둔 「오늘의 세모지」 라벨이 먹힌다. */
 .hero .form{overflow-x:clip}
