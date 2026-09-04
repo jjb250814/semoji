@@ -16,6 +16,25 @@ import pathlib
 
 import pandas as pd
 
+# 자유입력 칸에는 사업자 이메일과 전화번호가 섞여 들어온다.
+# 이 스크립트의 출력(data/*.txt)은 공개 저장소에 그대로 올라가고
+# GitHub Pages 가 사이트에서 서빙한다. 2026-09-04에 이메일 19건이
+# 실제로 semoji.net 에서 열리는 것을 발견했다. 찍기 전에 가린다.
+_MASK = [
+    (re.compile(r"[A-Za-z0-9가-힣._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"), "(이메일 가림)"),
+    (re.compile(r"\b01[016789][-. ]?\d{3,4}[-. ]?\d{4}\b"), "(전화 가림)"),
+    (re.compile(r"\b0(2|3[1-3]|4[1-4]|5[1-5]|6[1-4])[-. ]?\d{3,4}[-. ]?\d{4}\b"), "(전화 가림)"),
+]
+
+
+def mask(t):
+    """사람 연락처를 지운다. 출력에 원문을 찍는 곳은 전부 이걸 거친다."""
+    t = str(t)
+    for pat, rep in _MASK:
+        t = pat.sub(rep, t)
+    return t
+
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 OUT = DATA / "스캔결과.txt"
@@ -93,9 +112,9 @@ def dig(df: pd.DataFrame, title: str):
             once = (v.value_counts() == 1).sum()
             p(f"  · {c}: 고유값 {v.nunique():,} / 1회만 등장 {once:,}")
             for s in v.value_counts().index[:3]:
-                p(f"      많이 쓴 말   {s[:45]}")
+                p(f"      많이 쓴 말   {mask(s)[:45]}")
             for s in v[v.map(v.value_counts()) == 1].head(3):
-                p(f"      한 번뿐인 말 {s[:45]}")
+                p(f"      한 번뿐인 말 {mask(s)[:45]}")
             pts = 0
             for thr, w in ((500, 2), (3_000, 2), (10_000, 3)):
                 if once >= thr:
