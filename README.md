@@ -128,7 +128,7 @@ git config --local user.email jjb250814@users.noreply.github.com
 ```
 
 remote 주소의 `jjb250814@`와 `--local` 신원, **이 둘을 빠뜨리면 안 된다.**
-빠뜨리면 회사 계정(`회사 계정`)으로 커밋되거나 push가 403으로 막힌다.
+빠뜨리면 회사 계정으로 커밋되거나 push가 403으로 막힌다.
 
 **git이 안 나르는 것 두 가지**를 옛 폴더에서 손으로 복사한다.
 
@@ -157,7 +157,7 @@ remote 주소의 `jjb250814@`와 `--local` 신원, **이 둘을 빠뜨리면 안
 
     origin  https://jjb250814@github.com/jjb250814/semoji.git
 
-`@` 앞의 계정명이 없으면 GCM이 `회사 계정` 자격증명을 집어서 403이 난다.
+`@` 앞의 계정명이 없으면 GCM이 회사 계정 자격증명을 집어서 403이 난다.
 전역 설정(`user.name`)은 회사용 그대로 두고, 이 폴더에만 `jjb250814`를 걸어 두었다.
 **커밋 전에 `git config user.email` 이 noreply 주소인지 확인하는 습관을 들일 것.**
 
