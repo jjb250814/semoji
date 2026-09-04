@@ -16,6 +16,7 @@ robots.txt 와 sitemap.xml 을 다시 만든다.
 import datetime
 import pathlib
 import re
+import subprocess
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DOMAIN = "https://semoji.net"
@@ -39,6 +40,22 @@ def pages():
     return out
 
 
+def last_changed(f):
+    """그 파일을 마지막으로 고친 날. **파일 수정시각을 쓰면 안 된다.**
+    git clone 이나 OneDrive 동기화가 수정시각을 '오늘'로 만들어 버려서,
+    21쪽 전부가 오늘 바뀐 것처럼 검색엔진에 알리게 된다. 커밋 날짜는 어디서
+    받아도 같다. 아직 커밋 안 된 새 파일만 수정시각으로 물러선다."""
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", str(f)],
+                             cwd=ROOT, capture_output=True, text=True, timeout=10)
+        d = out.stdout.strip()
+        if d:
+            return d
+    except Exception:
+        pass
+    return str(datetime.date.fromtimestamp(f.stat().st_mtime))
+
+
 def already_listed():
     """지난번 sitemap.xml 에 적혀 있던 주소들. 없으면 빈 집합."""
     f = ROOT / "sitemap.xml"
@@ -57,9 +74,8 @@ def main():
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for slug, f in found:
         loc = f"{DOMAIN}/" if slug == "" else f"{DOMAIN}/{slug}/"
-        mtime = datetime.date.fromtimestamp(f.stat().st_mtime)
         lines.append(f"  <url><loc>{loc}</loc>"
-                     f"<lastmod>{mtime}</lastmod>"
+                     f"<lastmod>{last_changed(f)}</lastmod>"
                      f"<priority>{PRIORITY.get(slug, '0.8')}</priority></url>")
     lines.append("</urlset>")
     (ROOT / "sitemap.xml").write_text("\n".join(lines) + "\n", encoding="utf-8")

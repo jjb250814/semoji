@@ -46,6 +46,54 @@
 - https://semoji.net/waste/
 - https://semoji.net/bathhouse/
 
+### 어디에 두는가 — OneDrive 밖이어야 한다
+
+**작업 폴더는 `C:\Users\BOC\projects\semoji` 다. OneDrive 안이 아니다.**
+
+2026-09-04까지는 회사 OneDrive(`OneDrive\★업무\...\세모지`) 안에 있었는데 사고가 났다.
+두 PC가 같은 파일을 동시에 고치자 OneDrive가 사본을 만들어 버렸다
+(`README-DESKTOP-T22MRJF.md`, `og/*-DESKTOP-T22MRJF.png`). 그림과 옛 README라 무사했지만
+**`index.html`에서 같은 일이 났으면 랜딩이 옛 판으로 덮였다.**
+
+원인은 습관이 아니라 자리다. **git 저장소를 클라우드 동기화 폴더 안에 두면 안 된다.**
+동기화와 git이 같은 파일을 서로 모르게 만지기 때문이다. 옮기고 나면 두 PC 사이를
+잇는 것은 **GitHub 하나뿐**이 되고, 충돌은 git이 눈에 보이게 알려준다.
+
+**다른 PC에서 이사하는 법** (한 번만 하면 된다):
+
+```bash
+# 1. 옛 폴더에 안 올린 것이 없는지 먼저 확인한다
+git -C "<옛 OneDrive 폴더>" status
+git -C "<옛 OneDrive 폴더>" push
+
+# 2. OneDrive 밖에 새로 받는다
+mkdir C:/Users/<계정>/projects
+cd C:/Users/<계정>/projects
+git clone https://jjb250814@github.com/jjb250814/semoji.git semoji
+
+# 3. 이 폴더에만 개인 신원을 건다 (전역 회사 설정은 건드리지 않는다)
+cd semoji
+git config --local user.name  jjb250814
+git config --local user.email jjb250814@users.noreply.github.com
+```
+
+remote 주소의 `jjb250814@`와 `--local` 신원, **이 둘을 빠뜨리면 안 된다.**
+빠뜨리면 회사 계정(`회사 계정`)으로 커밋되거나 push가 403으로 막힌다.
+
+**git이 안 나르는 것 두 가지**를 옛 폴더에서 손으로 복사한다.
+
+| 옮길 것 | 왜 |
+|---|---|
+| `.claude/` | 미리보기 서버 (`serve.py` · `launch.json`) |
+| `data/*.csv` | 원본 데이터 125MB |
+
+**CSV는 다시 받지 말고 복사할 것.** `fetch.py`로 새로 받으면 *지금* 데이터가 와서
+이미 발행한 페이지의 숫자와 안 맞는다. 발행 당시 스냅샷을 그대로 옮겨야
+`analyze_*.py`로 검증이 된다.
+
+**양쪽 PC가 다 옮겨진 뒤에** OneDrive 안의 옛 폴더를 지운다.
+먼저 지우면 삭제가 다른 PC로 동기화돼 그쪽 작업 폴더까지 사라진다.
+
 ### 계정과 자격증명 — 헷갈리기 쉬운 부분
 
 이 PC에는 **GitHub 계정이 둘** 얽혀 있다.
@@ -150,6 +198,8 @@
    ├─ build_og.py       링크 공유용 썸네일 다시 만들기
    ├─ sitemap.py        robots.txt · sitemap.xml 다시 만들기
    │                    새로 생긴 주소를 따로 뽑아준다 (색인 요청에 붙여넣기)
+   │                    lastmod 는 git 커밋 날짜다 — 파일 수정시각을 쓰면
+   │                    clone 한 날로 21쪽이 전부 덮인다 (2026-09-04에 겪음)
    ├─ analyze.py        모범음식점 숫자 재계산 · 검증
    ├─ analyze_pc.py     PC방 숫자 재계산 · 검증
    ├─ analyze_video.py  비디오감상실 숫자 재계산 · 검증
@@ -519,16 +569,9 @@ python .claude/serve.py
 - **원본 데이터가 언제 끊길지 모른다.** LOCALDATA 가 2026-04-16 자로 종료되고
   data.go.kr 로 이관됐다는 안내가 있는데, `file.localdata.go.kr` 은 아직 살아 있다.
   쓸 만한 데이터셋은 미리 받아두는 편이 안전하다.
-- **파일이 회사 OneDrive 안에 있다.** 공개 사이트나 저장소에는 전혀 드러나지 않지만,
-  회사 계정으로 동기화된다. 신경 쓰이면 개인 폴더로 옮기고 그 위치에서 세션을 열면 된다.
-  git 저장소도 그대로 따라간다.
-- **두 PC에서 번갈아 작업하면 OneDrive가 파일을 덮는다.** 2026-09-04에 실제로 났다.
-  `DESKTOP-T22MRJF` 쪽과 이 PC가 같은 파일을 고쳐서 OneDrive가 사본 세 개를 만들었다
-  (`README-DESKTOP-T22MRJF.md`, `og/*-DESKTOP-T22MRJF.png`). 셋 다 옛날 판이라 지웠고,
-  `.gitignore`에 `*-DESKTOP-*`를 넣어 앞으로는 저장소에 안 딸려가게 했다.
-  **이번엔 그림과 옛 README라 무사했지만 `index.html`에서 나면 랜딩이 옛 판으로 덮인다.**
-  습관을 정해 둘 것 — **PC를 옮길 때는 시작 전에 `git pull`, 끝나면 바로 `git push`.**
-  `-DESKTOP-` 이 붙은 파일이 보이면 그게 충돌 신호다. 수정 시각을 비교해 최신본만 남긴다.
+- **다른 PC(`DESKTOP-T22MRJF`)가 아직 OneDrive 폴더를 쓰고 있다.**
+  「어디에 두는가」의 이사 절차를 그 PC에서도 한 번 해야 끝난다.
+  양쪽이 다 옮겨지기 전에는 OneDrive의 옛 폴더를 지우면 안 된다.
 
 ### 다음 열람실 후보
 
