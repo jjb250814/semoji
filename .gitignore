@@ -9,8 +9,11 @@ data/raw/
 __pycache__/
 *.pyc
 
-# OneDrive가 두 PC 충돌 시 만드는 사본
-*-DESKTOP-*.md
+# OneDrive가 두 PC 충돌 시 만드는 사본.
+# 확장자를 가리지 않는다 — 2026-09-04에 og/*.png 충돌본이 나왔다.
+# 이런 파일이 보이면 두 PC에서 같은 파일을 동시에 고쳤다는 뜻이다.
+# 시각을 비교해 최신본만 남기고 지운다.
+*-DESKTOP-*
 
 # 파비콘 확인용 미리보기 (배포 안 함)
 favicon-preview.png

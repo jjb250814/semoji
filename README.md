@@ -522,6 +522,13 @@ python .claude/serve.py
 - **파일이 회사 OneDrive 안에 있다.** 공개 사이트나 저장소에는 전혀 드러나지 않지만,
   회사 계정으로 동기화된다. 신경 쓰이면 개인 폴더로 옮기고 그 위치에서 세션을 열면 된다.
   git 저장소도 그대로 따라간다.
+- **두 PC에서 번갈아 작업하면 OneDrive가 파일을 덮는다.** 2026-09-04에 실제로 났다.
+  `DESKTOP-T22MRJF` 쪽과 이 PC가 같은 파일을 고쳐서 OneDrive가 사본 세 개를 만들었다
+  (`README-DESKTOP-T22MRJF.md`, `og/*-DESKTOP-T22MRJF.png`). 셋 다 옛날 판이라 지웠고,
+  `.gitignore`에 `*-DESKTOP-*`를 넣어 앞으로는 저장소에 안 딸려가게 했다.
+  **이번엔 그림과 옛 README라 무사했지만 `index.html`에서 나면 랜딩이 옛 판으로 덮인다.**
+  습관을 정해 둘 것 — **PC를 옮길 때는 시작 전에 `git pull`, 끝나면 바로 `git push`.**
+  `-DESKTOP-` 이 붙은 파일이 보이면 그게 충돌 신호다. 수정 시각을 비교해 최신본만 남긴다.
 
 ### 다음 열람실 후보
 
