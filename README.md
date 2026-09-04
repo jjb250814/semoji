@@ -7,6 +7,52 @@
 
 ---
 
+## 집 PC에서 처음 한 번 (여기부터 보면 된다)
+
+**작업 폴더는 `C:\세모지` 다. OneDrive 안에 두지 않는다.**
+
+**1. 옛 OneDrive 폴더에 안 올린 것이 없는지 확인한다**
+
+```bash
+git -C "<옛 OneDrive 세모지 폴더>" status
+git -C "<옛 OneDrive 세모지 폴더>" push
+```
+
+**2. 새로 받는다**
+
+```bash
+cd C:/
+git clone https://jjb250814@github.com/jjb250814/semoji.git 세모지
+```
+
+**3. 이 폴더에만 개인 신원을 건다** (전역 설정은 회사용이라 건드리지 않는다)
+
+```bash
+cd C:/세모지 && git config --local user.name jjb250814 && git config --local user.email jjb250814@users.noreply.github.com
+```
+
+**4. git 이 안 나르는 것 두 개를 옛 폴더에서 복사한다**
+
+| 옮길 것 | 왜 |
+|---|---|
+| `data\*.csv` | 원본 데이터 125MB. 저장소에 안 들어간다 |
+| `.claude\` | 미리보기 서버 (`serve.py` · `launch.json`) |
+
+**CSV는 `fetch.py` 로 다시 받지 말 것.** 지금 데이터가 와서 이미 발행한
+페이지의 숫자와 안 맞는다. 발행 당시 스냅샷을 그대로 복사해야 검증이 된다.
+
+**끝. 그 뒤로는 이 두 줄이 전부다.**
+
+```bash
+git pull     # 작업 시작할 때
+git push     # 작업 끝낼 때
+```
+
+두 PC 모두 `C:\세모지` 로 옮겨진 뒤에 OneDrive 의 옛 폴더를 지운다.
+먼저 지우면 삭제가 다른 PC 로 동기화돼 그쪽 폴더까지 사라진다.
+
+---
+
 ## 지금 어디까지 왔나
 
 *(2026-09-03 기준. 이 문서 하나로 어느 PC에서든 이어서 작업할 수 있게 적어 둔다.)*
