@@ -52,7 +52,9 @@
 
 2026-09-04까지는 회사 OneDrive(`OneDrive\★업무\...\세모지`) 안에 있었는데 사고가 났다.
 두 PC가 같은 파일을 동시에 고치자 OneDrive가 사본을 만들어 버렸다
-(`README-DESKTOP-T22MRJF.md`, `og/*-DESKTOP-T22MRJF.png`). 그림과 옛 README라 무사했지만
+(`README-DESKTOP-T22MRJF.md`, `og/*-DESKTOP-T22MRJF.png`).
+이름에 붙은 `DESKTOP-T22MRJF` 는 **이 PC** 다 — OneDrive 는 밀려난 쪽 사본에
+그 기계 이름을 붙인다. 그림과 옛 README라 무사했지만
 **`index.html`에서 같은 일이 났으면 랜딩이 옛 판으로 덮였다.**
 
 원인은 습관이 아니라 자리다. **git 저장소를 클라우드 동기화 폴더 안에 두면 안 된다.**
@@ -569,9 +571,12 @@ python .claude/serve.py
 - **원본 데이터가 언제 끊길지 모른다.** LOCALDATA 가 2026-04-16 자로 종료되고
   data.go.kr 로 이관됐다는 안내가 있는데, `file.localdata.go.kr` 은 아직 살아 있다.
   쓸 만한 데이터셋은 미리 받아두는 편이 안전하다.
-- **다른 PC(`DESKTOP-T22MRJF`)가 아직 OneDrive 폴더를 쓰고 있다.**
+- **다른 PC 한 대가 아직 OneDrive 폴더를 쓰고 있다.**
   「어디에 두는가」의 이사 절차를 그 PC에서도 한 번 해야 끝난다.
   양쪽이 다 옮겨지기 전에는 OneDrive의 옛 폴더를 지우면 안 된다.
+  **`DESKTOP-T22MRJF` 는 이 PC 다.** OneDrive 는 충돌 사본에 *진 쪽* 기계의
+  이름을 붙이므로, 그 이름이 곧 상대 PC 라는 뜻이 아니다. 2026-09-04에
+  이걸 반대로 적었다가 고쳤다.
 
 ### 다음 열람실 후보
 
