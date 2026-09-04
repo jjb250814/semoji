@@ -62,10 +62,10 @@ git push     # 작업 끝낼 때
 | | 값 |
 |---|---|
 | 사이트 | **https://semoji.net** · HTTPS · 주소에 `.html` 없음 |
-| 열람실 | **18곳** (제1~18호) |
-| 전체 페이지 | 22쪽 (랜딩 + 열람실 18 + 소개 · 연락처 · 개인정보처리방침) |
-| 분석한 데이터셋 | 18개 · **1,989,365행** |
-| 랜딩 지식 카드 | 93장 |
+| 열람실 | **19곳** (제1~19호) |
+| 전체 페이지 | 23쪽 (랜딩 + 열람실 19 + 소개 · 연락처 · 개인정보처리방침) |
+| 분석한 데이터셋 | 19개 · **2,000,628행** |
+| 랜딩 지식 카드 | 98장 |
 | 파비콘 · 공유 썸네일 | 붉은 직인 파비콘 · 페이지마다 OG 이미지 1200x630 |
 | 도메인 | `semoji.net` (가비아, 2027-09-03 만료, 자동갱신 확인할 것) |
 | 저장소 | `github.com/jjb250814/semoji` (Public) |
@@ -79,7 +79,7 @@ git push     # 작업 끝낼 때
 **지금은 기다리는 구간이다.** AdSense 심사 며칠~2주, 구글 색인 며칠~2주,
 네이버 색인 1~4주. 조급해할 것 없다. 그 사이 할 일은 열람실을 더 쌓는 것뿐이다.
 
-**바로 다음 할 일 — 제19호 만들기.** 후보는 이 문서 맨 아래
+**바로 다음 할 일 — 제20호 만들기.** 후보는 이 문서 맨 아래
 「다음 열람실 후보」에 있고, 만드는 절차는 「열람실 하나 만드는 법」에 있다.
 
 **색인 요청 대기 5건.** 구글 서치콘솔 URL 검사 + 네이버 서치어드바이저
@@ -213,6 +213,7 @@ AdSense는 1인 1계정이라 나중에 못 바꾼다.
 ├─ waste/              제16호 「내집내점포앞」 — 생활폐기물 배출
 ├─ bathhouse/          제17호 「발한실」 — 목욕장업
 ├─ dust/               제18호 「개인」 — 비산먼지 발생사업
+├─ gas/                제19호 「점 하나」 — 특정고압가스 사용신고
 ├─ about/              소개 — 캐는 방법 · 편집 원칙 · 열람실 목록
 ├─ contact/            연락처 — 정정·삭제 요청 창구
 ├─ privacy/            개인정보처리방침 (법적으로 필요)
@@ -243,6 +244,7 @@ AdSense는 1인 1계정이라 나중에 못 바꾼다.
 │  ├─ 생활폐기물.csv       원본 10,187행
 │  ├─ 목욕장업.csv         원본 17,789행
 │  ├─ 비산먼지.csv         원본 922,057행 (213MB · 지금까지 가장 큼)
+│  ├─ 고압가스.csv         원본 11,263행
 │  ├─ 동물병원.csv        원본 10,612행 (미사용 — 자유입력 칸이 없다)
 │  ├─ 분석결과*.txt       analyze 스크립트 실행 결과
 │  ├─ 광맥순위.txt        208개 데이터셋 점수 순위 (scan_all.py)
@@ -282,6 +284,8 @@ AdSense는 1인 1계정이라 나중에 못 바꾼다.
    ├─ analyze_waste.py   생활폐기물 숫자 재계산 · 검증
    ├─ build_waste.py     제16호 페이지 조립
    ├─ analyze_bath.py    목욕장업 숫자 재계산 · 검증
+   ├─ analyze_gas.py     고압가스 숫자 재계산 · 검증
+   ├─ build_gas.py       제19호 페이지 조립
    ├─ analyze_dust.py    비산먼지 숫자 재계산 · 검증
    ├─ build_dust.py      제18호 페이지 조립
    ├─ build_bath.py      제17호 페이지 조립
@@ -325,6 +329,7 @@ python scripts/fetch.py dental_labs 치과기공소
 python scripts/fetch.py household_waste_info 생활폐기물
 python scripts/fetch.py public_baths 목욕장업
 python scripts/fetch.py dust_emission_business_info 비산먼지   # 213MB
+python scripts/fetch.py specific_high_pressure_gas 고압가스
 
 # 페이지에 박아둔 숫자가 원본과 맞는지 검증
 python scripts/analyze.py
@@ -345,6 +350,7 @@ python scripts/analyze_dental.py
 python scripts/analyze_waste.py
 python scripts/analyze_bath.py
 python scripts/analyze_dust.py
+python scripts/analyze_gas.py
 
 # 다음 열람실을 어디서 팔지 찾기
 python scripts/scan.py             # data/ 에 있는 CSV만
@@ -390,6 +396,7 @@ python .claude/serve.py
 | 전국생활폐기물배출정보표준데이터 | `household_waste_info` | 10,187 | 제16호 열람실 |
 | 목욕장업 | `public_baths` | 17,789 | 제17호 열람실 |
 | 비산먼지 발생사업 | `dust_emission_business_info` | 922,057 | 제18호 열람실 |
+| 특정고압가스 사용신고 | `specific_high_pressure_gas` | 11,263 | 제19호 열람실 |
 | 동물병원 | `animal_hospitals` | 10,612 | 미사용 |
 
 `python scripts/fetch.py --list` 로 확인한 열려 있는 데이터셋은 **208개**다.
@@ -647,6 +654,18 @@ python .claude/serve.py
   이걸 반대로 적었다가 고쳤다.
 
 ### 다음 열람실 후보
+
+**제19호에서 배운 것 — 「같은 답을 두 번」은 서식이 쪼갤 수 없는 것을 쪼갠 자국이다.**
+고압가스 신고서는 「사용목적」과 「사용방법」을 따로 묻는데 31.8%가 두 칸에 똑같은 말을
+적었다. 제12호(업태구분명 = 위생업태명)와 제11호(수용인원 = 시설면적)에서도 같은 모양이
+나왔다. **한 서식 안에서 두 칸의 값이 얼마나 겹치는지 세어 보는 것**은 어느 데이터셋에나
+쓸 수 있는 공식이다. 스캐너에 넣을 만하다.
+
+**그리고 「한 글자 답」이라는 새 신호를 찾았다.** 자유 입력 칸을 「.」 「-」 「ㅂ」 처럼
+글자 하나로 채운 것을 세면, 그 칸이 사람에게 대답 불가능했다는 뜻이 된다. 채움률로는
+안 보인다 — 채워져 있으니까. **길이 1인 값의 개수**를 세야 보인다.
+
+
 
 **제18호에서 배운 것 — 「계단」은 데이터가 아니라 규칙이 바뀐 자국이다.**
 비산먼지 신고에서 상호가 「개인」인 비율이 2013년 6.2% → 2014년 13.5% → 2015년 30.7%로
