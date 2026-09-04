@@ -48,7 +48,10 @@
 
 ### 어디에 두는가 — OneDrive 밖이어야 한다
 
-**작업 폴더는 `C:\Users\BOC\projects\semoji` 다. OneDrive 안이 아니다.**
+**작업 폴더는 `C:\세모지` 다. OneDrive 안이 아니다.**
+
+C드라이브 맨 위에 둔 이유는 하나다 — **탐색기를 열면 바로 보여야 한다.**
+`C:\Users\...\projects\` 같은 깊은 자리에 두면 어디 뒀는지 잊는다.
 
 2026-09-04까지는 회사 OneDrive(`OneDrive\★업무\...\세모지`) 안에 있었는데 사고가 났다.
 두 PC가 같은 파일을 동시에 고치자 OneDrive가 사본을 만들어 버렸다
@@ -68,13 +71,12 @@
 git -C "<옛 OneDrive 폴더>" status
 git -C "<옛 OneDrive 폴더>" push
 
-# 2. OneDrive 밖에 새로 받는다
-mkdir C:/Users/<계정>/projects
-cd C:/Users/<계정>/projects
-git clone https://jjb250814@github.com/jjb250814/semoji.git semoji
+# 2. C드라이브 맨 위에 새로 받는다 (OneDrive 밖이면 어디든 되지만 여기가 안 헷갈린다)
+cd C:/
+git clone https://jjb250814@github.com/jjb250814/semoji.git 세모지
 
 # 3. 이 폴더에만 개인 신원을 건다 (전역 회사 설정은 건드리지 않는다)
-cd semoji
+cd C:/세모지
 git config --local user.name  jjb250814
 git config --local user.email jjb250814@users.noreply.github.com
 ```
