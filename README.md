@@ -33,10 +33,10 @@ git push     # 작업 끝낼 때
 |---|---|
 | 사이트 | **https://semoji.net** · HTTPS · 주소에 `.html` 없음 |
 | 작업 폴더 | `C:\세모지` — **OneDrive 밖** (2026-09-05에 두 PC 다 옮김) |
-| 열람실 | **23곳** (제1~23호) |
-| 전체 페이지 | 27쪽 (랜딩 + 열람실 23 + 소개 · 연락처 · 개인정보처리방침) |
-| 분석한 데이터셋 | 25개 · **2,198,675행** |
-| 랜딩 지식 카드 | 118장 |
+| 열람실 | **24곳** (제1~24호) |
+| 전체 페이지 | 28쪽 (랜딩 + 열람실 24 + 소개 · 연락처 · 개인정보처리방침) |
+| 분석한 데이터셋 | 26개 · **2,202,626행** |
+| 랜딩 지식 카드 | 123장 |
 | 파비콘 · 공유 썸네일 | 붉은 직인 파비콘 · 페이지마다 OG 이미지 1200x630 |
 | 도메인 | `semoji.net` (가비아, 2027-09-03 만료, 자동갱신 확인할 것) |
 | 저장소 | `github.com/jjb250814/semoji` (Public) |
@@ -50,7 +50,7 @@ git push     # 작업 끝낼 때
 **지금은 기다리는 구간이다.** AdSense 심사 며칠~2주, 구글 색인 며칠~2주,
 네이버 색인 1~4주. 조급해할 것 없다. 그 사이 할 일은 열람실을 더 쌓는 것뿐이다.
 
-**바로 다음 할 일 — 제24호 만들기.** 후보는 이 문서 맨 아래
+**바로 다음 할 일 — 제25호 만들기.** 후보는 이 문서 맨 아래
 「다음 열람실 후보」에 있고, 만드는 절차는 「열람실 하나 만드는 법」에 있다.
 
 **색인 요청 대기 4건.** 구글 서치콘솔 URL 검사 + 네이버 서치어드바이저
@@ -233,6 +233,7 @@ AdSense는 1인 1계정이라 나중에 못 바꾼다.
 ├─ travel/             제21호 「Co., Ltd.」 — 여행업 영문상호명
 ├─ wifi/               제22호 「SEOUL」 — 공공와이파이 SSID
 ├─ amusement/          제23호 「타가다디스코」 — 기타유원시설업
+├─ corporation/        제24호 「허가증 이면 기재」 — 문화예술 비영리법인
 ├─ about/              소개 — 캐는 방법 · 편집 원칙 · 열람실 목록
 ├─ contact/            연락처 — 정정·삭제 요청 창구
 ├─ privacy/            개인정보처리방침 (법적으로 필요)
@@ -270,6 +271,7 @@ AdSense는 1인 1계정이라 나중에 못 바꾼다.
 │  ├─ 국내여행업.csv       원본 20,206행
 │  ├─ 무료와이파이.csv     원본 94,164행
 │  ├─ 기타유원시설.csv     원본 1,752행
+│  ├─ 문화예술법인.csv     원본 3,951행
 │  ├─ 동물병원.csv        원본 10,612행 (미사용 — 자유입력 칸이 없다)
 │  ├─ 분석결과*.txt       analyze 스크립트 실행 결과
 │  ├─ 광맥순위.txt        208개 데이터셋 점수 순위 (scan_all.py)
@@ -319,6 +321,10 @@ AdSense는 1인 1계정이라 나중에 못 바꾼다.
    ├─ build_wifi.py      제22호 페이지 조립
    ├─ analyze_amuse.py   기타유원시설 숫자 재계산 · 검증
    ├─ build_amuse.py     제23호 페이지 조립
+   ├─ analyze_corp.py    문화예술법인 숫자 재계산 · 검증
+   │                    페이지가 싣는 목록(PAGE_REF)을 여기서 세므로
+   │                    한쪽만 고치면 「그 밖에 N곳」이 틀어진다
+   ├─ build_corp.py      제24호 페이지 조립
    ├─ analyze_gas.py     고압가스 숫자 재계산 · 검증
    ├─ build_gas.py       제19호 페이지 조립
    ├─ analyze_dust.py    비산먼지 숫자 재계산 · 검증
@@ -371,6 +377,7 @@ python scripts/fetch.py domestic_international_travel_agencies 국내외여행�
 python scripts/fetch.py domestic_travel_agencies 국내여행업
 python scripts/fetch.py free_wifi_info 무료와이파이
 python scripts/fetch.py general_amusement_facilities 기타유원시설
+python scripts/fetch.py cultural_art_corporations 문화예술법인
 
 # 페이지에 박아둔 숫자가 원본과 맞는지 검증
 python scripts/analyze.py
@@ -396,6 +403,7 @@ python scripts/analyze_dojo.py
 python scripts/analyze_travel.py
 python scripts/analyze_wifi.py
 python scripts/analyze_amuse.py
+python scripts/analyze_corp.py
 
 # 다음 열람실을 어디서 팔지 찾기
 python scripts/scan.py             # data/ 에 있는 CSV만
@@ -449,6 +457,7 @@ python .claude/serve.py
 | 국내여행업 | `domestic_travel_agencies` | 20,206 | 제21호 열람실 |
 | 전국무료와이파이 | `free_wifi_info` | 94,164 | 제22호 열람실 |
 | 기타유원시설업 | `general_amusement_facilities` | 1,752 | 제23호 열람실 |
+| 문화예술 비영리법인 | `cultural_art_corporations` | 3,951 | 제24호 열람실 |
 | 동물병원 | `animal_hospitals` | 10,612 | 미사용 |
 
 `python scripts/fetch.py --list` 로 확인한 열려 있는 데이터셋은 **208개**다.
