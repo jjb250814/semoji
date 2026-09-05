@@ -75,8 +75,14 @@ def main():
     # 16px 은 테두리를 빼야 글자가 산다
     ico_sizes = [(16, False), (32, True), (48, True)]
     imgs = [draw_icon(s, ring) for s, ring in ico_sizes]
-    imgs[0].save(ROOT / "favicon.ico", format="ICO",
-                 sizes=[(s, s) for s, _ in ico_sizes], append_images=imgs[1:])
+    # PIL 은 「기준 이미지」보다 큰 크기를 ico 에 넣지 않는다.
+    # 16px 를 기준으로 저장하면 16x16 한 장만 들어가고 32·48 은 조용히 사라진다.
+    # 2026-09-05에 favicon.ico 안에 16x16 하나뿐인 것을 발견해 고쳤다 —
+    # 구글은 파비콘을 48의 배수 정사각형으로 요구해서, 16만 있으면
+    # 검색 결과에 지구본이 뜬다. **가장 큰 것을 기준으로 저장한다.**
+    imgs[-1].save(ROOT / "favicon.ico", format="ICO",
+                  sizes=[(s, s) for s, _ in ico_sizes],
+                  append_images=imgs[:-1])
     print("favicon.ico       16 / 32 / 48")
 
     (ROOT / "favicon.svg").write_text(SVG, encoding="utf-8")
