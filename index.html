@@ -281,7 +281,7 @@ footer a:hover{border-bottom-color:var(--seal)}
     <div class="docmeta">
       <span>문서번호 <em>세모지-2026-0001</em></span>
       <span>근거 <em>공공데이터포털 · LOCALDATA</em></span>
-      <span>열람실 <em>29곳 개관</em></span>
+      <span>열람실 <em>30곳 개관</em></span>
     </div>
   </div>
 </header>
@@ -333,27 +333,33 @@ footer a:hover{border-bottom-color:var(--seal)}
     <section class="blk" id="rooms">
       <div class="blk-head"><h2>열람실</h2><span>지식 하나를 끝까지 판 곳</span></div>
 
-      <a class="room form" href="./water/">
-        <span class="form-label">제29호</span>
+      <a class="room form" href="./bbbb/">
+        <span class="form-label">제30호</span>
         <div class="room-in">
           <div>
-            <p class="room-no">민방위 비상급수시설</p>
-            <p class="room-t">청수탕</p>
+            <p class="room-no">22개 데이터셋 교차 조사</p>
+            <p class="room-t">BBBB</p>
             <p class="room-d">
-              전쟁이나 재난이 나면 어디서 물을 얻을까요. 국가가 지정해 둔 비상급수시설 11,039곳의 목록에 목욕탕이 1,137곳 들어 있습니다. 그런데 그 목욕탕의 59.7%가 이미 사용중지입니다 — 전체 평균 47.6%보다 훨씬 높습니다.
+              인허가 데이터의 상태 코드는 보통 01, 02 같은 숫자입니다. 그런데 세모지가 모은 22개 데이터셋 중 열두 개에 「BBBB」라는 값이 섞여 있습니다. 5,870건이고, 고압가스는 46.25%가 이 값입니다. 데이터셋 하나로는 보이지 않던 흠입니다.
             </p>
             <p class="room-go">열람실 들어가기 →</p>
           </div>
           <div class="room-figs">
-            <div class="room-fig hot"><span class="n">1,137</span><span class="l">목록에 든 목욕탕</span></div>
-            <div class="room-fig"><span class="n">59.7%</span><span class="l">그중 사용중지</span></div>
-            <div class="room-fig hot"><span class="n">622</span><span class="l">「탕」으로 끝나는 이름</span></div>
-            <div class="room-fig"><span class="n">11,039</span><span class="l">비상급수시설</span></div>
+            <div class="room-fig hot"><span class="n">5,870</span><span class="l">「BBBB」</span></div>
+            <div class="room-fig"><span class="n">12</span><span class="l">나온 데이터셋</span></div>
+            <div class="room-fig hot"><span class="n">46.25%</span><span class="l">고압가스는</span></div>
+            <div class="room-fig"><span class="n">0</span><span class="l">예외</span></div>
           </div>
         </div>
       </a>
 
 <div class="lite-head"><b>지난 열람실</b></div>
+      <a class="room-lite" href="./water/">
+        <span class="no">제29호</span>
+        <span class="t">청수탕</span>
+        <span class="d">비상급수시설 목록에 목욕탕이 1,137곳. 그중 59.7%가 이미 사용중지다</span>
+        <span class="go">→</span>
+      </a>
       <a class="room-lite" href="./jobs/">
         <span class="no">제28호</span>
         <span class="t">개미인력</span>
@@ -646,8 +652,25 @@ const ROWS = {
   "세탁업": 67398,
   "유료직업소개소": 60010,
   "민방위 비상급수시설": 11039,
+  "22개 데이터셋 교차 조사": 4679894,
 };
 const FACTS = [
+ { cat:"교차 조사 · 데이터의 흠",
+   body:"세모지가 모은 22개 데이터셋 4,679,894행을 훑으니, 상태 코드 칸에 「BBBB」라는 값이 12개 파일에 5,870건 있었다.",
+   note:"고압가스는 11,263행 중 5,209건(46.25%)이 이 값이다. 데이터셋 하나만 볼 때는 보이지 않던 흠이다.",
+   src:"22개 데이터셋 교차 조사", score:"94 / 100" },
+ { cat:"교차 조사 · 검증",
+   body:"「BBBB」인 줄은 예외 없이 상세영업상태명이 비어 있고 영업상태가 「영업/정상」(코드 01)이다. 12개 파일 전부에서 그렇다.",
+   note:"깨진 값이 아니라 「영업 중인데 세부 상태를 모른다」는 뜻의 자리표시자로 보인다. 다만 원본에 정의는 없다.",
+   src:"22개 데이터셋 교차 조사", score:"90 / 100" },
+ { cat:"교차 조사 · 서식",
+   body:"「상세영업상태코드」는 칸 이름이 같은데 체계가 파일마다 다르다. 01/02 인 곳, 1/2 인 곳, 0000/0001 인 곳, 10/20/40 인 곳이 따로 있다.",
+   note:"방문판매업에는 「-」라는 코드까지 있다. 같은 이름의 칸이라도 파일을 넘나들며 비교하면 안 된다는 뜻이다.",
+   src:"22개 데이터셋 교차 조사", score:"87 / 100" },
+ { cat:"교차 조사 · 서식",
+   body:"여러 기관이 각자 만든 인허가 파일에 같은 자리표시자가 들어 있다. 그 파일들이 어딘가에서 같은 틀을 거쳐 나왔다는 뜻이다.",
+   note:"그 틀이 무엇인지는 공개된 데이터에 적혀 있지 않다. 코드표가 파일과 함께 오지 않는다.",
+   src:"22개 데이터셋 교차 조사", score:"82 / 100" },
  { cat:"비상급수 · 분류",
    body:"전쟁·재난 때 쓸 민방위 비상급수시설 11,039곳 중 1,137곳(10.3%)이 목욕탕이다. 아파트 1,395곳, 학교 1,210곳이 뒤를 잇는다.",
    note:"비상급수시설은 따로 지은 것이 아니라 이미 물이 나오는 곳을 지정한 것이다. 분류는 이름으로 나눈 어림값이다.",
