@@ -33,10 +33,10 @@ git push     # 작업 끝낼 때
 |---|---|
 | 사이트 | **https://semoji.net** · HTTPS · 주소에 `.html` 없음 |
 | 작업 폴더 | `C:\세모지` — **OneDrive 밖** (2026-09-05에 두 PC 다 옮김) |
-| 열람실 | **28곳** (제1~28호) |
-| 전체 페이지 | 32쪽 (랜딩 + 열람실 28 + 소개 · 연락처 · 개인정보처리방침) |
-| 분석한 데이터셋 | 30개 · **6,083,569행** |
-| 랜딩 지식 카드 | 143장 |
+| 열람실 | **29곳** (제1~29호) |
+| 전체 페이지 | 33쪽 (랜딩 + 열람실 29 + 소개 · 연락처 · 개인정보처리방침) |
+| 분석한 데이터셋 | 31개 · **6,094,608행** |
+| 랜딩 지식 카드 | 148장 |
 | 파비콘 · 공유 썸네일 | 붉은 직인 파비콘 · 페이지마다 OG 이미지 1200x630 |
 | 도메인 | `semoji.net` (가비아, 2027-09-03 만료, 자동갱신 확인할 것) |
 | 저장소 | `github.com/jjb250814/semoji` (Public) |
@@ -50,7 +50,7 @@ git push     # 작업 끝낼 때
 **지금은 기다리는 구간이다.** AdSense 심사 며칠~2주, 구글 색인 며칠~2주,
 네이버 색인 1~4주. 조급해할 것 없다. 그 사이 할 일은 열람실을 더 쌓는 것뿐이다.
 
-**바로 다음 할 일 — 제29호 만들기.** 후보는 이 문서 맨 아래
+**바로 다음 할 일 — 제30호 만들기.** 후보는 이 문서 맨 아래
 「다음 열람실 후보」에 있고, 만드는 절차는 「열람실 하나 만드는 법」에 있다.
 
 **색인 요청 대기 4건.** 구글 서치콘솔 URL 검사 + 네이버 서치어드바이저
@@ -238,6 +238,7 @@ AdSense는 1인 1계정이라 나중에 못 바꾼다.
 ├─ ecommerce/          제26호 「카다로그」 — 통신판매업
 ├─ laundry/            제27호 「운동화전문세탁업」 — 세탁업
 ├─ jobs/               제28호 「개미인력」 — 유료직업소개소
+├─ water/              제29호 「청수탕」 — 민방위 비상급수시설
 ├─ about/              소개 — 캐는 방법 · 편집 원칙 · 열람실 목록
 ├─ contact/            연락처 — 정정·삭제 요청 창구
 ├─ privacy/            개인정보처리방침 (법적으로 필요)
@@ -280,6 +281,7 @@ AdSense는 1인 1계정이라 나중에 못 바꾼다.
 │  ├─ 통신판매업.csv       원본 3,096,399행 (919MB · 지금까지 가장 큼)
 │  ├─ 세탁소.csv           원본 67,398행
 │  ├─ 직업소개소.csv       원본 60,010행
+│  ├─ 비상급수시설.csv     원본 11,039행
 │  ├─ 동물병원.csv        원본 10,612행 (미사용 — 자유입력 칸이 없다)
 │  ├─ 분석결과*.txt       analyze 스크립트 실행 결과
 │  ├─ 광맥순위.txt        208개 데이터셋 점수 순위 (scan_all.py)
@@ -342,6 +344,8 @@ AdSense는 1인 1계정이라 나중에 못 바꾼다.
    ├─ build_laundry.py   제27호 페이지 조립
    ├─ analyze_jobs.py    유료직업소개소 숫자 재계산 · 검증
    ├─ build_jobs.py      제28호 페이지 조립
+   ├─ analyze_water.py   비상급수시설 숫자 재계산 · 검증
+   ├─ build_water.py     제29호 페이지 조립
    ├─ analyze_gas.py     고압가스 숫자 재계산 · 검증
    ├─ build_gas.py       제19호 페이지 조립
    ├─ analyze_dust.py    비산먼지 숫자 재계산 · 검증
@@ -399,6 +403,7 @@ python scripts/fetch.py tobacco_retailers 담배소매업   # 183MB
 python scripts/fetch.py ecommerce_businesses 통신판매업   # 919MB
 python scripts/fetch.py laundries 세탁소
 python scripts/fetch.py paid_job_centers 직업소개소
+python scripts/fetch.py civil_defense_water_facilities 비상급수시설
 
 # 페이지에 박아둔 숫자가 원본과 맞는지 검증
 python scripts/analyze.py
@@ -429,6 +434,7 @@ python scripts/analyze_tobacco.py
 python scripts/analyze_ecommerce.py
 python scripts/analyze_laundry.py
 python scripts/analyze_jobs.py
+python scripts/analyze_water.py
 
 # 다음 열람실을 어디서 팔지 찾기
 python scripts/scan.py             # data/ 에 있는 CSV만
@@ -487,6 +493,7 @@ python .claude/serve.py
 | 통신판매업 | `ecommerce_businesses` | 3,096,399 | 제26호 열람실 |
 | 세탁업 | `laundries` | 67,398 | 제27호 열람실 |
 | 유료직업소개소 | `paid_job_centers` | 60,010 | 제28호 열람실 |
+| 민방위 비상급수시설 | `civil_defense_water_facilities` | 11,039 | 제29호 열람실 |
 | 동물병원 | `animal_hospitals` | 10,612 | 미사용 |
 
 `python scripts/fetch.py --list` 로 확인한 열려 있는 데이터셋은 **208개**다.
